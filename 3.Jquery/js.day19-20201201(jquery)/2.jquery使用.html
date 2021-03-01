@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documejquernt</title>
+    <script src="jquery.js"></script>
+    <script>
+
+        window.onload=function(){//网页加载完成之后执行事件函数
+            alert('网页加载完成执行 onload 4');
+            //document.querySelector('#test');
+        }
+        //推荐用这种  网页结构加载完成就可以执行代码了 不用等 图片 文件 加载完.
+        $(function(){//Jquery的写法. 类似DOMContentLoaded事件 
+            alert("网页加载完成执行 回调函数1");
+        });
+        $(function(){ //可以有多个.
+
+        });
+        $(document).ready(function(){//Jquery的写法.
+            alert("网页加载完成执行 ready 函数回调2");
+        });
+        $(document).ready(function(){
+            
+        });
+
+        window.addEventListener('DOMContentLoaded',function(){
+            alert('DOMContentLoaded3');
+        });
+    </script>
+</head>
+<body>
+    <img src="a.jpg"/>
+    <div id="test"></div>
+</body>
+</html>

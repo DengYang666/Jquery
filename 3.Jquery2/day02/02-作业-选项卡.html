@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        .box{
+            width: 800px;
+            margin:100px auto;
+        }
+        .box .nav{
+            height: 40px;
+            line-height: 40px;
+            border:1px solid #e5e5e5;
+            background: #f1f1f1;
+        }
+        .box .nav ul li{
+            text-align: center;
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            cursor: pointer;
+        }
+        .box .nav ul li.active{
+            background: #c81623;
+            color:white;
+        }
+        .box .content .item{
+            display: none;
+        }
+        .box .content .item:nth-child(3){
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- 上部分导航 -->
+        <div class="nav">
+            <ul>
+                <li>商品介绍</li>
+                <li>规格与包装</li>
+                <li class="active">售后保障</li>
+                <li>商品评价(50000)</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        
+        <!-- 下部分内容 -->
+        <div class="content">
+            <div class="item">商品介绍的内容</div>
+            <div class="item">规格与包装的内容</div>
+            <div class="item">售后保障的内容</div>
+            <div class="item">商品评价(50000)的内容</div>
+            <div class="item">手机社区的内容</div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".nav ul li").click( function(){
+                // 当前li高亮,删除其他li高亮
+                $(this).addClass("active").siblings("li").removeClass("active");
+                // 获取当前li的索引号
+                var index = $(this).index();
+                // 设置当前li对应索引号的item显示出来
+                $(".box .content .item").eq(index).show().siblings(".item").hide();
+            })
+        })
+    </script>
+</body>
+</html>

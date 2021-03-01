@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav {
+            width: 1919px;
+            height: 50px;
+            background-color: #333333;
+        }
+
+        .center {
+            width: 1400px;
+            margin-left: 260px;
+        }
+
+        span {
+            color: white;
+            font-size: 35px;
+        }
+
+        .skyblue {
+            background-color: skyblue;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .black {
+            background-color: #808080;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .lightgreen {
+            background-color: lightgreen;
+        }
+
+        .center>div {
+            width: 1400px;
+            height: 500px;
+            margin-top: 100px;
+            text-align: center;
+            line-height: 500px;
+            font-size: 30px;
+            color: white;
+        }
+
+        .bottom {
+            width: 1919px;
+            height: 300px;
+            background-color: #f4f4f4;
+            line-height: 300px;
+            margin-top: 100px;
+        }
+
+        .p {
+            margin-left: 260px;
+            font-size: 30px;
+            color: black;
+        }
+
+        .fix div {
+            width: 70px;
+            height: 70px;
+            background-color: #9b86ff;
+            font-size: 20px;
+            text-align: center;
+            line-height: 70px;
+            margin-top: 10px;
+        }
+
+        .fix {
+            position: fixed;
+            left: 1800px;
+            top: 400px;
+            display: none;
+        }
+        .active{
+            background-color: #d72824 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <span class="center">这是导航栏</span>
+    </div>
+    <div class="center">
+        <div class="skyblue">这是1楼</div>
+        <div class="pink">这是2楼</div>
+        <div class="orange">这是3楼</div>
+        <div class="black">这是4楼</div>
+        <div class="yellow">这是5楼</div>
+        <div class="lightgreen">这是6楼</div>
+    </div>
+    <div class="bottom">
+        <span class="p">这是底部</span>
+    </div>
+    <div class="fix">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 500) {
+                $(".fix").stop().fadeIn();
+            } else {
+                $(".fix").stop().fadeOut();
+            }
+        })
+        $(".fix div").click(function () {
+            var index=$(this).index()
+            $(".fix div").removeClass("active")
+            $(".fix div").eq(index).addClass("active")
+            $('html').animate({ scrollTop: (index)*600}, 800);
+        })
+        $(window).scroll(function () {
+            var Index=Math.floor($(window).scrollTop()/600)
+            $(".fix div").removeClass("active")
+            $(".fix div").eq(Index).addClass("active")
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        .w{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .header{
+            height: 50px;
+            line-height: 50px;
+            background: gray;
+            color:white;
+            margin-bottom: 50px;
+        } 
+        .footer{
+            height: 240px;
+            line-height: 240px;
+            background: gray;
+            color:white;
+        } 
+        .content .lift{
+            height: 800px;
+            margin-bottom: 50px;
+            text-align: center;
+            line-height: 800px;
+            font-size:30px;
+        }
+        .lift_nav{
+            position: fixed;
+            right: 15px;
+            top: 50%;
+            height: 350px;
+            margin-top: -175px;
+            display: none;
+        }
+        .lift_nav ul li{
+            width: 50px;
+            height: 50px;
+            background: gray;
+            text-align: center;
+            line-height: 50px;
+            font-size:20px;
+            color:white;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .lift_nav ul li:last-child{
+            margin-bottom: 0;
+        }
+        .lift_nav ul li.active{
+            background: #e4393c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="w">
+            头部
+        </div>
+    </div>
+    <div class="content w">
+        <div class="lift" style="background:tomato">这是1楼</div>
+        <div class="lift" style="background:pink">这是2楼</div>
+        <div class="lift" style="background:skyblue">这是3楼</div>
+        <div class="lift" style="background:lightgreen">这是4楼</div>
+        <div class="lift" style="background:gold">这是5楼</div>
+        <div class="lift" style="background:aqua">这是6楼</div>
+    </div>
+
+    <div class="footer">
+        <div class="w">
+            底部
+        </div>
+    </div>
+    
+    <!-- 右侧电梯导航 -->
+    <div class="lift_nav">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 定义一个数组,记录每个楼层的距离文档上方距离
+        var arr = [];
+
+        // 获取每个楼层距离文档上方距离
+        $(".lift").each(function( index, domElement ){
+            arr.push( $(domElement).offset().top - 50 )
+        });
+
+
+        // 给window绑定页面滚动事件
+        $(window).scroll(function(){
+            // 获取当前被卷去的上方距离
+            var currentScrollTop = $(window).scrollTop();
+            // 判断是否大于1楼的顶部距离
+            if( currentScrollTop >= arr[0] ){
+                $(".lift_nav").show();// 显示电梯导航
+            }else{
+                $(".lift_nav").hide();// 隐藏电梯导航
+            }
+
+            // 遍历数组,判断当前被卷去的距离,是否大于某楼的顶部距离
+            $.each( arr , function(index ,item ){
+                if( currentScrollTop >= item ){
+                    $(".lift_nav ul li").eq( index ).addClass("active").siblings("li").removeClass("active");
+                }
+            })
+        })
+
+        // 给电梯导航中的每个li绑定点击事件
+        $(".lift_nav ul li").click(function(){
+            var index = $(this).index();
+
+            $("html").animate({
+                scrollTop: arr[index]+2
+            })
+        })
+    </script>
+</body>
+</html>

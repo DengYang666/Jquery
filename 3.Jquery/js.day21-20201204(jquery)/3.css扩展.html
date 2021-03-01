@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css扩展</title>
+    <script src="jquery.js"></script>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background-color:burlywood;
+            padding:10px;
+            /* margin:20px; */
+            border:5px solid #F00;
+            position: relative;
+            left:100px;
+            top:50px;
+        }
+        div p{
+            width:30px;
+            height:30px;
+            background:chartreuse;
+            /* margin-top:20px; */
+            /* margin-left:20px; */
+            position: absolute;
+            left:20px;
+            top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+    </div>
+    <script>
+        /*
+            $('div').css();
+            $('div').addClass(); $('div').removeClass();
+
+            width();/height()  内容空间
+            innerWidth();/innerHeight() 内容空间+ padding
+            outerWidth();/outerHeight()  内容空间 + padding + border
+
+            offset() 元素距文本左边 上面的 距离
+                返回一个对象 {left:,top}  (包含 margin  position: left)
+                参数: 传入一个对象{left:10,top:20} 设置offset
+            position(); 获取或设置相对于父元素偏移. 参考内容区(父元素的边框里面开始计算. 不算父元素边框)
+                自身margin padding不计算. (主要针对定位的位移, 如果祖辈元素没有定位 ,那位移就是相对于浏览器的位移)
+                返回一个对象{left: , top: }  只是获取.
+
+        */
+        var width=$('div').width();//内容宽度
+            console.log('width==>',width);
+
+        var innerWidth=$('div').innerWidth();//内容宽度 + padding
+            console.log('innerWidth==>',innerWidth);
+
+        var outerWidth=$('div').outerWidth(); // 内容宽度 + padding + border
+            console.log('outerWidth==>',outerWidth);
+
+        var height=$('div').height();//内容宽度
+            console.log('height==>',height);
+
+        var innerHeight=$('div').innerHeight();//内容宽度 + padding
+            console.log('innerHeight==>',innerHeight);
+
+        var outerHeight=$('div').outerHeight(); // 内容宽度 + padding + border
+            console.log('outerHeight==>',outerHeight);
+            
+        //offset
+        var o=$('div').offset();//获取
+        console.log('offset ==> ',o.left,o.top);    
+        $('div').offset({left:200,top:100});//设置 没有返回值
+        //console.log('offset ==> ',o.left,o.top);    
+        //position 相对于父元素的位移
+        var o=$('p').position();
+            console.log('p=position=>',o);
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            outline:none;
+            border:none;
+            padding:5px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        $("button").mouseover(function(){
+            // jQuery链式编程
+            // 链式编程是为了节省代码量，看起来更优雅。
+            // $(this).css("color","red").siblings().css("color", "");
+            // 注意:使用链式编程一定要注意是哪个对象执行样式
+
+            // $(this).css("backgroundColor","pink");
+            // $(this).siblings("button").css("backgroundColor","#efefef");
+
+            // 改为链式编程
+            $(this).css("backgroundColor","pink").siblings("button").css("backgroundColor","#efefef");
+
+            // next()方法可以查找到下一个兄弟元素
+            // $(this).next().css("backgroundColor","pink").siblings("button").css("backgroundColor","#efefef");
+        });
+    </script>
+</body>
+</html>

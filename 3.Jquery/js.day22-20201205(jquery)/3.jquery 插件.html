@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery插件机制</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div id="hello"></div>
+    <div class="abc"></div>
+    <script>
+        /*
+            jquery 插件.
+            $.fn.extend({
+
+            });
+
+            function abc(){
+                var a=10+20;
+                this.name="abcder";
+            }
+            abc.prototype.bcd=function(){}
+        */
+        
+        //$.extend({
+        //sayHi:function(){
+        //  console.log('jQuery 函数扩展',this);// jQuery函数 (也是构造函数)
+        //}
+        //});
+        //$.sayHi();
+
+       $.fn.extend({
+           sayHello:function(){
+               console.log('hello  = 插件扩展=> ');
+               console.log(this);// this jquery包装之后元素对象. 相当于前面的 $('#hello') 或 $('.abc')
+               this.text("这是Hello元素.......");
+               return this;//返回一个this对象. 让它继续支持链式调用
+           }
+       });
+       $('#hello').css({
+           width:100,
+           height:100,
+           background:'red'
+       }).sayHello().css({
+           width:200
+       }).width(500);
+
+       $('.abc').sayHello().css('width',500).css('backgroundColor','blue');
+
+
+    </script>
+</body>
+</html>

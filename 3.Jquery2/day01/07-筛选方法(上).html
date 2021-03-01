@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="yeye">
+        <div class="baba">
+            <div class="son">.baba的儿子</div>
+        </div>
+    </div>
+
+    <div class="grandfather">
+        <div class="father">
+            <div class="son">.father的儿子</div>
+        </div>
+    </div>
+    ​
+    <div class="nav">
+        <p>我是ppp</p>
+        ​
+        <span>我是span</span>
+        ​
+        <div>
+            <p>我是div里面的ppppp</p>
+            <span>我是div里面span</span>
+        </div>
+    </div>
+
+    <script>
+        // jQuery中还有一些筛选方法，类似DOM中的通过一个节点找另外一个节点，父、子、兄以外有所加强。
+        // parent( [expr] )        $("li").parent(); 查找父级
+        // $(".son").css("color","red");
+        // console.log( $(".son").parent() );
+        // console.log( $(".son").parent(".baba") );
+
+        // children([selector])    $("ul").children("li") 相当于$("ul>li")，最近一级(亲儿子)
+        // console.log( $(".nav").children() );
+        // console.log( $(".nav").children("p") );
+
+        // find( selector )        $("ul").find("li"); 相当于$("ul li"),后代选择器
+        // 注意:find后面的css选择器不能省略
+        // console.log( $(".nav").find() );// 找不到元素
+        console.log( $(".nav").find("p") );
+    </script>
+</body>
+</html>

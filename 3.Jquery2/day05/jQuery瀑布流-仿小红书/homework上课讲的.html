@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            vertical-align: bottom;
+        }
+        .fl{
+            float: left;
+        }
+        .fr{
+            float: right;
+        }
+        .clearfix::after{
+            content:"";
+            display: block;
+            clear:both;
+        }
+
+        .box{
+            width: 1180px;
+            margin:100px auto;
+            position: relative;
+        }
+        .box .item{
+            width: 220px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+            border-radius: 10px;
+            overflow: hidden;
+            /* 我们发现浮动实现不了,所以我们选用定位,并通过jQuery设置相应的坐标值实现 */
+            /* position: relative; */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .box .item .item_img img{
+            width: 100%;
+        }
+        .box .item .item_desc{
+            margin-top: 20px;
+            margin-bottom: 14px;
+            margin-left: 16px;
+            margin-right: 17px;
+        }
+        .box .item .item_user{
+            height: 30px;
+            margin-left: 15px;
+            margin-right: 17px;
+            margin-bottom: 10px;
+            line-height: 30px;
+            color:#73716c;
+            font-size:12px;
+        }
+        .box .item .item_user .user_left img{
+            width: 30px;
+            height: 30px;
+            margin-right: 11px;
+            border-radius: 50%;
+        }
+        .box .item .item_user .user_right img{
+            width: 20px;
+            height: 18px;
+            vertical-align: -4px;
+        }
+        .box .item .mask{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,2,4,.2);
+            display: none;
+            cursor: pointer;
+        }
+        /* 鼠标移上.box .item以后, .mask层对应的样式 */
+        .box .item:hover .mask{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- .item代表每一项 -->
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/01.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">拥有一台宾利GT，如何拍，才不会被说炫富？</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/01.jpg"/>
+                    <span>金英焕</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>102</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/02.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">🛁清凉一夏，宝宝用的这些东西你🉐知道…</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/02.jpg"/>
+                    <span>我是牛油果呀呀</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>112</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/03.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">这些超火的动漫台词你绝对都有听过</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/03.jpg"/>
+                    <span>学说日语</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>305</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/04.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">高段位的科学育儿理念！原来是它～</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/04.jpg"/>
+                    <span>小迷姐儿是豆豆龙</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>101</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/05.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">没想到因为婴儿推车，我居然被孩子爸夸了…</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/05.jpg"/>
+                    <span>我是牛油果呀呀</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>164</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/06.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">日常vlog｜妈妈、博主，每天身份转换</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/06.jpg"/>
+                    <span>木夕_木</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>976</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/07.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">这个食谱摆摊能不能赚到学费大家帮忙参考一下😂</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/07.jpg"/>
+                    <span>彭雨荷baby</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>1373</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/08.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">和油污蟑螂say byebye｜厨房清洁好物分享</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/08.jpg"/>
+                    <span>Cikoe</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>60</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/09.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">上街超惹眼宏光MINI EV，市区代步车性价高</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/09.jpg"/>
+                    <span>一颗小甜欣</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>80</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/10.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">📢快开学了！！！再不准备就晚了✅</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/10.jpg"/>
+                    <span>我叫小豆浆</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>261</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+
+        <div class="item">
+            <!-- 上部分大图片 -->
+            <div class="item_img">
+                <img src="images/pic/11.jpg"/>
+            </div>
+
+            <!-- 描述 -->
+            <div class="item_desc">莆田探店｜时雾美术馆</div>
+
+            <!-- 用户相关信息 -->
+            <div class="item_user clearfix">
+                <div class="user_left fl">
+                    <img src="images/touxiang/11.jpg"/>
+                    <span>iamlittley</span>
+                </div>
+
+                <div class="user_right fr">
+                    <img src="images/heart.png"/>
+                    <span>43</span>
+                </div>
+            
+            </div>
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 入口函数
+        $(function(){
+            // .box盒子的宽度
+            var boxWidth = $(".box").width();
+            // .item盒子的宽度
+            var itemWidth = $(".item").width();
+            // 最大列数
+            var maxColumn = Math.floor( boxWidth/itemWidth );
+            // .item之间的间距
+            var gap = 18;
+            // 定义一个数组,保存每列总高度
+            var arrHeight = [];
+
+            // 实现思路:
+            // 1. 先摆第一行的.item 也就是前5个  
+            // 2. 第二行开始,每个.item要放在当前所有列高度中最小的那个列下面
+            $(".item").each(function(index,domElement){
+                if( index < maxColumn ){// 第一行
+                    $(domElement).css({
+                        top: 0,
+                        left: (itemWidth+gap)*index
+                    })
+                    // 保存高度
+                    arrHeight.push( $(domElement).height() );
+                }else{// 其他行
+                    // 求出当前数组中的最小值以及下标
+                    var res = getArrMin( arrHeight );
+                    var minValue = res.value;
+                    var minIndex = res.index;
+                    
+                    $(domElement).css({
+                        top: minValue+gap,
+                        left: (itemWidth+gap)*minIndex
+                    });
+
+                    // 更新数组
+                    arrHeight[minIndex] = minValue+gap+$(domElement).height();
+                }
+            });
+
+
+            // 封装一个获取数组中最小值和最小值所在的下标的函数,返回值是一个对象
+            function getArrMin( myArr ){
+                var minObj = {};
+                minObj.index = 0;
+                minObj.value = myArr[0];
+
+                for(var i = 1; i < myArr.length; i++){
+                    if( minObj.value > myArr[i] ){
+                        minObj.value = myArr[i];
+                        minObj.index = i;
+                    }
+                }
+
+                return minObj;
+            }
+        })
+    </script>
+</body>
+</html>

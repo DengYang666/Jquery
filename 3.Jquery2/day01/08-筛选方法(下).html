@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <ol>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li class="item">我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+    </ol>
+    ​
+    <div style="border:3px solid orange;">
+        <p>我是ppppp</p>
+        <p>我是ppppp</p>
+        <h1>我是bbbbbb</h1>
+        <span>我是span</span>
+        <h2>我是ppppp</h2>
+    </div>
+    ​
+    <ul>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+    </ul>
+    ​
+    <div class="current">我有current</div>
+    <div>我没有current</div>
+
+    <script>
+        // siblings( [selector] )  $(".first").siblings("li"); 查找兄弟节点，不包括自己本身
+        // $("ol .item").css("color","red");
+        // $("ol .item").siblings().css("color","red");
+        // $("div h1").siblings("p").css("color","red");
+        
+
+        // nextAll( [expr] )       $(".first").nextAll() 查找当前元素之后所有的同辈元素
+        // $("ol .item").nextAll().css("color","red");
+        // $("div h1").nextAll("h2").css("color","red");
+
+        // prevAll( [expr] )       $(".last"). prevAll() 查找当前元素之前所有的同辈元素
+        // $("ol .item").prevAll().css("color","red");
+
+        // hasClass( class )       $('div').hasClass("abc" ) 检查当前的元素是否含有某个特定的类,如果有,则返回true
+        // console.log( $(".current").hasClass( "current" ) );
+        // console.log( $(".item").hasClass( "current" ) );
+
+        // eq( index )             $("li").eq(2); 相当于$("li:eq(2)"), index从0开始
+
+        var index = 3;
+        $("ul li").eq(index).css("color","red");
+        $("ul li:eq("+index+")").css("font-size","30px");
+    </script>
+</body>
+</html>

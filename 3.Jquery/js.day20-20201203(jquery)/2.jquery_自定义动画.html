@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .customer{
+            width:100px;
+            height:200px;
+            background-color: #f00;
+            position: fixed;
+            right:-100px;
+            top:50%;
+            margin-top:-100px;
+        }
+        .customer button{
+            width:80px;
+            position: absolute;
+            left:-80px;
+            top:0px;
+            border:none;
+            outline: none;
+            background:blue;
+            color:#fff;
+        }
+        .customer p{
+            font-size: 12px;
+            color:#Fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="customer">
+        <button>联系客服</button>
+        <!---
+            前提是有这个软件:
+            tencent:// 腾讯
+            message/?uin=客服的QQ号码
+        -->
+        <p>QQ客服:<a href="tencent://message/?uin=5888888">5888888</a></p>
+        <p>淘宝客服:<a href="#">5888888</a></p>
+        <p>EMail:<a href="mailto://999999@qq.com">999999@qq.com</a></p>
+    </div>
+    <script>
+        $(function(){
+            $('.customer').mouseover(function(){
+                $(this).stop().animate({
+                    right:0
+                });
+            });
+            $('.customer').mouseout(function(){
+                $(this).stop().animate({
+                    right:-100
+                })
+            });
+        });
+    </script>
+</body>
+</html>

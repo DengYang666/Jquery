@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        ul{
+            list-style: none;
+        }
+        .floor{
+            width:1000px;
+            height:600px;
+            color:#FFF;
+            font-size:20px;
+            margin: 0 auto;
+        }
+        .page{
+            position: fixed;
+            width:100px;
+            margin-left:500px;/* 距离左边 floor宽度的一半. */
+            left:50%;/*距离浏览器左边50%*/
+        }
+        .page li{
+            line-height: 30px;
+            background-color: darkgoldenrod;
+            border-top-right-radius: 15px;/*设置右上角的的 圆角半径*/
+            border-bottom-right-radius: 15px;/*设置右下角的的 圆角半径*/
+            /* box-sizing: ; */
+            margin-top:5px;
+            cursor: pointer;
+        }
+        .page li.active{
+            background-color: darkolivegreen;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <ul class="page">
+        <li class="active">章节1</li>
+        <li>章节2</li>
+        <li>章节3</li>
+        <li>章节4</li>
+        <li>章节5</li>
+        <li>章节6</li>
+    </ul>
+    <div class="floor">章节1</div>
+    <div class="floor">章节2</div>
+    <div class="floor">章节3</div>
+    <div class="floor">章节4</div>
+    <div class="floor">章节5</div>
+    <div class="floor">章节6</div>
+    <script>
+        $(function(){
+            $('.floor:even').css('background','red');
+            $('.floor:odd').css('background','coral');
+            $('.page li').click(function(){
+                var index=$(this).index();//获取li所在的下标
+                var top=$('.floor').eq(index).offset().top;//获取li对应的 floor的距上边的距离
+                $('html,body').animate({//滚动指定距离
+                    scrollTop:top
+                });
+                $(this).addClass('active').siblings().removeClass('active');//给自己添加一个样式,所有的其他兄弟移除该样式.
+            });
+            $(window).scroll(function(){
+                var scrollTop=$(this).scrollTop();//获取滚动距离
+                $('.floor').each(function(i,e){// each循环 i下标 e 循环出来的元素对象
+                    var top=$(e).offset().top;
+                        if(top<=scrollTop){//判断 如果元素距上面的距离 小于或等于滚动的距离. 证明到滚动到了该元素. 改变对应li背景
+                            $('.page li').eq(i).addClass('active').siblings().removeClass('active');
+                        }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

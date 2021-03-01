@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        div{
+            background-color:blue;
+            border:1px solid #F00;
+        }
+        .box{
+            width: 500px;
+            height:100px;
+            background-color: coral;
+        }
+        .active{
+            width: 800px;
+            height:100px;
+            background-color:cornflowerblue;
+        }
+    </style>
+    <script>
+        $(function(){
+            //css 函数用来设置元素的样式 style属性里面的样式
+            //可以直接传递两个参数,设置一个css样式
+            $('div').css("width",100);
+            //css函数的参数是一个对象,可以传递多个参数.
+            $('div').css({
+                height:100,//属性的值 如果是数字 直接写 ,如果 是颜色 或其他值要用字符串.
+                backgroundColor:'red',
+                border:"5px solid blue"
+            });
+        });
+        //document.querySelector('div').style.width=100+"px";
+        $(function(){
+            $('button:first').click(function(){
+                $('p').addClass('active');//添加class
+            });
+            $('button:eq(1)').click(function(){
+                $('p').removeClass('active');//移除class
+            });
+            $('button:eq(2)').click(function(){
+                //$('p').toggleClass('active');//切换class样式  如果这个样式 就删除 没有就添加
+                if($('p').hasClass('active')){
+                    $('p').removeClass('active');
+                }else{
+                    $('p').addClass('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>添加样式</button>-<button>删除class样式</button>-<button>切换class样式</button>
+    <p class="box"></p>
+    <div></div>
+    
+</body>
+</html>

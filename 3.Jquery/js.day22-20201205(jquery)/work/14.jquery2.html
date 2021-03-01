@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="data.js"></script>
+    <script src="jquery.js"></script>
+    <script src="parabola.js"></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        input{
+            border:0px;
+            outline: none;
+        }
+        body{
+            overflow-x: hidden;
+        }
+        .cart{
+            width: 300px;
+            border-left:6px solid #f00;
+            position: fixed;
+            right: -305px;
+            height: 100%;
+            z-index: 99;
+        }
+        .cart button{
+            border: none;
+            color:white;
+            background-color: #F00;
+            line-height: 36px;
+            outline: none;
+            text-align: left;
+        }
+        .cart>button{
+            position: absolute;
+            width:80px;
+            left:-80px;
+            top:50%;
+            border: none;
+            margin-top:-20px;
+        }
+        .cart .bottom{
+            line-height: 50px;
+        }
+        .cart .bottom>button{
+            width: 70px;
+            text-align: center;
+            line-height: 40px;
+            float:right;
+            margin:5px 10px 0px 0px;
+        }
+        .cart>button span{
+            position: absolute;
+            color:white;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+            background-color: tomato;
+            line-height: 24px;
+            left:8px;
+            top:-12px;
+        }
+        .cart>button::before{
+            content: '';
+            display: block;
+            float:left;
+            width:28px;
+            height:36px;
+            background:url(https://static.360buyimg.com/devfe/toolbar/1.0.0/css/i/toolbars.png) #F00 no-repeat -50px 0px;
+        }
+        .cart h6{
+            line-height: 50px;
+            background-color: chocolate;
+            color:#FFF;
+        }
+        .cart h6::before{
+            content: '';
+            display: block;
+            float:left;
+            width:28px;
+            height:28px;
+            margin:7px 0px 0px 0px;
+            background:url(https://static.360buyimg.com/devfe/toolbar/1.0.0/css/i/toolbars.png) chocolate no-repeat -50px 0px;
+        }
+        .cart h6::after{
+            content: '清空';
+            display: block;
+            float:right;
+            width:28px;
+            height:28px;
+            margin:0px 20px 0px 0px;
+            cursor: pointer;
+        }
+
+        .cart ul img,.cart ul li>a:first-child{
+          float:left;
+          width: 60px;
+        }
+        .cart ul li div{
+            float:left;
+            margin-left:20px;
+        }
+        .cart ul li p input{
+           max-width:30px;
+           text-align: center;
+           font-size:12px;
+           font-weight: bold;
+        }
+        .cart ul li p span{
+            cursor: pointer;
+            padding:0px 5px;
+            border:1px solid #ddd;
+        }
+        .cart ul li span.price{
+            color:red;
+            border:none;
+            padding:0px 10px;
+        }
+        .cart ul li{
+           padding:10px 10px;
+           overflow: hidden;
+        }
+        .cart .bottom{
+            position: absolute;
+            bottom: 0px;
+            width:100%;
+            height: 50px;
+            background-color: chocolate;
+            color:#FFF;
+        }
+        
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        .prolist{
+            width:820px;
+            margin:0 auto;
+        }
+        .prolist li{
+            float:left;
+            border: 1px solid #f00;
+            margin-left:10px;
+            margin-top:10px;
+            padding:5px;
+            width: 142px;
+            position: relative;
+        }
+        .prolist li a,.prolist li span{
+            display: block;
+            color:black;
+            font-size:14px;
+        }
+        .prolist li a img{
+            width:130px;
+            height:130px;
+        }
+        .prolist li a.img{
+            height: 140px;
+        }
+        .prolist li a.title{
+            margin-top:10px;
+            line-height: 30px;
+        }
+        .prolist li span {
+            font-weight: bold;
+            color:red;
+        }
+        .prolist li:hover img{
+            position: absolute;
+            width:150px;
+            height:150px;
+            left:0px;
+            z-index:9;
+        }
+        .prolist li a.addcart{
+            text-align:center;
+            width:100px;
+            margin:0 auto;
+            line-height: 30px;
+            background-color: tomato;
+            color:#fff;
+        }
+        .cartlist::-webkit-scrollbar {
+            width: 10px; /*对垂直流动条有效*/
+            height: 10px; /*对水平流动条有效*/
+        }
+        
+        /*定义滚动条的轨道颜色、内阴影及圆角*/
+        ::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 6px rgba(255,0,0,.3);
+            background-color: red;
+            border-radius: 3px;
+        }
+        /*定义滑块颜色、内阴影及圆角*/
+        ::-webkit-scrollbar-thumb{
+            border-radius: 7px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #E8E8E8;
+        }
+        .cartlist{
+            height: 100%;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart">
+        <button id="abcd">购物车<span>12</span></button>
+        <h6>购物车</h6>
+        <ul class="cartlist">
+            <li>
+                <a href="#">
+                    <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                        alt="">
+                </a>
+                <div>
+                    <a href="#">阳澄湖大闸蟹</a>
+                    <p><span class="price">单价:￥120.00</span><span>-</span><input type="text" value="1"/><span>+</span></p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                        alt="">
+                </a>
+                <div>
+                    <a href="#">阳澄湖大闸蟹</a>
+                    <p><span class="price">单价:￥120.00</span><span>-</span><input type="text" value="1"/><span>+</span></p>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                        alt="">
+                </a>
+                <div>
+                    <a href="#">阳澄湖大闸蟹</a>
+                    <p><span class="price">单价:￥120.00</span><span>-</span><input type="text" value="1"/><span>+</span></p>
+                </div>
+            </li>
+            
+        </ul>
+        <div class="bottom">
+            总计:￥<span>200.00</span><button>结算</button>
+        </div>
+    </div>
+    <ul class="prolist">
+        <li>
+            <a href="#" class="img">
+                <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                    alt="">
+            </a>
+            <a href="#" class="title">阳澄湖大闸蟹</a>
+            <span>￥120.00</span>
+            <a href="#" class="addcart">加入购物车</a>
+        </li>
+    </ul>
+    <div id="ball" style="position: absolute;width: 20px;height: 20px; background-color: blue;"></div>
+    <script>
+     $(function(){
+       $.each(products,function(i,e){
+            var li=$('<li>');
+            var a=$('<a>').attr('href','#').addClass('img').append('<img src="'+e.img+'"/>')
+                li.append(a);
+            var a=$('<a>').attr('href','#').addClass('title').text('阳澄湖大闸蟹');
+                li.append(a);
+                li.append('<span>￥120.00</span>');
+            var a=$('<a>').attr('href','javascript:void(0)').addClass('addcart').text('加入购物车');
+                li.append(a);
+                
+            $('ul.prolist').append(li);
+       });
+
+       $('.prolist').on('click','.addcart',function(e){
+
+            var li=$('<li>');
+            var a=$('<a>').attr('href','#').append('<img src="'+e.img+'"/>')
+                li.append(a);
+            var a=$('<a>').attr('href','#').addClass('title').text('阳澄湖大闸蟹');
+                li.append(a);
+                li.append('<span>￥120.00</span>');
+            var a=$('<a>').attr('href','javascript:void(0)').addClass('addcart').text('加入购物车');
+                li.append(a);
+                
+
+
+           let html=`
+           <li>
+                <a href="#">
+                    <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                        alt="">
+                </a>
+                <div>
+                    <a href="#">阳澄湖大闸蟹</a>
+                    <p><span class="price">单价:￥120.00</span><span>-</span><input type="text" value="1"/><span>+</span></p>
+                </div>
+            </li>
+            `;
+            $('.cartlist').append(html);
+
+
+
+            var ball=$('#ball').css({
+                left:e.pageX,
+                top:e.pageY,
+                zIndex:99,
+                
+            }).show();
+            console.log($('#abcd').offset());
+            var bool = new Parabola({
+                        el: ball,
+                        offset:[$('#abcd').offset().left-e.pageX,$('#abcd').offset().top-e.pageY],
+                        //targetEl:'#abcd',
+                        curvature: 0.0003,
+                        duration:3000,
+                        callback: function () {
+                            ball.hide();
+                        }
+            });
+            bool.start();
+       });
+        $('.cart').hover(function(){
+            $('.cart').stop().animate({
+                right:0
+            });
+        },function(){
+            $('.cart').stop().animate({
+                right:-305
+            })
+        })
+     });
+    </script>
+    </body>
+</html>

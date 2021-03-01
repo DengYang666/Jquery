@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div>div的内容</div>
+    
+    <br/>
+    
+    <input type="text" value="张三"/>
+    <br/>
+    <br/>
+
+    <button>按钮1</button>
+    <button>按钮2</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("div").click(function(){
+                $(this).css("backgroundColor","blue");
+            });
+
+            $("button").eq(0).click(function(){
+                // 使用jQuery提供自动触发事件
+                // 1. jQuery对象.不带on事件类型()  推荐记这种方式
+                $("div").click();
+                
+                // 2. jQuery对象.trigger("不带on事件类型名称")
+                // $("div").trigger("click");
+                
+                // 3. jQuery对象.triggerHandler("不带on事件类型名称")
+                // $("div").triggerHandler("click");
+            });
+
+
+            $("input").focus(function(){
+                console.log("文本框获取焦点了,当前值为:"+ $(this).val() );
+            })
+
+            $("button").eq(1).click(function(){
+                // $("input").focus();
+                // $("input").trigger("focus");
+                $("input").triggerHandler("focus");
+
+                // triggerHandler跟trigger一般是没区别的,偶尔会出现triggerHandler不会触发默认事件
+            })
+
+        })
+    </script>
+</body>
+</html>

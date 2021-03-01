@@ -1,0 +1,207 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+input{
+    border:0px;
+    outline: none;
+}
+body{
+    overflow-x: hidden;
+}
+.cart{
+    width: 300px;
+    border-left:6px solid #f00;
+    position: fixed;
+    right: 0px;
+    height: 100%;
+    z-index: 99;
+}
+.cart button{
+    border: none;
+    color:white;
+    background-color: #F00;
+    line-height: 36px;
+    outline: none;
+    text-align: left;
+}
+.cart>button{
+    position: absolute;
+    width:80px;
+    left:-80px;
+    top:50%;
+    border: none;
+    margin-top:-20px;
+}
+.cart .bottom{
+    line-height: 50px;
+}
+.cart .bottom>button{
+    width: 70px;
+    text-align: center;
+    line-height: 40px;
+    float:right;
+    margin:5px 10px 0px 0px;
+}
+.cart>button span{
+    position: absolute;
+    color:white;
+    border-radius: 12px;
+    min-width: 24px;
+    text-align: center;
+    background-color: tomato;
+    line-height: 24px;
+    left:8px;
+    top:-12px;
+}
+.cart>button::before{
+    content: '';
+    display: block;
+    float:left;
+    width:28px;
+    height:36px;
+    background:url(https://static.360buyimg.com/devfe/toolbar/1.0.0/css/i/toolbars.png) #F00 no-repeat -50px 0px;
+}
+.cart h6{
+    line-height: 50px;
+    background-color: chocolate;
+    color:#FFF;
+}
+.cart h6::before{
+    content: '';
+    display: block;
+    float:left;
+    width:28px;
+    height:28px;
+    margin:7px 0px 0px 0px;
+    background:url(https://static.360buyimg.com/devfe/toolbar/1.0.0/css/i/toolbars.png) chocolate no-repeat -50px 0px;
+}
+.cart h6::after{
+    content: '清空';
+    display: block;
+    float:right;
+    width:28px;
+    height:28px;
+    margin:0px 20px 0px 0px;
+    cursor: pointer;
+}
+
+.cart ul img,.cart ul li>a:first-child{
+  float:left;
+  width: 60px;
+}
+.cart ul li div{
+    float:left;
+    margin-left:20px;
+}
+.cart ul li p input{
+   max-width:30px;
+   text-align: center;
+   font-size:12px;
+   font-weight: bold;
+}
+.cart ul li p span{
+    cursor: pointer;
+    padding:0px 5px;
+    border:1px solid #ddd;
+}
+.cart ul li span.price{
+    color:red;
+    border:none;
+    padding:0px 10px;
+}
+.cart ul li{
+   padding:10px 10px;
+   overflow: hidden;
+}
+.cart .bottom{
+    position: absolute;
+    bottom: 0px;
+    width:100%;
+    height: 50px;
+    background-color: chocolate;
+    color:#FFF;
+}
+.cartlist{
+    height:100%;
+    overflow-y:auto; /*Y轴方向如果超出高度 出现滚动条*/
+}
+.cartlist::-webkit-scrollbar{/*设置cartlist出现的滚动条样式*/
+    width:10px;/*设置滚动条的宽度 竖着的滚动条*/
+    height: 0px;/*设置滚动条的宽度 横着的滚动条*/
+}
+.cartlist::-webkit-scrollbar-track{/*设置滚动条滑槽的样式*/
+    background-color: #f00;
+}
+.cartlist::-webkit-scrollbar-thumb{/*设置滚动条滑块的样式*/
+    background-color: bisque;
+    box-shadow: inset 5px 5px 5px rgba(192, 45, 45, 0.5),inset -5px 5px 5px rgba(192, 45, 45, 0.5);/* 设置内阴影*/
+    border-radius: 5px;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+    overflow: hidden;
+}
+.prolist{
+    width:820px;
+    margin:0 auto;
+}
+.prolist li{
+    float:left;
+    border: 1px solid #f00;
+    margin-left:10px;
+    margin-top:10px;
+    padding:5px;
+    width: 142px;
+    position: relative;
+}
+.prolist li a,.prolist li span{
+    display: block;
+    color:black;
+    font-size:14px;
+}
+.prolist li a img{
+    width:130px;
+    height:130px;
+}
+.prolist li a.img{
+    height: 140px;
+}
+.prolist li a.title{
+    margin-top:10px;
+    line-height: 30px;
+}
+.prolist li span {
+    font-weight: bold;
+    color:red;
+}
+.prolist li:hover img{
+    position: absolute;
+    width:150px;
+    height:150px;
+    left:0px;
+    z-index:9;
+}
+.prolist li a.addcart{
+    text-align:center;
+    width:100px;
+    margin:0 auto;
+    line-height: 30px;
+    background-color: tomato;
+    color:#fff;
+}
+.flyrect{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width:50px;
+    height:50px;
+    background:transparent;
+    z-index:99;
+    border-radius: 25px;
+    overflow: hidden;
+    display: none;
+}

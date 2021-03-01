@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 文本内容操作</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div class="test"><b>加粗内容</b>这是一段测试内容</div>
+    <div class="testa"><b>加粗内容</b>这是一段测试内容</div>
+    <label for="username">用户名:<input type="text" id="username"/></label><br/>
+    <label id="exp" for="exp">
+        爱好:
+            <input type="checkbox" value="1"><span>篮球1</span>
+            <input type="checkbox" value="2"><span>篮球2</span>
+            <input type="checkbox" value="3"><span>篮球3</span>
+            <input type="checkbox" value="4"><span>篮球4</span>
+            <input type="checkbox" value="5"><span>篮球5</span>
+    </label><br/>
+    <label>
+        省份:
+        <select id="province">
+            <option value="广东1">广东1</option>
+            <option value="广西">广西</option>
+            <option value="广东3">广东3</option>
+            <option value="广东4">广东4</option>
+            <option value="广东5">广东5</option>
+        </select>
+        <button id="setP">我是广西人</button>
+    </label>
+    <script>
+        /*
+            可以获取 或 设置 文本,内容,值
+            E.text();  innerText;
+            E.html();  innerHTML;
+            E.val();   获取 或 设置值. 主要是表单元素
+        */
+        $(function(){
+            var h=$('.test').html();//获取
+                console.log('html==>',h);
+                $('.test').html('<h1>大标题</h1>');//替换标签之间内容.
+            var t=$('.testa').text();//获取
+                console.log('text==>',t);
+                $('.testa').text('<h1>大标题</h1>');
+
+            $('#username').keyup(function(){//文本框
+                var value=$(this).val();//获取表单输入的值  this.value
+                var reg=/混蛋|王八蛋|王八/;
+                var val=value.replace(reg,'*');
+                    console.log(value);
+                    $(this).val(val);//设置值
+            });
+            $('#exp input').click(function(){
+                console.log($(this).val());
+                $(this).val('aaaaaaa');
+            });
+            $('#province').change(function(){
+                console.log($(this).val());
+            });
+            $('#setP').click(function(){
+                $('#province').val('广西');//设置值.
+            });
+                
+            
+
+
+
+        });
+    </script>
+</body>
+</html>

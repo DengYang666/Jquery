@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mask{
+            width: 1200px;
+            height: 50px;
+            border: 1px solid;
+            background-color: #f1f1f1;
+        }
+        .mask>div{
+            width: 150px;
+            height: 50px;
+            float: left;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        span{
+            font-size: 20px;
+        }
+        .active{
+            background-color: #d52922;
+        }
+    </style>
+</head>
+<body>
+    <div class="mask">
+        <div>商品介绍</div>
+        <div>规格与包装</div>
+        <div>售后保障</div>
+        <div>商品评价（50000）</div>
+        <div>手机社区</div>
+    </div>
+    <span></span>
+    <script src="jquery.js"></script>
+    <script>
+        $(".mask div").click(function(){
+            $(".mask div").removeClass("active")
+            $(this).addClass("active")
+            $("span").html($(this).text()+"模块内容")
+        })
+
+    </script>
+</body>
+</html>

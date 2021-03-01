@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="hobby">
+        爱好:
+        <input type="checkbox"/>吃饭
+        <input type="checkbox"/>睡觉
+        <input type="checkbox"/>吃豆豆
+        <input type="checkbox"/>rap
+        <input type="checkbox"/>跳
+        <input type="checkbox"/>写代码
+    </p>
+    
+    <p class="sport">
+        喜欢的运动
+        <input type="checkbox"/>打篮球
+        <input type="checkbox"/>踢足球
+        <input type="checkbox"/>打乒乓球
+        <input type="checkbox"/>打羽毛球
+        <input type="checkbox"/>打网球
+    </p>
+
+
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+
+    <script src="js/jquery.min.js"></script>
+    <!-- jquery插件是基于jQuery的,所以需要先引入jQuery -->
+    <script src="js/select.js"></script>
+    <script>
+        $("button").eq(0).click(function(){
+            $(".sport :checkbox").quanxuan();
+        });
+        $("button").eq(1).click(function(){
+            $(".sport :checkbox").quanbuxuan();
+        });
+        $("button").eq(2).click(function(){
+            $(".sport :checkbox").fanxuan();
+        });
+    </script>
+</body>
+</html>

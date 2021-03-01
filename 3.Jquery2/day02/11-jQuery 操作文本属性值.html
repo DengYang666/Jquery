@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>div里面的span标签</span>
+    </div>
+
+    <p></p>
+
+    <input type="text" value="马冬梅"/>
+
+    <br/>
+    <br/>
+
+    <button>获取文本</button>
+    <button>设置文本</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // jQuery 操作文本属性值有三个方法  html() text() val()
+        $("button").eq(0).click(function(){
+            // 获取文本属性值
+            console.log( $("div").html() );// "<span>div里面的span标签</span>"
+            console.log( $("div").text() );// "div里面的span标签"
+            console.log( $("div").val() );//   ""
+            console.log( $("input").val() );// 马冬梅
+        });
+
+        $("button").eq(1).click(function(){
+            // $("p").html("<b>我是加粗标签</b>");
+            // $("p").text("<b>我是加粗标签</b>");
+            // $("p").val("<b>我是加粗标签</b>");
+            // $("input").val("<b>我是加粗标签</b>");
+            $("input").val("夏洛");
+        });
+
+        // 小结: text()方法无法解析HTML标签,  html()方法可以解析HTML标签  val()专用于表单元素
+    </script>
+</body>
+</html>

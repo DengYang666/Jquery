@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // jQuery入口函数
+        $(function(){
+            // $("CSS选择器"),类选择器要带.以及id选择器要带#号
+            console.log( $("div") );
+            console.log( $(".nav") );
+
+            // jQuery中可以通过css方法设置css样式
+            // 设置单个css样式
+            // jQuery对象.css("css属性名","css属性值");
+            // $(".nav").css("color","red");
+
+            // 设置多个css样式
+            /* jQuery对象.css({
+                css属性名1 : css属性值1,
+                css属性名2 : css属性值2,
+                css属性名3 : css属性值3,
+                ...
+            }) */
+
+            /* $(".nav").css({
+                // "font-size":"30px",
+                // 如果默认单位是px的话,可以省略px不写;如果写了px要放在字符串里面
+                "font-size":30,
+                // CSS属性名可以使用驼峰法
+                // "fontSize":30,
+                // CSS属性名如果没有短横杠的时候,可以省略引号
+                // fontSize:30,
+                "font-weight":"bold",
+                "font-style":"italic",
+                "color":"pink"
+            }) */
+
+            // $("li").css("backgroundColor","skyblue");
+
+            // $("ol li").css("backgroundColor","skyblue");
+
+            // 后代选择器会选中子孙后代
+            // $("div p").css("backgroundColor","orange");
+
+            // 子元素选择器只能选中子代
+            $("div>p").css("backgroundColor","orange");
+        })
+    </script>
+</head>
+
+<body>
+    <div>我是div</div>
+    <div class="nav">我是nav div</div>
+    <div class="nav">我是nav div</div>
+    <p>我是p</p>
+    ​
+    <ol>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+    </ol>
+    <ul>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+    </ul>
+    ​
+    <div>
+        <p>div里面的p标签</p>
+        <p>div里面的p标签</p>
+        <p>div里面的p标签</p>
+        <h2>
+            <p>div里面h2里面的p标签</p>
+            <p>div里面h2里面的p标签</p>
+            <p>div里面h2里面的p标签</p>
+        </h2>
+    </div>
+</body>
+</html>

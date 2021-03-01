@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+            width: 100px;
+            height: 49px;
+            border: 1px solid #efd2dc;
+            text-align: center;
+            font-size: 20px;
+            line-height: 49px;
+            cursor: pointer;
+        }
+        ul{
+            list-style: none;
+        }
+        .leftlis,.imgbox,.rightlis{
+            float: left;
+        }
+        .imgbox{
+            border: 1px solid #efd2dc;
+        }
+        .imgbox>img{
+            width: 400px;
+            height: 453px;
+        }
+        .active{
+           background-image: url("./images/淘宝精品服饰/images/abg.gif");
+           background-size: 10px;
+        }
+        .box{
+            position: absolute;
+            left: 600px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="leftlis">
+            <li>女靴</li>
+            <li>雪地靴</li>
+            <li>连衣裙</li>
+            <li>呢大衣</li>
+            <li>毛衣</li>
+            <li>棉服</li>
+            <li>女裤</li>
+            <li>羽绒服</li>
+            <li>牛仔裤</li>
+        </ul>
+        <div class="imgbox"><img src="./images/淘宝精品服饰/images/女靴.jpg" alt=""></div>
+        <ul class="rightlis">
+            <li>女包</li>
+            <li>男包</li>
+            <li>登山鞋</li>
+            <li>皮带</li>
+            <li>围巾</li>
+            <li>皮衣</li>
+            <li>男毛衣</li>
+            <li>男棉服</li>
+            <li>男靴</li>
+        </ul>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $("li").mouseover(function(){
+            $("li").removeClass("active")
+            var names=$(this).text()
+            $(".imgbox").html(("<img src='./images/淘宝精品服饰/images/"+names+".jpg'>"))
+            $(this).addClass("active")
+        })
+        $(".box").mouseleave(function(){
+            $("li").removeClass("active")
+        })
+    </script>
+</body>
+</html>

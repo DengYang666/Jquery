@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            margin:0px;
+            padding:0px;
+        }
+        .menu{
+            width:500px;
+            margin:0 auto;
+        }
+        .menu a{
+            display: block;
+            background-color: burlywood;
+            line-height: 40px;
+            padding:0px 20px;
+            text-decoration: none;
+        }
+        .menu a:hover{
+            background-color: cadetblue;
+        }
+        .menu li{
+            position: relative;
+            float:left;
+        }
+        .submenu{
+            position: absolute;
+            top:40px;
+            left:0px;
+            width:150px;
+            display: none;
+        }
+        .submenu li{
+            padding:0px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <ul class="menu">
+        <li><a href="#">菜单</a>
+            <ul class="submenu">
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+            </ul>
+        </li>
+        <li><a href="#">菜单</a></li>
+        <li><a href="#">菜单</a></li>
+    </ul>
+    <script>
+        /*
+            事件:  
+                mouseover 鼠标移入 mouseout 鼠标移出 
+                mouseenter 鼠标移入 mouseleave 鼠标移出  当前元素触发. 子元素不会触发移入移出事件.
+                mousemove  click
+                keyup
+                keydown
+                keypress xxxx
+                focus
+                submit
+                change
+                hover 事件(jquery扩展的事件  相当于 css 里面hover 鼠标移入移出)
+                    hover(function(){},function(){});
+            js里面的事件在jquery里面都有. 但是对应的事件函数没有on 直接是事件名
+                document.getElementById().onclick=function(){}
+                document.getElementById().addEventListener('click',function(){});
+        */
+        $(function(){
+            var i=1; //mouseover计数
+            var p=1;//mouseout计数
+            var ei=1;//mouseenter计数
+            var li=1;//mouseleave计数
+            $('.menu>li').hover(function(){
+                //第一个函数 鼠标移入执行
+                console.log('mouseenter',ei);
+                $(this).children('ul').stop(true).slideDown();
+                ei++;
+            },function(){
+                //第二个函数 鼠标移出执行
+                console.log('mouseleave',li);
+                $(this).children('ul').stop(true).slideUp();
+                li++;
+            });
+
+            /**
+            $('.menu>li').mouseover(function(){
+                console.log('mouseover',i);
+                $(this).children('ul').stop(true).slideDown();
+                i++;
+            });
+            $('.menu>li').mouseout(function(){
+                console.log('mouseout',p);
+                $(this).children('ul').stop(true).slideUp();
+                p++;
+            });
+            **/
+           
+            /**
+            $('.menu>li').mouseenter(function(){
+                console.log('mouseenter',ei);
+                $(this).children('ul').stop(true).slideDown();
+                ei++;
+            });
+            $('.menu>li').mouseleave(function(){
+                console.log('mouseleave',li);
+                $(this).children('ul').stop(true).slideUp();
+                li++;
+            });
+            **/
+            
+
+        });
+    </script>
+</body>
+</html>

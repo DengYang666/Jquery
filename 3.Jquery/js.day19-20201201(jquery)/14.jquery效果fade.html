@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <style>
+        div{
+            width:800px;
+            height:100px;
+            background-color: darkkhaki;
+            color:red;
+            overflow: hidden;
+        }
+    </style>
+     <script src="jquery.js"></script>
+     <script>
+        /*
+            淡入淡出: 
+                变化的属性: opacity 透明度.  0-1
+            fadeIn  显示.
+                参数1: 执行时间
+                参数2:执行完成的回调函数
+            fadeOut  隐藏.
+                参数1: 执行时间
+                参数2:执行完成的回调函数
+            fadeToggle 切换
+                参数1: 执行时间
+                参数2:执行完成的回调函数
+            fadeTo();  显示状态-->到指定状态. 隐藏状态-->到指定状态.
+                参数1: 执行时间
+                参数2: 指定的透明度
+                参数3: 执行完成的回调函数
+         */
+         $(function(){
+            $('button:first').click(function(){
+               $('div').fadeIn(1000,function(){
+                   alert("显示完成");
+               });
+            });
+            $('button:eq(1)').click(function(){
+               $('div').fadeOut(1000,function(){
+                   alert("隐藏完成");
+               });
+            });
+            $('button:eq(2)').click(function(){
+                $('div').fadeToggle(2000,function(){
+                    alert("执行完成");
+                });
+            });
+            $('button:last').click(function(){
+                $('div').fadeTo(10000,1,function(){
+                    alert("执行完成");
+                });
+            });
+         });
+     </script>
+</head>
+<body>
+    <button>显示</button>- <button>隐藏</button>- <button>切换</button> - <button>显示到指定效果</button>
+    <div>
+        内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>
+    </div>
+</body>
+</html>

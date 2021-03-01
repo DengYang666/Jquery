@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj1 = {
+            username : "张三",
+            age: 23,
+            sex: "男",
+            color:["red","green","blue"]
+        };
+        // JSON.stringify(JSON对象);   把JSON对象转成JSON字符串
+        console.log( obj1 );
+        var jsonStr = JSON.stringify( obj1 );
+        console.log( jsonStr );
+        console.log( typeof jsonStr );
+        console.log("");
+
+        // JSON.parse(JSON字符串);     把JSON字符串转成JSON对象
+        var jsonObj = JSON.parse( jsonStr );
+        console.log( jsonObj );
+    </script>
+</body>
+</html>

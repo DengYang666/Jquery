@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">div1的内容</div>
+    <div class="div2">div2的内容</div>
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+        <li>赵六</li>
+        <li>孙七</li>
+    </ul>
+
+    <script>
+        // 我们通过原生方法获取的对象就是DOM对象
+        // 我们通过$()获取的对象就是jQuery对象
+        // DOM对象只能使用DOM对象提供的属性和方法
+        // jQuery对象只能使用jQuery对象提供的属性和方法
+
+        var div1 = document.querySelector(".div1");
+        div1.onclick = function(){
+            console.log( this.innerHTML );
+            this.style.backgroundColor = "blue";
+        }
+
+        $(".div2").click( function(){
+            // 注意:在jQuery的事件绑定里面this代表当前的DOM对象!!!
+            console.log( this );
+            // 用$()包括DOM对象,就可以把DOM对象转成jQuery对象
+            $(this).css("backgroundColor" , "blue");
+        })
+
+        console.log( $("ul li") );
+        
+        // jQuery默认具有隐式迭代的效果,会帮我们在内部遍历相同的元素
+        // $("ul li").css("backgroundColor","pink");
+        
+        // 把jQuery对象转成DOM对象,只需要加上索引值即可 或者  jQuery对象.get(索引值)
+        console.log( $("ul li")[2] );
+        console.log( $("ul li").get(3) );
+
+        console.log( $("ul li")[2].innerHTML );
+    </script>
+</body>
+</html>

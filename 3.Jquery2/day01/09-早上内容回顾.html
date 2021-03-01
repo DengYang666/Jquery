@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    jQuery是什么  jQuery是一个js库,封装了一些常用的DOM操作,动画,事件等等
+    jQuery的优点  轻量级,兼容主流浏览器,隐式迭代等
+    jQuery入口函数 
+        $(function(){
+
+        })
+
+        $(document).ready(function(){
+            
+        })
+
+    jQuery对象和DOM对象的转换
+    jQuery对象怎么转成DOM对象   jQuery对象[索引号] 或者 jQuery对象.get(索引号)  索引号从0开始
+
+    DOM对象怎么转成jQuery对象   $( DOM对象 )
+
+    jQuery顶级对象   $ === jQuery
+
+    jQuery选择器
+    $("CSS选择器")
+    $(".nav div")
+    $(".nav>div")
+
+    筛选选择器
+        $("li:first")
+        $("li::last")
+        $("li::eq")
+        $("li::odd")
+        $("li::even")
+
+    筛选方法
+        parent( [seletor] ) 找父节点
+        children( [seletor] ) 找后代元素
+        find( selector )  找子元素
+        prevAll
+        nextAll
+        hasClass
+        eq(2)  找到指定某个索引号对应的元素
+</body>
+</html>

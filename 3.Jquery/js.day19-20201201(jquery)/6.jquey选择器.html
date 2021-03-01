@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div id="test"></div>
+    <div class="cls"></div>
+    <div class="cls"></div>
+    <div class="cls"></div>
+    <ul>
+        <li><a href="#">无序列表1</a></li>
+        <li><a href="#">无序列表2</a></li>
+        <li><a href="#">无序列表3</a></li>
+    </ul>
+    <script>
+        /*
+            链式调用:
+               对象的方法调用之后 还可以继续调用对象的其他方法;
+               方法调用完成之后 返回this(该对象本身.)     
+            css选择器:
+                id 选择器 标签选择器  类选择器 后代选择 子代选择器 兄弟选择器 相邻选择器
+            js:    
+                document.getElementById();
+                document.querySelector();
+                document.querySelectorAll();
+            选择器:
+                jquery用来获取元素对象.
+                类 css选择器写法:
+        */
+       $('#test').css({
+           width:100,
+           height:100,
+           background:'#F00'
+       });
+       $('.cls').css({
+        width:100,
+           height:100,
+           background:'blue'
+       });
+
+       $('ul a').css('fontSize',30).css('color','white').css('textDecoration','none');//链式调用.
+       $('ul>li').css('backgroundColor','blue');
+       var people={
+           run:function(){
+               console.log('people的run方法');
+               return this;//方法调用完成之后返回当前对象.
+           },
+           say:function(){
+               console.log('people的say方法');
+               return this;
+           },
+           sing:function(){
+               console.log('people的sing方法');
+               return this;
+           }
+       }
+       people.sing().sing().sing().sing();//链式调用
+
+    </script>
+</body>
+</html>

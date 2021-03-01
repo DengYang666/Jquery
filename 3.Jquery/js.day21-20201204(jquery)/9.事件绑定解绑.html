@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery事件</title>
+    <script src="jquery.js"></script>
+    <style>
+        ul li{
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <button>添加一个li元素</button>
+    <ul>
+        <li>
+            <button>按钮1</button>
+        </li>
+        <li>
+            <button>按钮2</button>
+        </li>
+    </ul>
+    <script>
+         /*
+            事件函数:
+                on();  
+                    1.事件委托 
+                        父元素.on('事件名称',"被委托的元素",function(){});
+                    2.on绑定的事件 可以用off解绑.
+                off();
+                    off('事件名称'); 解绑所有跟事件名称相同的事件
+                    off('事件名称',"委托元素名称"); 解绑委托元素的对应事件
+                    off('事件名称',"委托元素名称",绑定的函数) 解绑委托元素事件绑定的对应函数.
+                one('事件名称',事件函数); 只执行一次.
+                trigger();
+            原生绑定 解绑事件:    
+                onclick=function(){}  onclick=null
+                addEventListener('click',fun);  removeEventListener('click',fun);
+        */
+
+       $('ul').on('click','button',function(){
+            alert("按钮点击事件1!...");
+       });
+       var fun=function(){
+            alert("按钮点击事件2!...");
+       };
+       $('ul').on('click','button',fun);
+
+       $('ul').on('click','li',function(){
+            alert("li标签的点击事件");
+       });
+
+      //$('ul').off('click');//解绑事件  解绑ul上面的所有click事件
+      //$('ul').off('click','button');//解绑button按钮的点击事件.
+      //$('ul').off('click','li');//解绑li按钮的点击事件.
+      $('ul').off('click','button',fun);
+       $('button').one('click',function(){
+           $('ul').append('<li>new li</li>');
+       });
+
+    </script>
+</body>
+</html>

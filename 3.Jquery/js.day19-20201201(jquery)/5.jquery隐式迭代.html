@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+        <li>无序列表5</li>
+    </ul>
+    <script>
+        var lis=document.querySelectorAll('li');
+            console.log(lis);
+            //for(var i =0;i<lis.length;i++){
+                lis[0].style.fontSize="30px";
+            //}
+
+        $('li').css({
+            color:'red',
+            backgroundColor:'rgba(0,0,0,0.1)'
+        }); //隐式迭代. 设置样式 或 事件的时候会帮我们绑定所有.  内部有迭代机制   css 设置多个样式,用对象作为参数.每个样式属性都是对象的属性.
+
+    </script>
+</body>
+</html>

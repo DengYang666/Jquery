@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>jquery</title>
+     <style>
+        div{
+            width:800px;
+            height:100px;
+            background-color: darkkhaki;
+            color:red;
+            overflow: hidden;
+        }
+    </style>
+     <script src="jquery.js"></script>
+     <script>
+         /*
+            slide滑动效果: 变化的是 height  overflow:hidden
+            slideDown 显示(放下来)
+                参数1: 动画执行的时间 (单位是毫秒)
+                参数2: 动画执行完成的回调函数
+            slideUp  隐藏(收起来)
+                参数1: 动画执行的时间 (单位是毫秒)
+                参数2: 动画执行完成的回调函数
+            slideToggle(); 切换效果.
+                参数1: 动画执行的时间 (单位是毫秒)
+                参数2: 动画执行完成的回调函数
+         */
+         $(function(){
+            $('button:first').click(function(){
+                $('div').slideDown(1000,function(){
+                    alert('显示完成');
+                });
+            });
+            $('button:eq(1)').click(function(){
+                $('div').slideUp(1000,function(){
+                    alert('隐藏完成');
+                });
+            });
+            $('button:last').click(function(){
+                $('div').slideToggle(1000,function(){
+                    alert("执行完成..");
+                });
+            });
+         });
+     </script>
+ </head>
+ <body>
+    <button>显示</button>- <button>隐藏</button>- <button>切换</button>
+    <div>
+        内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>内容<br/>
+    </div>
+ </body>
+ </html>

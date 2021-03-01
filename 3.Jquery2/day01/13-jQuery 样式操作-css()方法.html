@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        div{
+            width: 150.5px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div>div的内容</div>
+    <script>
+        // css()方法有三种用法
+        // 第一种 css("CSS属性名")  可以获取指定CSS属性名的属性值
+        // 部分属性得到的值带px单位的,可以通过parseInt或者parseFloat得到对应整数或者浮点数
+        // console.log( $("div").css("width") );
+        // console.log( $("div").css("height") );
+        // console.log( $("div").css("background") );
+        // console.log( $("div").css("backgroundColor") );
+        
+        // 第二种 css("css属性名","css属性值") 可以单个CSS属性
+        // $("div").css("border","2px solid blue");
+
+        // 第三种 可以设置多个CSS属性 
+        /* css({
+            css属性名1 : css属性值1 ,
+            css属性名2 : css属性值2 ,
+            css属性名3 : css属性值3 ,
+            ...
+        }) */
+        $("div").css({
+            "border":"5px solid blue",
+            // "font-size":"30px",
+            // "fontSize":"30px",
+            // fontSize:"30px",
+            fontSize:30,
+            "font-style":"italic",
+            "text-align":"center",
+            "line-height":"100px"
+        })
+    </script>
+</body>
+</html>

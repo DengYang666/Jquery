@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 解除占用.</title>
+    <script src="jquery.js"></script>
+    <script>
+        var trump3=$.noConflict(true);//解除 jQuery3
+    </script>
+    <script src="jquery2.0.0.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*
+            jquery占用的名称 $ , jQuery
+            解除占用:
+                noConflict() //解除 $ 符号占用
+                noConflict(true) //解除 $ ,jQuery 占用.
+            解除的同时有返回值. 返回是jQuery的对象    
+        */
+        //jQuery.noConflict();//解除 $ 符号占用
+        //jQuery.noConflict(true);//解除 $ ,jQuery 占用.
+        // var trump=jQuery.noConflict(true);//解除的同时有返回值. 返回是jquery的对象
+        $('div').css({
+            width:100,
+            height:100,
+            background:'red'
+        });
+    </script>
+</body>
+</html>

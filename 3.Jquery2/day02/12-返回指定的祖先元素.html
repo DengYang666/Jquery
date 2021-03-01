@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="one">
+        <div class="two">
+            <div class="three">
+                <div class="four">four元素</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box1">
+        <div class="box2">
+            <div class="box3">
+                <div class="four">four元素</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // parent()上一级父元素
+        // console.log( $(".four").parent().parent() );
+
+        // parents( [selector] )返回所有父辈元素,也可以某个父辈元素
+        console.log( $(".four").parents() );
+        console.log( $(".four").parents(".box2,.two") );
+    </script>
+</body>
+</html>

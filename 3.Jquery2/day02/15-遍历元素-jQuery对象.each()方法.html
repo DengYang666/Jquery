@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin:10px;
+            text-align: center;
+            line-height: 100px;
+            font-size:30px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <!-- div{$}*6 -->
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        /* $("div").click(function(){
+            var index = $(this).index();
+            if( index <= 2 ){
+                $(this).css("background","blue");
+            }else{
+                $(this).css("background","green");
+            }
+        }) */
+
+        // 默认jQuery具有隐式迭代,但是jQuery也提供遍历的方法
+        // 语法 
+        // jQuery对象.each(function( index , domElement){})  
+        // 说明:  index是索引号   domElement是对应的DOM对象
+
+        var arr = ["orange","pink","skyblue","green","purple","yellow"];
+
+        // each方法仅仅做了遍历,并没有绑定事件
+        $("div").each(function( index , domElement ){
+            // 绑定事件
+            $( domElement ).click(function(){
+                $(this).css("backgroundColor" , arr[index] );
+            })
+        })
+    </script>
+</body>
+</html>

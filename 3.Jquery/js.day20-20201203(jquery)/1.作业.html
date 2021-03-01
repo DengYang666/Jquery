@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <script src="jquery.js"></script>
+    <style>
+        table{
+            width: 500px;
+            margin: 0 auto;
+        }
+        table th{
+            padding:10px 20px;
+            background-color: burlywood;
+        }
+        table td{
+            padding:10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('tbody>tr:even').css('backgroundColor','#ddd');
+            $('tbody>tr').mouseover(function(){
+                $(this).css('backgroundColor','blue');
+            });
+            $('tbody>tr').mouseout(function(){
+                var index=$(this).index();
+                    if(index%2){
+                        $(this).css('backgroundColor','#fff');
+                    }else{
+                        $(this).css('backgroundColor','#ddd');
+                    }
+            });
+            // $('tbody>tr:odd').mouseout(function(){
+            //     $(this).css('backgroundColor','#fff');
+            // });
+        });
+    </script>
+</head>
+<body>
+   <table border="1" rules="all">
+       <thead>
+           <tr>
+               <th>表头1</th>
+               <th>表头2</th>
+               <th>表头3</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td>body1</td>
+               <td>body2</td>
+               <td>body3</td>
+           </tr>
+           <tr>
+               <td>body1</td>
+               <td>body2</td>
+               <td>body3</td>
+           </tr>
+           <tr>
+               <td>body1</td>
+               <td>body2</td>
+               <td>body3</td>
+           </tr>
+           <tr>
+            <td>body1</td>
+            <td>body2</td>
+            <td>body3</td>
+        </tr>
+        <tr>
+            <td>body1</td>
+            <td>body2</td>
+            <td>body3</td>
+        </tr>
+        <tr>
+            <td>body1</td>
+            <td>body2</td>
+            <td>body3</td>
+        </tr>
+        
+        <tr>
+            <td>body1</td>
+            <td>body2</td>
+            <td>body3</td>
+        </tr>
+        <tr>
+            <td>body1</td>
+            <td>body2</td>
+            <td>body3</td>
+        </tr>
+        <tr>
+            <td>body1</td>
+            <td>body2</td>
+            <td>body3</td>
+        </tr>
+        
+       </tbody>
+   </table>
+</body>
+</html>

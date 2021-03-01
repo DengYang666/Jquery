@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 1300px;
+            margin-left: 300px;
+            margin-top: 50px;
+            /* margin-bottom: 100px; */
+        }
+        .nav{
+            width: 240px;
+            /* height: 9999px; */
+            margin-right: 20px;
+            float: left;
+        }
+        .one {
+            width: 240px;
+            height: 450px;
+            border-radius: 20px;
+            background-color: skyblue;
+            margin-bottom: 20px;
+        }
+        .two{
+            width: 240px;
+            height: 450px;
+            border-radius: 10px;
+            background-color: yellow;
+            margin-bottom: 20px;
+        }
+        .three{
+            width: 240px;
+            height: 450px;
+            border-radius: 10px;
+            background-color: lightgreen;
+            margin-bottom: 20px;
+        }
+        .four{
+            width: 240px;
+            height: 450px;
+            border-radius: 10px;
+            background-color: pink;
+            margin-bottom: 20px;
+        }
+        .five{
+            width: 240px;
+            height: 450px;
+            border-radius: 10px;
+            background-color: purple;
+            margin-bottom: 20px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            /* border: none; */
+            font-size: 20px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 200px;
+            display: none;
+        }   
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="nav"><div class="one"></div>  <div class="one"></div>    </div>
+        <div class="nav"><div class="two"></div>  <div class="two"></div>    </div>
+        <div class="nav"><div class="three"></div><div class="three"></div>  </div>
+        <div class="nav"><div class="four"></div> <div class="four"></div>   </div>
+        <div class="nav"><div class="five"></div> <div class="five"></div>   </div>
+    </div>
+    <button>查看更多</button>
+    <script src="jquery.js"></script>
+    <script>
+
+
+        $("button").click(function(){ 
+            var random=Math.floor(Math.random()*100+400)
+            $(".nav").eq(0).append($('<div class="one" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>   <div class="one" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>   <div class="one" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>  '))
+            $(".nav").eq(1).append($('<div class="two" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>   <div class="two" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>   <div class="two" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>  '))
+            $(".nav").eq(2).append($('<div class="three" style="height:'+Math.floor(Math.random()*200+400)+'px"></div> <div class="three" style="height:'+Math.floor(Math.random()*200+400)+'px"></div> <div class="three" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>'))
+            $(".nav").eq(3).append($('<div class="four" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>  <div class="four" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>  <div class="four" style="height:'+Math.floor(Math.random()*200+400)+'px"></div> '))
+            $(".nav").eq(4).append($('<div class="five" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>  <div class="five" style="height:'+Math.floor(Math.random()*200+400)+'px"></div>  <div class="five" style="height:'+Math.floor(Math.random()*200+400)+'px"></div> '))
+            $("button").stop().fadeOut()
+        })
+
+                // 可视区高度
+                var winHeight = window.innerHeight;
+
+                window.onscroll = function(){
+                // 获取页面的高度
+                var pageHeight = document.documentElement.offsetHeight;
+                // 获取页面被浏览器卷掉的高度
+                var scrollTop = document.documentElement.scrollTop;
+                // 计算剩余高度
+                var resHeight = pageHeight - (winHeight +  scrollTop);
+                // 判断剩余高度是否小于172
+                if(resHeight<172){
+                    $("button").stop().fadeIn()
+                }else{
+                    $("button").stop().fadeOut()
+                }
+        }
+    </script>
+</body>
+</html>

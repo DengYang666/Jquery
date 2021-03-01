@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 1000px;
+            height: 300px;
+            margin: auto;
+            margin-top: 200px;
+            border: 1px solid red;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+
+        .nav {
+            width: 1000px;
+            height: 50px;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+
+        .nav span {
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+        .nav div {
+            float: right;
+            line-height: 50px;
+            margin-right: 20px;
+        }
+
+        button {
+            width: 20px;
+            height: 20px;
+        }
+
+        .banner {
+            height: 250px;
+            width: 192px;
+            background-color: skyblue;
+            text-align: center;
+            font-size: 40px;
+            line-height: 50px;
+        }
+
+        ul {
+            width: 5000px;
+            height: 250px;
+            list-style: none;
+            display: inline-block;
+            position: relative;
+            left: 190px;
+            top: -250px;
+            overflow: hidden;
+        }
+
+        ul li {
+            width: 192px;
+            height: 250px;
+            list-style: none;
+            margin-left: 10px;
+            background-color: white;
+            float: left;
+            position: relative;
+            /* left: 0px; */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="nav">
+            <span>小米闪购</span>
+            <div>
+                <button class="left" disabled="true"> < </button>
+                <button class="right"> > </button>
+            </div>
+        </div>
+        <div class="banner">广<br>告<br>位<br>招<br>租</div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+        </ul>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        var index = 0
+        $(".left").click(function () {
+            index++
+            if (index >0) {
+                index = 0
+            }
+            $("li").animate({ "left": index * 808 })
+        })
+        $(".right").click(function () {
+            index--
+            if (index <-4) {
+                index=-4
+            }
+            $("li").animate({ "left": index * 808 })
+        })
+
+        
+        $("button").click(function(){
+            console.log(index)
+            if(index>=0){
+                $('.left').prop("disabled", true)
+                $('.right').prop("disabled", false)
+            }
+            if(index==-4){
+                $('.right').prop("disabled", true)
+                $('.left').prop("disabled", false)
+            }else{
+                $('.right').prop("disabled", false)
+                $('.left').prop("disabled", false)
+            }
+        })
+
+            
+    </script>
+</body>
+
+</html>

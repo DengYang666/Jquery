@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/jquery.js"></script>
+    <script>
+        var obj1 = {
+            username : "张三",
+            age: 23,
+            sex: "男",
+            color:["red","green","blue"]
+        };
+
+        // 语法
+        // $.extend( [布尔值,true深拷贝,false浅拷贝,默认取值false], 目标对象,  源对象1, 源对象2... );
+
+        // 如果目标对象是空对象
+        // var obj2 = $.extend( false , {}, obj1 );
+        // var obj2 = $.extend( true , {}, obj1 );
+        // var obj2 = $.extend(  {}, obj1 );
+        // obj2.username = "王五";
+        // obj2.color[1] = "lightgreen";
+        // console.log( obj1 , obj2 );
+        
+        // 如果目标对象不是空对象,同名属性会覆盖,不同属性会追加
+        var obj3 = {
+            username : "李四",
+            weight: "80kg",
+            height: "183cm",
+            hobby:["看电影","听歌","看电视剧"]
+        };
+        var obj4 = $.extend( true , obj3 , obj1 );
+        obj4.color[0] = "deeppink";
+        console.log( obj4 );
+        console.log( obj1 );
+    </script>
+</body>
+</html>

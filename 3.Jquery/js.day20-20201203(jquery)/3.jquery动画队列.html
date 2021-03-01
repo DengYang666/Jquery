@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画队列</title>
+    <style>
+        .test{
+            width:100px;
+            height:100px;
+            background-color: burlywood;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>开始动画按钮</button>
+    <button>清除动画队列按钮</button>
+    <button>stop动画队列按钮</button>
+    <button>finish结束</button>
+    <div class="test"></div>
+    <script>
+        $(function(){
+            $('button:eq(1)').click(function(){
+                $('.test').clearQueue();
+            });
+            $('button:eq(2)').click(function(){
+                $('.test').stop(true);
+            });
+            $('button:eq(3)').click(function(){
+                $('.test').finish();
+            });
+            $('button:first').click(function(){
+                /*
+                    动画队列:
+                        给同一个元素设置多个动画的时候,是一个动画队列. 动画队列会挨个执行. 每执行完成一个之后,会把该动画从队列里面移除.
+                    queue();
+                        queue(); 作用在元素的动画队列.
+                            如果参数是一个回调函数,会把这个函数加入 动画队列,并执行掉.
+                    dequeue(); 把当前队列函数 移除队列. 执行下一个动画函数.
+                    clearQueue(); 清除作用在当前元素上面的动画队列.  结束所有未执行的动画
+                    stop(参数1); 停止当前正在执行的动画, 继续下一次动画.
+                        参数1 默认是false 停止当前正在执行的动画,继续下一次动画
+                              如果是true. 相当于 clearQueue(); 清除了整个元素的动画队列.
+                    delay() 延迟执行.
+                    finish(). 立即结束动画过程. 当最终动画改变的属性还是作用在元素上面.
+                */
+                $('.test').fadeOut(2000)
+                .slideDown(5000)
+                .delay(10000)
+                .animate({
+                    width:500
+                },5000);
+                $('.test').queue(function(){
+                    console.log('当前执行到第三个动画完成 准备开始第四个');
+                    $(this).css('background','blue');
+                    $(this).dequeue();//把当前队列函数 移除队列. 执行下一个动画函数.
+                });
+                $('.test').animate({
+                    height:500
+                },5000)
+                .animate({
+                    marginLeft:200
+                },5000);
+                setInterval(function(){
+                    var x=$('.test').queue();
+                    console.log('输出长度==>',x.length);
+                },100);
+            });
+        });
+
+    </script>
+</body>
+</html>

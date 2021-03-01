@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mask {
+            width: 1000px;
+            height: 500px;
+            background-color: #eeeeee;
+            position: absolute;
+            left: 400px;
+        }
+
+        .box {
+            width: 820px;
+            height: 390px;
+            position: relative;
+            left: 90px;
+            top: 55px;
+            overflow: hidden;
+        }
+
+        .imgbox {
+            width: 4100px;
+            height: 340px;
+            background-color: pink;
+        }
+
+        .imgbox img {
+            width: 820px;
+            height: 340px;
+            position: relative;
+            float: left;
+        }
+
+        .nav {
+            width: 164px;
+            height: 50px;
+            float: left;
+            background-color: #e3e2e2;
+            font-size: 15px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .active {
+            height: 47px;
+            background-color: #f7f6f6;
+            border-bottom: 3px solid #cea861;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask">
+        <div class="box">
+            <div class="imgbox">
+                <img src="./images/lol/1.jpg" alt="">
+                <img src="./images/lol/2.jpg" alt="">
+                <img src="./images/lol/3.jpg" alt="">
+                <img src="./images/lol/4.jpg" alt="">
+                <img src="./images/lol/5.jpg" alt="">
+            </div>
+            <div class="nav active">FPX冠军皮肤</div>
+            <div class="nav">魔女 婕拉 至臻</div>
+            <div class="nav">2020LPL春季赛季后赛</div>
+            <div class="nav">挑战主播赢现金</div>
+            <div class="nav">每周限时优惠</div>
+        </div>
+    </div>
+
+
+
+    <script src="jquery.js"></script>
+    <script>
+        var index = 0
+        var timer = null
+        $(".nav").click(function () {
+            index = $(this).index() - 1
+            console.log(index);
+            $(".nav").removeClass("active")
+            $(this).addClass("active")
+            $("img").animate({ "left": -index * 820 })
+        })
+        timer = setInterval(function () {
+            index++
+            if (index > 4) {
+                index = 0
+            }
+            $(".nav").eq(index).addClass("active").siblings().removeClass("active")
+            $("img").animate({ "left": -index * 820 })
+        }, 1000)
+
+        $('.mask').mouseenter(function () {
+            clearInterval(timer)
+        })
+
+        $('.mask').mouseleave(function () {
+            timer = setInterval(function () {
+                index++
+                if (index > 4) {
+                    index = 0
+                }
+                $(".nav").eq(index).addClass("active").siblings().removeClass("active")
+                $("img").animate({ "left": -index * 820 })
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .menu{
+            width:1200px;
+            margin: 0 auto;
+        }
+        .menu li{
+            float:left;
+            background-color: darkkhaki;
+            padding:10px 20px;
+            position: relative;
+        }
+        .menu li:hover,.menu li.active{
+            background-color: darkolivegreen;
+        }
+        .menu ul{
+            position: absolute;
+            left:0px;
+            top:40px;
+            display: none;
+        }
+        .menu ul>li{
+            padding:10px 10px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+            //动画或者效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行。
+            //stop 先把上一次效果先停止. 执行最后一个.
+            $('.menu>li').mouseover(function(){//鼠标移上去事件
+                $(this).children('ul').stop().slideDown(200);
+            }).mouseout(function(){
+                $(this).children('ul').stop().slideUp(200);
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <ul class="menu">
+        <li><a href="#">菜单1</a></li>
+        <li>
+            <a href="#">菜单2></a>
+            <ul>
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+                <li><a href="#">子菜单3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">菜单3></a>
+            <ul>
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+                <li><a href="#">子菜单3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">菜单4</a></li>
+        <li><a href="#">菜单5></a>
+            <ul>
+                <li><a href="#">子菜单1</a></li>
+                <li><a href="#">子菜单2</a></li>
+                <li><a href="#">子菜单3</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery扩展</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <script>
+        /*
+            1.jquery 函数扩展:
+                $.extend(对象);  对象里面有函数
+                调用扩展函数: $.函数名称();
+            2.合并对象
+                $.extend(对象1,对象2);    //把对象2 合并到 对象1  如果属性有相同的,那么对象2的属性覆盖对象1的属性.
+                  extend 在合并对象的时候 是使用深拷贝复制的对象. 所以这个函数可以用来做对象 复制深拷贝              
+
+        */
+        jQuery.hello=function(){//静态函数
+            console.log('abcd');
+        }
+        $.extend({
+            max:function(a,b){
+                return Math.max.apply(this,arguments); //Math.max.apply() apply执行Math.max函数 arguments 传入参数
+                //console.log(arguments);
+                //return a>b?a:b;
+            },
+            min:function(a,b){
+                return Math.min.apply(this,arguments);
+                //return a<b?a:b;
+            }
+        });
+        $.hello();//调用静态函数
+        var result=$.max(10,20,30,5,9,100,60,20,40);//调用扩展函数
+        //console.log('最大值==>',result);
+        //alert(result);
+
+        var mi=$.min(10,20,30,5,100,4,60,1,90,80,50,20);
+        //console.log('最小值==>',mi);
+        //alert(mi);
+
+
+        /*
+            jQuery.extend(); 合并对象.
+        */
+        var person={
+            username:"Trump",
+            age:20,
+            sayHi:function(){
+                console.log(this.username+'下台了..');
+            }
+        };
+        var people={
+            username:"Biden",
+            sayHello:function(){
+                console.log(this.username+"上台了...");
+            }
+        };
+        var obj={};
+        //$.extend(person,people);
+        //console.log('person==>',person);// people对象被合并进了 person对象 合并的时候 后面的对象如果有相同的属性 覆盖前面对象.
+        // person.sayHi();
+        // console.log('people==>',people);//people对象没有变化.
+        
+        $.extend(obj,person);//把person对象 深拷贝了给了 obj
+        obj.username="华大大";
+        console.log('obj==>',obj.username);
+        console.log('person对象==>',person.username);
+
+
+    </script>
+</body>
+</html>

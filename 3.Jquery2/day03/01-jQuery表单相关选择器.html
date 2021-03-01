@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p><input type="text"/></p>
+    <p><input type="password"/></p>
+    <p><button>我是按钮</button></p>
+
+    <p>
+        <input type="checkbox"/>吃饭
+        <input type="checkbox"/>睡觉
+        <input type="checkbox"/>打豆豆
+    </p>
+
+    <p>
+        <!-- multiple设置允许多选,可以按住ctrl键或者shift加鼠标左键点击 size可以设置显示多少个选项 -->
+        <select multiple>
+            <option>广东</option>
+            <option>湖南</option>
+            <option>湖北</option>
+            <option>广西自治区</option>
+            <option>河北</option>
+            <option>河南</option>
+        </select>
+    </p>
+
+    <div class="box">
+        <input type="checkbox"/>听歌
+        <input type="checkbox" checked="checked"/>看电影
+        <input type="checkbox" checked="checked"/>吃鸡
+        <input type="checkbox"/>打王者
+    </div>
+
+    <textarea cols="30" rows="10"></textarea>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // $("input")          找到所有的input标签
+        console.log( $("input") );
+        // $(":input")         找到所有的表单标签,包括input标签,select标签,textarea标签以及button标签
+        console.log( $(":input") );
+        // $(":checkbox")      找到所有的复选框
+        console.log($(":checkbox") );
+        // $(".box :checkbox") 找到.box里面所有的复选框
+        console.log( $(".box :checkbox") );
+        // $(".box :checked")  找到.box里面所有"选中"的元素
+        console.log( $(".box :checked") );
+        
+        $("button").click(function(){
+            // $(":selected")      找到所有选中的option元素
+            console.log( $(":selected") );
+        })
+    </script>
+</body>
+</html>

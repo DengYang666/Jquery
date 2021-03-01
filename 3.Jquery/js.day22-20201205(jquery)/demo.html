@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background-color: blueviolet;
+            /*
+                overflow:hidden; 超出部分隐藏
+                overflow:scroll; 显示滚动条
+                overflow:auto;  自动 超出就出现滚动条 ,没超出就没有..
+            */
+            overflow-y:auto;
+            overflow-x:auto;
+        }
+        div::-webkit-scrollbar{
+            width:10px;
+            height:20px;
+        }
+        div::-webkit-scrollbar-track{
+            background-color: red;
+        }
+        div::-webkit-scrollbar-thumb{
+            background-color: burlywood;
+            border-radius: 10px;
+        }
+        p{
+            width:300px;
+        }
+    </style>
+</head>
+<body>
+    <div> <p>sss</p>风刀霜剑阿卡丽附近第三轮第三轮第三轮第三轮第三轮第三轮第三轮第三轮第三轮</div>
+</body>
+</html>

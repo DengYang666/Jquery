@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+
+        
+        // jQuery 多库共存
+        // 问题概述：
+        // jQuery使用$作为标示符，随着jQuery的流行,其他 js 库也会用这$作为标识符， 这样一起使用会引起冲突。
+
+        // 客观需求：
+        // 需要一个解决方案，让jQuery 和其他的js库不存在冲突，可以同时存在，这就叫做多库共存。
+        // jQuery 解决方案：
+        // 1. 把里面的 $ 符号 统一改为 jQuery。 比如 jQuery("div")
+        // 2. jQuery 变量规定新的名称：$.noConflict() 比如: var xx = $.noConflict();
+
+        /* var $ = 10;
+        // console.log( $ );
+
+        jQuery("div").click(function(){
+            jQuery(this).css("background","blue");
+        }) */
+
+        var $ = 10;
+        var xx = jQuery.noConflict();
+        xx("div").click(function(){
+            xx(this).css("backgroundColor","blue");
+        });
+
+        console.log( $ );
+        console.log( jQuery );
+        console.log( xx );
+        console.log( xx === jQuery );// true
+    </script>
+</body>
+</html>

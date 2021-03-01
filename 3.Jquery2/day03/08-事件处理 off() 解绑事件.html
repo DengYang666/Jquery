@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <p>p段落内容</p>
+
+    <ul>
+        <li>苹果</li>
+        <li>西瓜</li>
+        <li>冬瓜</li>
+        <li>南瓜</li>
+        <li>北瓜</li>
+    </ul>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // jQuery里面的事件绑定,比如click()可以绑定多次,不会覆盖,按顺序执行匿名函数里面的代码
+        /* $("p").click(function(){
+            console.log("p标签的点击事件11111");
+        })
+        $("p").click(function(){
+            console.log("p标签的点击事件22222");
+        })
+        $("p").click(function(){
+            console.log("p标签的点击事件33333");
+        }) */
+
+        // 以下方式都无法解绑
+        // $("p").click = null;
+        // $("p").click(function(){});
+        // $("p").click( null );
+
+        // 小结:如果想要解绑事件,推荐使用on方式绑定事件
+
+        $("p").on("click mouseover mouseout",function(){
+            console.log("ppppppppppppp");
+        })
+
+        // $("p").off(); // 解绑p元素所有事件处理程序
+        // $("p").off( "click" ); // 解绑p元素上面的点击事件
+
+        $("ul").on("click","li",function(){
+            $(this).css("backgroundColor","lightgreen");
+        })
+
+        $("ul").off("click", "li"); // 解绑事件委托
+    </script>
+</body>
+</html>

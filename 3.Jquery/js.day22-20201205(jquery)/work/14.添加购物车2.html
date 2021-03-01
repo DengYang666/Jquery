@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="data.js"></script>
+    <script src="jquery.js"></script>
+    <script src="parabola.js"></script>
+    <link rel="stylesheet" href="cart.css"/>
+</head>
+<body>
+    <div class="flyrect"></div>
+    <div class="cart">
+        <button>购物车<span>0</span></button>
+        <h6>购物车</h6>
+        <ul class="cartlist">
+            <!-- <li>
+                <a href="#">
+                    <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                        alt="">
+                </a>
+                <div>
+                    <a href="#">阳澄湖大闸蟹</a>
+                    <p><span class="price">单价:￥120</span><span>-</span><input type="text" value="1"/><span>+</span></p>
+                </div>
+            </li> -->
+        </ul>
+        <div class="bottom">
+            总计:￥<span>0.00</span><button>结算</button>
+        </div>
+    </div>
+    <ul class="prolist">
+        <!-- <li>
+            <a href="#" class="img">
+                <img src="http://img12.360buyimg.com/n1/s130x130_jfs/t3013/181/252505015/481710/6a6ee10a/57983914Nf3b91795.jpg"
+                    alt="">
+            </a>
+            <a href="#" class="title">阳澄湖大闸蟹</a>
+            <span>￥120.00</span>
+            <a href="#" class="addcart">加入购物车</a>
+        </li> -->
+    </ul>
+    <script>
+     $(function(){
+         /*
+            添加购物车的时候 ,把 数量 价格 赋给input输入框
+         */
+         function  countCart(){
+             var totalNum=0;
+             var totalPrice=0;
+             $('.cartlist').children().each(function(i,e){
+                 var num=parseInt($(e).find('input').val());//数量
+                 var price=$(e).find('input').data('price').substr(1);//单价
+                 totalPrice+=(price*num);//计算总价格
+                 totalNum+=num;//总数量
+             });
+             $('.cart>button>span').text(totalNum);
+             $('.bottom>span').text(totalPrice.toFixed(2));
+         }
+        //给购物车加减做 绑定事件
+        $('.cart').on('click','.sub',function(){//-购物车
+            var input=$(this).next('input');
+            var num=input.val();
+                num--;
+                if(num<1) $(this).parents('li').remove();//parent()父元素 parents所有父级筛选li标签. remove移除.
+                input.val(num);
+                countCart();//重新计算数量 和 总价.
+        });
+        $('.cart').on('click','.add',function(){//+ 购物车
+            var input=$(this).prev('input');
+            var num=input.val();
+                num++;
+                input.val(num);
+                countCart();// 重新计算数量 和 总价.
+        });
+        //添加购物车按钮事件 事件委托
+        $('.prolist').on('click','.addcart',function(e){
+            var pid=$(this).parent().data('id');//获取添加购物车这条产品的id
+            var isExit=false;
+            $('.cartlist').children().each(function(i,e){//取出购物车列表里面所有的产品循环
+                if(pid==$(e).data('id')){//判断当前添加购物车的产品 在 购物车列表里面是否存在 如果存在 + 1
+                    var nu=$(e).find('input').val();//取出存在购物车这条数据的数量
+                    $(e).find('input').val(++nu);//把数量+1 在重新赋值
+                    isExit=true;
+                }
+            });
+            var li=$('<li>');//创建购物车列表的li标签
+            var a=$('<a>').attr('href','#');
+            var imgsrc=$(this).siblings('.img').find('img').attr('src');//获取点击购物车按钮的兄弟里面的图片地址
+            var img=$('<img>').attr('src',imgsrc);//图片地址
+                a.append(img);
+                li.append(a);
+            var div=$('<div>').append('<a href="#">'+$(this).siblings('.title').text()+'</a>');
+                var price=$(this).siblings('span').text();//获取点击购物车元素的价格
+                div.append('<p><span class="price">单价:'+price+'</span><span class="sub">-</span><input data-price="'+price+'" type="text" value="1"/><span class="add">+</span></p>');
+                li.append(div);
+                li.attr('data-id',pid);//拿到产品ID赋值购物车里面的产品列表
+            if(!isExit) $('.cartlist').append(li);
+            
+            
+            var clickX=e.pageX;//获取鼠标点击坐标
+            var clickY=e.pageY; 
+                $('.flyrect').css({left:clickX,top:clickY});//把fly div 放到当前鼠标点击的位置
+            var _o=this;//给当前对象一个别名
+            var targetX=$('.cart>button').offset().left-clickX;//目标偏移 购物车按钮的位移 减去 当前鼠标的坐标
+            var targetY=$('.cart>button').offset().top-clickY;
+            var flyImg=$('<img>').attr('src',imgsrc).css({width:50,height:50});//把当前产品加入fly div
+            $('.flyrect').html(flyImg).show();
+            var fly=new Parabola({//创建对象
+                el:$('.flyrect'),
+                offset:[targetX,targetY],
+                //targetEl:'.cart>button',
+                duration:500,
+                curvature:0.001,
+                callback:function(){
+                   $('.flyrect').hide();//飞行完成 隐藏掉fly div
+                   countCart(); //飞行完成之后再计算价格 数量
+                }
+            });
+            fly.start();//开始飞.
+            return false;//阻止默认行为, 事件冒泡
+        });
+
+        $.each(products,function(i,v){//循环 products
+           var li=$('<li>');//创建标签
+           var a=$('<a>').attr('href','#').addClass('img');//创建a标签并非属性赋值 并添加一个class='img'
+           var img=$('<img>').attr('src',v.img); //创建img标签并添加src属性
+               a.append(img);//把创建img标签放到a标签里面
+               li.append(a); //把创建a标签放到li标签里面
+           var a=$('<a>').attr('href','#').addClass('title').text('阳澄湖大闸蟹');//创建a标签并非属性赋值 并添加一个class='title' 并设置文本
+               li.append(a);
+           var span=$("<span>").text("￥"+v.price);
+               li.append(span);
+           var a=$('<a>').attr('href','#').addClass('addcart').text('加入购物车');//创建a标签并非属性赋值 并添加一个class='title' 并设置文本
+               li.append(a);
+               li.attr('data-id',v.id);//把id做给li属性
+            $('.prolist').append(li);//把创建li放入ul
+        });
+
+        $('.cart').hover(function(){//鼠标移入
+            $(this).stop().animate({
+                right:0
+            });
+        },function(){//鼠标移出
+            $(this).stop().animate({
+               // right:-306
+            });
+        });
+        
+     });
+    </script>
+    </body>
+</html>

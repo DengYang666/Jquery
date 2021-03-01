@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 50px;
+            background: red;
+            padding:10px 20px 30px 40px;
+            margin:50px 60px;
+            border-top:12px solid blue;
+            border-bottom:22px solid blue;
+            border-left:34px solid blue;
+            border-right:44px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div>div的内容div的内容div的内容</div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 返回带单位的字符串结果
+        console.log( $("div").css("width") );
+        console.log( $("div").css("height") );
+
+        // jQuery 尺寸操作的api有如下,他们可以获取相应的值,也可以设置; 重点记住width()和height()
+        // width() height()
+        console.log( $("div").width() );
+        console.log( $("div").height() );
+        console.log("");
+
+        // innerWidth() innerHeight()    内容大小+内填充
+        console.log( $("div").innerWidth() );
+        console.log( $("div").innerHeight() );
+        console.log("");
+        
+        // outerWidth()  outerHeight() 内容大小+内填充+边框
+        console.log( $("div").outerWidth() );
+        console.log( $("div").outerHeight() );
+        console.log("");
+        // outerWidth(true)  outerHeight(true)
+        console.log( $("div").outerWidth(true) );
+        console.log( $("div").outerHeight(true) );
+
+        // 也可以设置
+        // $("div").width( 300 );
+        // $("div").height( 400 );
+
+        $("div").innerWidth( 300 );
+        $("div").innerHeight( 400 );
+
+        // 以上方法得到的返回值都是数值,不带px单位
+    </script>
+</body>
+</html>

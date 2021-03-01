@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        p{
+            width: 150px;
+            height: 120px;
+            background: orange;
+        }
+        h1{
+            width: 200px;
+            height: 230px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <input type="text"/>
+
+    <p></p>
+
+    <h1>标题标签</h1>
+
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+        <li>李狗蛋</li>
+        <li>李二狗</li>
+    </ul>
+    <button>添加li元素</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // var input = document.querySelector("input");
+        /* input.onkeyup = function(){
+            console.log( this.value );
+        } */
+
+        // oninput 事件在用户输入时触发
+        /* input.oninput = function(){
+            console.log( this.value );
+        } */
+
+        /* $("input").keyup( function(){
+            console.log( $(this).val() );
+        }) */
+
+        /* $("input").input( function(){
+            console.log( $(this).val() );
+        }) */
+
+        // oninput是html5新增的事件,jQuery没有提供直接绑定的方法,所以不能使用input()方法绑定
+        // 语法
+        // jQuery对象.on("不带on的事件类型",匿名函数)
+
+        // jQuery对象.on(events,[selector],fn)
+        // 1. events:一个或多个用空格分隔的事件类型，如"click"或"keydown" 。
+        // 2. selector: 元素的子元素选择器 。
+        // 3. fn:回调函数 即绑定在元素身上的侦听函数。
+
+        $("input").on("input",function(){
+            console.log( $(this).val() );
+        })
+
+        $("div").on("click",function(){
+            $(this).css("backgroundColor","blue");
+        })
+        // 所以,on是另一个绑定事件方式,比传统方式更灵活
+
+        /* $("p").mouseover(function(){
+            console.log("我是ppppppp");
+        })
+
+        $("p").mouseout(function(){
+            console.log("我是ppppppp");
+        }) */
+
+        /* $("p").on("mouseover",function(){
+            console.log("我是ppppppp");
+        })
+
+        $("p").on("mouseout",function(){
+            console.log("我是ppppppp");
+        }) */
+
+        // 如果多个事件执行的代码都是一样,那么可以写在一起,每个事件类型使用空格隔开
+        $("p").on("mouseover mouseout click",function(){
+            console.log("我是ppppppp");
+        })
+
+        // 如果多个事件执行的代码不同,也可以写在一起,需要给on传递一个对象,对象的属性名就是事件类型,属性值就是匿名函数
+        // 目标,鼠标移上h1元素,显示skyblue天蓝色;  鼠标移走的时候,改回pink粉色; 鼠标点击的时候,显示purple紫色;  
+        /* $("h1").on("mouseover",function(){
+            $(this).css("backgroundColor","skyblue");
+        })
+
+        $("h1").on("mouseout",function(){
+            $(this).css("backgroundColor","pink");
+        })
+
+        $("h1").on("click",function(){
+            $(this).css("backgroundColor","purple");
+        }) */
+
+        $("h1").on({
+            "mouseover":function(){
+                $(this).css("backgroundColor","skyblue");
+            },
+            "mouseout":function(){
+                $(this).css("backgroundColor","pink");
+            },
+            "click":function(){
+                $(this).css("backgroundColor","purple");
+            }
+        })
+
+        // on() 方法优势:可以事件委派操作 。
+        // 事件委派的定义就是，把原来加给子元素身上的事件绑定在父元素身上，就是把事件委派给父元素
+
+        // on() 方法优势: 动态创建的元素，click() 这样的事件注册是没有办法绑定事件， 
+        // 但是on() 可以给动态生成的元素绑定事件  也就是on可以给未来动态创建的元素绑定事件
+
+        $("button").click(function(){
+            $("ul").append( ("<li>孙七</li>") );
+        })
+
+        /* $("ul li").on("click",function(){
+            $(this).css("backgroundColor","lightgreen");
+        }) */
+        /* $("ul li").click(function(){
+            $(this).css("backgroundColor","lightgreen");
+        }) */
+
+        // 使用事件委派绑定事件
+        $("ul").on("click","li",function(){
+            $(this).css("backgroundColor","lightgreen");
+        })
+    </script>
+</body>
+</html>

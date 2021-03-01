@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <script src="jquery.js"></script>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:200px;
+            height: 200px;
+            margin:0px;
+            position: absolute;
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*
+            鼠标事件对象属性:
+                clientX  可视窗口左边的距离
+                clientY 可视窗口上边的距离
+                pageX  文档的左边缘的距离
+                pageY  文档的上边缘的距离
+                offsetX 是在事件发生容器的左边的距离  event.clientX-div.offsetLeft
+                offsetY  是在事件发生容器的上面的距离 event.clientY-div.offsetTop
+                target 事件源发生的元素对象.
+        */
+        $(function(){
+            // $('div').click(function(event){
+            //     console.log(event);
+            // });
+            $('div').mousedown(function(e){//e 事件对象 
+                var x=e.offsetX;//鼠标按下 ,鼠标相对于div左边的距离  e.clientX-div.offsetLeft
+                var y=e.offsetY;//鼠标按下 ,鼠标相对于div上边边的距离 e.clientY-div.offsetTop
+                var _this=this;
+                $(document).on('mousemove',function(ev){ //ev事件对象
+                    $(_this).css({
+                        left:ev.pageX-x,
+                        top:ev.pageY-y
+                    });
+                });
+            });
+            $('div').mouseup(function(){
+                $(document).off('mousemove');
+            });
+
+        });
+    </script>
+</body>
+</html>

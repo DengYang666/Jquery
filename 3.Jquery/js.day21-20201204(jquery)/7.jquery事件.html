@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 事件</title>
+    <script src="jquery.js"></script>
+    <style>
+        .fathera{
+            width:500px;
+            height:100px;
+            background-color: darksalmon;
+        }
+        .son{
+            width:100px;
+            height:50px;
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <button>事件监听</button>
+        <a href="http://baidu.com">点击取到百度...</a>
+    </div>
+    <div class="fathera">
+        <p class="son"></p>
+    </div>   
+    <script>
+        /*
+            $('.son').mouseenter(function(){
+                console.log("鼠标在son元素");
+                alert("鼠标在son元素");
+            });
+            $('.fathera').mouseenter(function(){
+                console.log("鼠标在fathera元素");
+                alert("鼠标在fathera元素");
+            });
+            事件绑定:
+                onclick  on的方式绑定的时候只能绑定一个
+                addEventListener 事件监听.  可以绑定多个. 按绑定的先后顺序执行.
+            jquery:
+                $('a').click();
+                $('a').click();
+                可以绑定多个事件. 也是按绑定顺序执行.
+            事件也有冒泡.     
+                event.stopPropagation();//阻止冒泡.
+                event.preventDefault();//阻止事件的默认行为.
+                return false;//阻止事件的默认行为,冒泡.
+        */
+        $('button').click(function(){
+            alert('事件1');
+        });
+        $('button').click(function(event){
+            alert('事件2');
+            event.stopPropagation();//阻止冒泡.
+        });
+        $('a').click(function(event){
+            //event.preventDefault();//阻止事件的默认行为.
+            //return false;//阻止事件的默认行为,冒泡.
+        });
+        $('.father').click(function(){
+            //alert("father被点击了...");
+        });
+    </script>
+</body>
+</html>

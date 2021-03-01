@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <script src="jquery.js"></script>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:500px;
+            height:500px;
+            background-color: darkorchid;
+            overflow: hidden;
+            /* padding:50px; */
+            margin-left:300px;
+            margin-top:100px;
+            position: relative;
+        }
+        p{
+            width:100px;
+            height: 100px;
+            background-color: darksalmon;
+            /* margin-left:100px; */
+            /* margin-top:100px; */
+            position: absolute;
+            left:150px;
+            top:150px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+    </div>
+    <script>
+        /*
+            position() 获取子元素相对于父元素的(定位的位移)位移.
+                不包括子元素的margin padding
+        */
+        $(function(){
+            console.log($('p').position());
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background:url(images/bg.jpg) center top;
+        }
+        .box{
+            width: 1089px;
+            height: 429px;
+            margin:0 auto;
+            margin-top: 256px;
+            overflow: hidden;
+        }
+        .box .item{
+            width: 100px;
+            background:url(images/1.jpg);
+            height: 429px;
+            float: left;
+            position: relative;
+        }
+        .box .item:nth-child(2){
+            background:url(images/2.jpg);
+        }
+        .box .item:nth-child(3){
+            background:url(images/3.jpg);
+        }
+        .box .item:nth-child(4){
+            width: 789px;
+            background:url(images/4.jpg);
+        }
+        .box .item p{
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 357px;
+            background: rgba(0,0,0,.3);
+            padding-left: 42px;
+            padding-right: 42px;
+            padding-top: 72px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item">
+            <p>我的个人拉萨之旅｜｜故事之城</p>
+        </div>
+
+        <div class="item">
+            <p>我的个人拉萨之旅｜｜故事之城</p>
+        </div>
+
+        <div class="item">
+            <p>我的个人拉萨之旅｜｜故事之城</p>
+        </div>
+
+        <div class="item">
+            <p>我的个人拉萨之旅｜｜故事之城</p>
+        </div>
+    </div>
+
+    <!-- 1.1 引入jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 1.2 入口函数
+        $(function(){
+            // 1.3 绑定事件
+            $(".box .item").click(function(){
+                // 1.4 先让当前.item的兄弟元素的宽度都变成100px
+                $(this).siblings(".item").animate({"width":100});
+                // 1.5 再让当前.item元素的宽度变成789px
+                $(this).stop().animate({"width":789})
+            })
+        })
+    </script>
+</body>
+</html>

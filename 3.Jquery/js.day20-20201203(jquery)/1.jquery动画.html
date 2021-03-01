@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery动画</title>
+    <style>
+        .animation{
+            width:100px;
+            height:100px;
+            background:#F00;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>执行动画</button>
+    <div class="animation"></div>
+    <script>
+        /*
+            show() hide()  ==>width height  opacity  padding  margin
+            slideUp() slideDown() slideToggle() ==>  height
+            fadeIn() fadeOut() fadeToggle() fadeTo() ==> opacity
+            animate(参数1,参数2,参数3) 自定义动画.  可以自己给一些改变的属性
+                参数1 变化css属性   对象. 只要属性的值是数值类型都可以.  颜色变化需要插件
+                参数2 动画的过渡时间. 单位时间 毫秒
+                参数3 执行完成以后执行回调函数. 
+        */
+        $(function(){
+            $('button').click(function(){
+                $('.animation').animate(
+                       {
+                            width:500,
+                            left:200,
+                            top:200,
+                            opacity:0.5,
+                            background:'#f99'
+                        },
+                        1000,
+                        function(){
+                            $(this).css('backgroundColor','#99f')
+                        }
+                    );
+            }); 
+        });
+    </script>
+</body>
+</html>

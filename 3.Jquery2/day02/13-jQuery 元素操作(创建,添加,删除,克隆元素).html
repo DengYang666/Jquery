@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            border:2px solid blue;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .content{
+            border:2px solid orange;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li>苹果</li>
+        <li>哈密瓜</li>
+        <li>冬瓜</li>
+    </ul>
+
+    <div class="content">content的内容</div>
+
+    <br/>
+    <br/>
+    <br/>
+    <button>创建元素(内部添加)</button>
+    <button>创建元素(外部添加)</button>
+    <button>删除元素</button>
+    <button>克隆元素</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("button").eq(0).click(function(){
+            // 创建元素的语法 $("标签字符串")
+            var newLi1 = $("<li>西瓜</li>");
+            // 内部添加有两个方法 append()  prepend()
+            $("ul").append( newLi1 );
+            
+            var newLi2 = $("<li>葡萄</li>");
+            $("ul").prepend( newLi2 );
+        });
+
+        $("button").eq(1).click(function(){
+            // 外边添加也有两个方法 before() after()
+            $(".content").before( $("<h1>标题标签</h1>") );
+            $(".content").after( $("<strong>加粗标签</strong>") );
+        });
+
+        $("button").eq(2).click(function(){
+            // jQuery对象.remove();
+            $("ul li").eq(1).remove();
+        });
+
+        // 注意:默认后面加的元素是没有绑定事件的
+        $("ul li").click(function(){
+            $(this).css("backgroundColor","pink")
+        })
+
+        $("button").eq(3).click(function(){
+            // jQuery对象.clone( 布尔值 ); 默认布尔值是false
+            // 布尔值为false,代表浅克隆,只克隆元素本身,不克隆元素绑定的事件
+            // 布尔值为true,代表深克隆,克隆元素本身,并且还会克隆元素绑定的事件
+            // $("ul").append( $("ul li").eq(1).clone() );
+            $("ul").append( $("ul li").eq(1).clone( true ) );
+        });
+    </script>
+</body>
+</html>

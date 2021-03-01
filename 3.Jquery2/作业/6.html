@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bbox {
+            width: 700px;
+            height: 200px;
+            border: 1px solid;
+        }
+
+        .sbox {
+            width: 500px;
+            border: 1px solid;
+            float: left;
+            margin-top: 25px;
+            padding-bottom: 135px;
+        }
+
+        span {
+            float: left;
+            margin-left: 30px;
+            margin-top: 155px;
+            display: block;
+        }
+
+        button {
+            float: left;
+            margin-top: 155px;
+        }
+
+        ul {
+            list-style: none;
+            width: 500px;
+            height: 20px;
+            float: left;
+            text-align: left;
+            padding: 0;
+            margin-left: 100px;
+            margin-top: 0px;
+        }
+
+        ul li {
+            border-bottom: 1px dashed;
+            /* display: none; */
+            display: block;
+        }
+
+        a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bbox">
+        <span>微博发布</span>
+        <input class="sbox" type="text">
+        <button>发布</button>
+        <ul>
+            <!-- <li>aaa<a href="#">删除</a></li> -->
+        </ul>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $("button").click(function () {
+            var val = $("input").val()
+            if(val==""){
+                alert("内容不能为空")
+                return
+            }
+                $("ul").prepend('<li>' + val + '<a class="shanchu" href="#">删除</a></li>')
+                $("ul li").slideDown(200);
+                var tops = 0
+                var hei = parseInt($(".bbox").css("height"))
+                timer = setInterval(function () {           
+                    tops += 2
+                    $(".bbox").css("height", tops + hei + "px")
+                    if (tops > 20) {
+                        clearInterval(timer)
+                    }
+                }, 1000 / 60)
+        })
+            $("ul").on("click",".shanchu",function(){
+                $(this).parent("li").slideUp(200);
+                var tops = 0
+                var hei = parseInt($(".bbox").css("height"))
+                timer = setInterval(function () {           
+                    tops += 2
+                    $(".bbox").css("height", hei-tops + "px")
+                    if (tops > 20) {
+                        clearInterval(timer)
+                    }
+                }, 1000 / 60)
+        })
+    </script>
+</body>
+
+</html>

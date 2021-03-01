@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div>这是DIV</div>
+    <script>
+        $(function(){
+            /*
+                通过jquery方式获取的元素对象 ,不在是普通的元素对象,而是jQuery包装后的对象.
+
+                把jquery的包装的元素对象 转化成 原生的元素对象:
+                    用数组方式取出来就可以.
+                把原生的元素对象包装成jQuery对象:
+                    jQuery(对象)  或 $(对象)
+            */
+            var div=$('div');// 优点像  document.querySelector()
+                console.log('jquery',div);
+                console.log('jquery对象里面取出原生元素对象',div.get(0));//div[0]
+                div[0].style.fontSize="30px";
+
+                div=document.querySelector('div');//原生的元素对象
+                console.dir(div);
+                divjQuery=$(div);//jQuery(div); 把原生对象包装成 jQuery对象.
+                divjQuery.css('color','blue');// jquery 设置style css样式的方法 css("css属性名","css属性的值");
+                console.log(divjQuery);
+
+        });
+    </script>
+</body>
+</html>

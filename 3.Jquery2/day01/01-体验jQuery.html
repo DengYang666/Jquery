@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 如果想要使用jQuery库,第一步就是通过script标签的src属性引入jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+        <li>赵六</li>
+        <li>孙七</li>
+    </ul>
+
+    <div>div内容</div>
+
+    <script>
+        // 点击哪个li哪个li的背景颜色就变成粉色,其他li不变背景颜色,并输出当前li所在索引号
+
+        // 第一种:原生js的做法
+        /* var lis = document.querySelectorAll("li");
+        for(var i = 0; i<lis.length; i++ ){
+            // 设置自定义属性
+            lis[i].setAttribute("data-index" , i);
+
+            lis[i].onclick = function(){
+                // 排他
+                for(var j = 0; j < lis.length; j++ ){
+                    lis[j].style.backgroundColor = "";
+                }
+                this.style.backgroundColor = "pink";
+
+                // 获取自定义属性
+                var index = this.getAttribute("data-index");
+                console.log( index );
+            }
+        } */
+
+        // 第二种: 使用jQuery实现
+        // console.log( $ );// 只要引入了jQuery,当前js环境下,就会有一个$的方法
+
+        // $("CSS选择器") 
+        // 说明:
+        // 类选择器要带.或者id选择器要带#;
+        // 通过CSS选择器,获取jQuery对象; 
+        // jQuery对象就可以使用jQuery提供的api方法了
+
+        // jQuery绑定事件,几乎都是把原生on去掉,拥有对应的方法  比如onclick=>click(回调函数)
+        $("ul li").click(function(){
+            // this代表当前触发事件的那个DOM对象
+            // console.log( this );
+            // console.log( $(this) );
+
+            $(this).css("backgroundColor","pink").siblings("li").css("backgroundColor","");
+            console.log( $(this).index() );
+        });
+
+        $("div").click(function(){
+            $(this).hide( 1000 , function(){
+                alert("隐藏元素完毕");
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        li:nth-child(1){/* 不是从0开始 从1开始*/
+            color:chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+        <li>
+            <span>无序列表51</span>
+            <span>无序列表52</span>
+            <span>无序列表53</span>
+            <a href="#">超链接</a>
+        </li>
+        <li>
+            <span>无序列表61</span>
+            <span>无序列表<span>62</span></span>
+            <span>无序列表63</span>
+            <span>无序列表<span>64</span></span>
+        </li>
+        <li>无序列表7</li>
+        <li>无序列表8</li>
+    </ul>
+    <script>
+        $('li:first').css('color','red');//获取第一个li
+        $('li:last').css('color','blue');//获取最后一个li
+        $('li:eq(2)').css('fontSize',30);//选中第三个元素 从0开始.
+        $('li:odd').css('backgroundColor','rgba(0,0,0,0.1)');//下标奇数.
+        $('li:even').css('backgroundColor','rgba(255,0,0,0.2)');//下标偶数开始 下标从0开始.
+        
+        $('li').parent().css('listStyle','none');//父级元素 ul
+        $('li:eq(4)').children('a').css('color','red');//获取第五个li 筛选里面a标签子元素 并设置样式
+        $('li:eq(4)').children('span:eq(2)').css('color','green');// children 相当于  子代选择器.
+        $('li:eq(5)').find('span').css('color','yellow');//相当于后代选择器,找到所有满足条件的后代
+        $('li:eq(5)').children('span').css('color','blue');//子代 (亲儿子亲女儿这辈 不含孙子辈.).
+
+
+    </script>
+</body>
+</html>

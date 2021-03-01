@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button>自定义动画</button>
+    <br/>
+    <br/>
+    <div></div>
+
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery插件之前需要先引入jQuery  jQuery插件是基于jQuery -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-color/2.1.2/jquery.color.js"></script>
+    <script>
+        /* var oDiv = document.querySelector("div");
+        var btn = document.querySelector("button");
+
+        var speed = 1;
+        var timer = null;
+        btn.onclick = function(){
+            window.clearInterval( timer );
+            timer = setInterval(function(){
+                oDiv.style.left = oDiv.offsetLeft + speed + "px";
+                if( oDiv.offsetLeft >= 300 ){
+                    window.clearInterval( timer );
+                }
+            },15)
+        } */
+
+        $("button").click( function(){
+            /* jQuery对象.animate({
+                CSS属性名1 : CSS属性值1,
+                CSS属性名2 : CSS属性值2,
+                CSS属性名3 : CSS属性值3,
+                ...
+            },时间,回调函数) */
+
+            $("div").stop().animate( {
+                "width" : 300,
+                "height": 400
+            }, 2000 ,function(){
+                $("div").stop().animate({
+                    "left" : 300,
+                    // 默认animate对颜色是不支持动画变化的,但是我们可以使用一个插件jquery.color.js
+                    // "backgroundColor" : "rgba(0,0,255,0.5)"
+                    // "backgroundColor" : "blue"
+                    "backgroundColor" : "#0000ff"
+                    // "backgroundColor" : "rgb(0,0,255)"
+                })
+            })
+        })
+    </script>
+</body>
+</html>

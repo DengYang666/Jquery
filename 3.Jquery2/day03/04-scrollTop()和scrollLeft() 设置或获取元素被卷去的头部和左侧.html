@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 4000px;
+            width: 3000px;
+            background: skyblue;
+        }
+        div{
+            position: fixed;
+            left: 40%;
+            top: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>垂直滚动到0位置</button>
+        <button>垂直滚动到100位置</button>
+        <button>垂直滚动到500位置</button>
+        <br/>
+        <button>水平滚动到0位置</button>
+        <button>水平滚动到100位置</button>
+        <button>水平滚动到500位置</button>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // scrollTop() 和 scrollLeft() 设置或获取元素被卷去的头部和左侧
+
+        // 给window对象绑定滚动事件
+        $( window ).scroll(function(){
+            // scrollTop() 和 scrollLeft() 获取的时候 window和document对象没有兼容问题
+            // scrollTop() 和 scrollLeft() 获取的时候 html和body对象有兼容问题
+
+            // 获取scrollTop()和scrollLeft()
+            // console.log( "scollTop->" ,   $("html").scrollTop() ,"scrollLeft->" , $("html").scrollLeft() );
+        });
+
+        $("button").eq(0).click(function(){
+            $("html").scrollTop(0);
+        });
+        
+        $("button").eq(1).click(function(){
+            $("html").scrollTop(100);
+        });
+
+        $("button").eq(2).click(function(){
+            $("html").scrollTop(500);
+        });
+
+        $("button").eq(3).click(function(){
+            $("html").scrollLeft(0);
+        });
+        
+        $("button").eq(4).click(function(){
+            $("html").scrollLeft(100);
+        });
+
+        $("button").eq(5).click(function(){
+            $("html").scrollLeft(500);
+        });
+
+    </script>
+</body>
+</html>

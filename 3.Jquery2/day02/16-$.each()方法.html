@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // $.each()方法可以用于遍历自定义对象,也可以遍历数组
+        /* 
+        // 语法
+        $.each(对象或者数组, function( index, item ){
+
+        }) 
+        */
+
+        var arr = [10,20,50,70,30];
+        // 遍历数组
+        $.each( arr, function(index, item ){
+            console.log( index , item );
+        });
+        console.log("");
+        console.log("");
+        console.log("");
+
+        var obj = {
+            username :　"zhangsan",
+            age : 23,
+            sex : "男"
+        };
+        // 遍历对象
+        $.each( obj, function(index, item ){
+            console.log( index, item );
+        })
+        console.log("");
+        console.log("");
+
+        // es6给数组新增几个api 有forEach ,map, filter ,some, every ,includes...
+        // 我们这里先演示forEach
+        arr.forEach(function( item,index ){
+            console.log( item, index );
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流练习</title>
+    <style>
+        div{
+            width:500px;
+            margin: 0 auto;
+        }
+        div img{
+            display: block;
+            width:250px;
+            height:100px;
+            float:left;
+        }
+    </style>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/EasyLazyload.js"></script>
+    
+</head>
+<body>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/1.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/2.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/3.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/4.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/5.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/6.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/7.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/8.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/9.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/10.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/11.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/1.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/2.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/3.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/4.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/5.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/6.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/7.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/8.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/9.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/10.jpg"/>
+        <img data-lazy-src="http://127.0.0.1:5500/day22.jquery-20201205/lan_load/img/11.jpg"/>
+    <script>
+    lazyLoadInit({
+    coverColor:"white",
+    coverDiv:"<h1>test</h1>",
+    offsetBottom:0,
+    offsetTopm:0,
+    showTime:1100,
+    onLoadBackEnd:function(i,e){
+        console.log("onLoadBackEnd:"+i);
+    }
+    ,onLoadBackStart:function(i,e){
+        console.log("onLoadBackStart:"+i);
+    }
+});
+    </script>
+</body>
+</html>

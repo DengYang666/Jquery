@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"/>
+    <script>
+        // 防抖就是高频率触发某个事件,但是我们只要一个的结果
+        // 一般防抖会使用在文本框  onkeyup键盘弹起事件
+        var input = document.querySelector("input");
+
+        // 定义一个变量,保存延时器的返回值
+        var timer = null;
+        input.onkeyup = function(){
+            // 开启新的延时器之前,先清除上一个延时器
+            clearTimeout( timer );
+
+            timer = window.setTimeout( function(){
+                // 在定时器和延时器里面的this都是指向window
+                console.log( input.value );
+            }, 200 )
+        }
+    </script>
+</body>
+</html>

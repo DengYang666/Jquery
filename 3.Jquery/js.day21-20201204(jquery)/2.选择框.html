@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:500px;
+            margin:0 auto;
+        }
+        div.ch{
+            padding-left:80px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div class="all"><label>全选:<input type="checkbox"/></label></div>
+    <div class="ch">
+        <label>篮球<input type="checkbox"/></label>
+        <label>足球<input type="checkbox"/></label>
+        <label>王者<input type="checkbox"/></label>
+        <label>LOL<input type="checkbox"/></label>
+        <label>阴阳师<input type="checkbox"/></label>
+        <label>天龙八部<input type="checkbox"/></label>
+    </div>
+    <script>
+        $(function(){
+            $('.all input').click(function(){
+                var check=$(this).prop('checked');//获取是否选中
+                $('.ch input').prop('checked',check);//设置 后面的所有选择框的 是否选中状态.
+            });
+            $('.ch input').click(function(){//后面的子选项
+                var isCheck=true;//变量存储子选项的选择器状态 默认true选中.
+                var check=$(this).prop('checked');
+                $(this).parent().siblings().find('input').each(function(i,e){
+                    if(!$(e).prop('checked')){
+                        isCheck=false;//循环所有兄弟元素 是否有选中,如果有一个没有选中. 全选也要不选中.
+                    }
+                });
+                if(check && isCheck){//如果当前元素选中 , 兄弟元素也都选中. 全选就选中.
+                    $('.all input').prop('checked',true);
+                }else{
+                    $('.all input').prop('checked',false);
+                }
+            });
+        });
+    </script>    
+</body>
+</html>

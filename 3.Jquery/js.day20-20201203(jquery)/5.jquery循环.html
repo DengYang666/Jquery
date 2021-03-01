@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+        <li>无序列表5</li>
+    </ul>
+    <script>
+        /*
+            for(){}
+            for(var i in a){}
+            jquery 内置遍历方法  
+            1.遍历元素  $('div').each(function(index,element){
+                    //回调函数 index 下标  element元素对象.
+            });
+            2.遍历数据  $.each(数据,function(index,value){
+
+                       });
+        */
+        $(function(){
+            $('li').css('color','#F00');
+            //循环元素对象. 如果单独设置的时候 需要用的.
+            $('li').each(function(i,e){
+                e.innerText +=1;
+                //console.log(index,element);
+            });
+            var arr=[10,20,30,40];
+                $.each(arr,function(index,value){
+                    console.log('数组==>',index,value);
+                });
+        });
+    </script>
+</body>
+</html>

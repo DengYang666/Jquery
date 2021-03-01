@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        img{
+            /* 设置垂直对齐方式不是基线对齐,就可以去掉图片底部缝隙 */
+            vertical-align: bottom;
+        }
+        .banner{
+            width: 820px;
+            margin:100px auto;
+        }
+        .banner .banner_imgs{
+            width: 820px;
+            height: 340px;
+            overflow: hidden;
+        }
+        .banner .banner_imgs ul{
+            width: 500%;
+            overflow: hidden;
+        }
+        .banner .banner_imgs ul li{
+            float: left;
+        }
+        .banner .banner_nav{
+            height: 40px;
+            background: #e3e2e2;
+        }
+        .banner .banner_nav ul li{
+            float: left;
+            width: 20%;
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+            border-bottom:2px solid transparent;
+            cursor: pointer;
+            font-size:14px;
+        }
+        .banner .banner_nav ul li.active{
+            border-color: #cea861;
+            background: #f7f6f6;
+            color:#cea861;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner_imgs">
+            <ul>
+                <li><a href="#"><img src="images/1.jpg"/></a></li>
+                <li><a href="#"><img src="images/2.jpg"/></a></li>
+                <li><a href="#"><img src="images/3.jpg"/></a></li>
+                <li><a href="#"><img src="images/4.jpg"/></a></li>
+                <li><a href="#"><img src="images/5.jpg"/></a></li>
+            </ul>
+        </div>
+        <div class="banner_nav">
+            <ul>
+                <li class="active">FPX冠军皮肤</li>
+                <li>魔女 婕拉 至臻</li>
+                <li>2020LPL春季赛季后赛</li>
+                <li>挑战主播赢现金</li>
+                <li>每周限时优惠</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 先死(固定)后活(会变的值)
+
+        // 给.banner_nav ul li绑定鼠标单击事件
+        $(".banner_nav ul li").click(function(){
+            // 获取当前li对应的索引号
+            var index = $(this).index();
+            
+            // 调用goto函数
+            goto( index );
+
+            // 把当前点击li的索引号,赋值给currentIndex,保存他们自动轮播和点击的时候,顺序不出错
+            currentIndex = index;
+        });
+
+        // 封装一个goto函数,可以根据索引号,高亮对应项和滚动到指定图片
+        function goto( myIndex ){
+            // 高亮对应li
+            $(".banner_nav ul li").eq(myIndex).addClass("active").siblings("li").removeClass("active");
+            // 滑动.banner_imgs ul元素
+            $(".banner_imgs ul").animate({
+                "margin-left" : -820*myIndex
+            } );
+        }
+
+        // 定义一个全局变量,currentIndex保存当前轮播的索引号
+        var currentIndex = 0;
+        // 定义一个定时器变量
+        var timer = null;
+
+        // 自动轮播的函数
+        function autoPlay(){
+            timer = setInterval(function(){
+                // 自加1
+                currentIndex++;
+                // 边界判断
+                currentIndex = currentIndex % $(".banner_nav ul li").length;
+                goto( currentIndex );
+            },1500)
+        }
+
+        // 开启自动轮播
+        autoPlay();
+
+        // 给.banner绑定鼠标移上移出事件
+        $(".banner").hover(function(){
+            // 鼠标移上.banner以后停止定时器
+            window.clearInterval( timer );
+            timer = null;
+        },function(){
+            // 鼠标移出.banner以后重新开启定时器
+            if( timer == null ){
+                autoPlay();
+            }
+        })
+
+    </script>
+</body>
+</html>

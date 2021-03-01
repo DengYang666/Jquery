@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <script src="jquery.js"></script>
+    <style>
+        div::before{
+            content: "前置内容";
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <textarea></textarea>
+    <div></div>
+    <script>
+        /*
+            键盘事件:
+                type 事件名称
+                which 把keyCode 和 charCode 合并. 
+                其他同 原生键盘事件.
+        */
+        $('textarea').keyup(function(e){
+            console.log(e);
+        });
+        $('textarea').click(function(e){
+            console.log(e);
+        });
+        $('div').on('click',function(e){
+            console.log(e);
+        })
+    </script>
+</body>
+</html>

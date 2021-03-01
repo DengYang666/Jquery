@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        body{
+            background: #f5f5f5;
+        }
+        /* 左浮类 */
+        .fl{
+            float: left;
+        }
+        /* 右浮类 */
+        .fr{
+            float: right;
+        }
+        /* 清除浮动类 */
+        .clearfix::after{
+            content:"";
+            display: block;
+            clear: both;
+        }
+
+        .box{
+            width: 1226px;
+            margin:100px auto;
+            border:1px solid red;
+        }
+        .box .title{
+            height: 58px;
+            line-height: 58px;
+            font-family: "宋体";
+        }
+        .box .title .left{
+            font-size:22px;
+        }
+        .box .title .right button{
+            width: 28px;
+            height: 22px;
+            text-align: center;
+            line-height: 22px;
+            border:none;
+            outline:none;
+            background: #f5f5f5;
+            border:1px solid #e0e0e0;
+            color:#b0b0b0;
+            cursor: pointer;
+            font-size:16px;
+            font-family: "宋体";
+            font-weight: bold;
+        }
+        .box .title .right button:hover{
+            color:orange;
+        }
+        .box .title .right button.disabledClass{
+            cursor: default;
+            color:#e0e0e0;
+        }
+        .box .content{
+            height: 340px;
+        }
+        .box .content .left{
+            width: 234px;
+            height: 340px;
+            background: skyblue;
+            margin-right: 14px;
+        }
+        .box .content .right{
+            width: 978px;
+            overflow: hidden;
+        }
+        .box .content .right ul{
+            width: 4946px;
+        }
+        .box .content .right ul li{
+            width: 234px;
+            height: 340px;
+            float: left;
+            background: white;
+            margin-right: 14px;
+        }
+        .box .content .right ul li:last-child{
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- 上部分 -->
+        <div class="title clearfix">
+            <div class="left fl">小米闪购</div>
+            <div class="right fr">
+                <button class="btn_left">&lt;</button><button class="btn_right">&gt;</button>
+            </div>
+        </div>
+
+        <!-- 下部分 -->
+        <div class="content clearfix">
+            <div class="left fl">广告位招租</div>
+            <div class="right fl">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <li>18</li>
+                    <li>19</li>
+                    <li>20</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 核心思路, 控制.content .right ul的margin-left值
+        
+        // 定义一个变量,保存当前滑动索引值
+        var currentIndex = 0;
+
+        // 右按钮
+        $(".btn_right").on("click",function(){
+            // 自加1
+            currentIndex++;
+
+            $(".content .right ul").stop().animate({
+                "margin-left": -992*currentIndex
+            },1000);
+
+            // 调用isBorder函数,判断是否为边界,做出相应的处理
+            isBorder();
+        });
+
+        $(".btn_left").on("click",function(){
+            // 自减1
+            currentIndex--;
+
+            $(".content .right ul").stop().animate({
+                "margin-left": -992*currentIndex
+            },1000);
+
+            // 调用isBorder函数,判断是否为边界,做出相应的处理
+            isBorder();
+        });
+
+
+        // 判断是否为边界的函数
+        function isBorder(){
+            if( currentIndex == 0) {
+                // 说明:  .disabledClass只是一个类名,设置样式使用的; 
+                // 说明:  按钮表单控件有disable属性,禁用了以后,不会触发点击事件了
+                
+                // 当currentIndex = 0, 左按钮禁用,还要添加.disabledClass类; 右按钮不禁用,删除.disabledClass类
+                $(".btn_left").prop("disabled" , true);
+                $(".btn_left").addClass("disabledClass");
+                
+                $(".btn_right").prop("disabled" , false);
+                $(".btn_right").removeClass("disabledClass");
+            }else if( currentIndex == 4 ){
+                // 当currentIndex = 4, 右按钮禁用,还要添加.disabledClass类; 左按钮不禁用,删除.disabledClass类
+                $(".btn_right").prop("disabled" , true);
+                $(".btn_right").addClass("disabledClass");
+
+                $(".btn_left").prop("disabled" , false);
+                $(".btn_left").removeClass("disabledClass");
+            }else{
+                // 当currentIndex = 1, 左右按钮都不需要禁用,都删除.disabledClass类
+                // 当currentIndex = 2, 左右按钮都不需要禁用,都删除.disabledClass类
+                // 当currentIndex = 3, 左右按钮都不需要禁用,都删除.disabledClass类
+                $(".btn_left").prop("disabled" , false);
+                $(".btn_right").prop("disabled" , false);
+                
+                $(".btn_left").removeClass("disabledClass");
+                $(".btn_right").removeClass("disabledClass");
+            }
+        }
+
+        isBorder();
+    </script>
+</body>
+</html>

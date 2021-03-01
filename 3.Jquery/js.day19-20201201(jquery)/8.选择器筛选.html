@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兄弟节点</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <ul>
+        <li class="active">无序列表10</li>
+        <li>无序列表2  1</li>
+        <li>无序列表3  2</li>
+        <li>无序列表4  3</li>
+        <li>无序列表5  4</li>
+        <li>无序列表6  5</li>
+        <li>无序列表7</li>
+        <li>无序列表8</li>
+        <li>无序列表9</li>
+    </ul>
+    <script>
+        $('li:eq(2)').siblings(':odd').css('color','red');//除了自己以外的所有兄弟元素都会选中.
+        $('li:eq(6)').next().css('fontSize',30); //后一个兄弟元素
+        $('li:eq(6)').prev().css('fontSize',30);//前一个兄弟元素  previous
+        $('li:eq(6)').nextAll().css('background','rgba(0,0,0,0.1)');   //后面的所有
+        $('li:eq(6)').prevAll().css('background','rgba(255,0,0,0.1)');//前面的所有
+        console.log($('li:last').hasClass('active'));//hasClass  看元素是否有对应类名.
+
+        //index() 元素所在位置的下标 . 元素所在父元素内部的所在的位置下标.
+        console.log('最后一个元素 index==>',$('li:last').index());
+        console.log('ul的 index值',$('ul').index());
+        //eq()  equal的简写 等于
+        // .click() 给元素绑定点击事件 参数是一个回调函数.
+        $('li').css('background','blue').eq(7).css('background','#F00').click(function(){
+            alert("点击事件...");
+        });
+    </script>
+</body>
+</html>

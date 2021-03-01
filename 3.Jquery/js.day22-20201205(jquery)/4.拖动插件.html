@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        div,p,span{
+            width:200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <p></p>
+    <span>sssssssss</span>
+    <script>
+        /*
+            在网页上面可以拖动元素插件:
+        */
+       function Drag(){}
+       Drag.prototype.drag=function(){
+            var _this=this;//给当前元素对象一个别名
+            this.mousedown(function(e){
+                var offx=e.offsetX;// offsetX 鼠标按下的时候 鼠标相对div的位置
+                var offy=e.offsetY;// offsetY 鼠标按下的时候 鼠标相对div的位置
+                _this.css('position','absolute');//设置被拖动元素是绝对定位
+                $(document).on('mousemove',function(ev){//鼠标移动事件 
+                    var mouseX=ev.clientX;//得到鼠标的坐标
+                    var mouseY=ev.clientY;//得到鼠标的坐标
+                    _this.css({
+                        left:mouseX-offx,
+                        top:mouseY-offy
+                    });
+                });
+            });
+            this.mouseup(function(){//鼠标弹起事件
+                $(document).off('mousemove');//移除鼠标移动事件
+            });
+            return this;//this 返回当前元素对象.
+       }
+       $.fn.extend(new Drag());
+    //    $.fn.extend({
+    //        drag:function(){
+    //        }
+    //    });
+       $('div').drag();
+       $('p').drag();
+       $('span').drag();
+    </script>
+</body>
+</html>

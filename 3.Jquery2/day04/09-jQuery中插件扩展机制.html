@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 扩展机制语法
+        /* $.fn.extend({
+            方法名1:function(){
+
+            },
+            方法名2:function(){
+
+            },
+        }) */
+
+        $.fn.extend({
+            two:function(){
+                // 谁调用这个two方法,this就指向谁
+                // console.log( this );
+                console.log("我是two方法");
+            },
+            three:function(){
+                console.log("我是three方法");
+            }
+        });
+
+        $.fn.extend({
+            four:function(){
+                console.log("我是four方法");
+            }
+        });
+
+        $("button").eq(0).click(function(){
+            $(this).two();
+            $(this).three();
+            $(this).four();
+        })
+    </script>
+</body>
+</html>

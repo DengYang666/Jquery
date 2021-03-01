@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        div{
+            width:500px;
+            margin: 0 auto;
+        }
+        input{
+            width:50px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>-</button><input type="text" value="1"/><button>+</button>
+    </div>    
+    <script>
+        $(function(){
+            $('div button:first').click(function(){
+                var v=$('input').val();
+                    v--;
+                    if(v<0) v=0;//减的值小于0 为0
+                    $('input').val(v);
+            });
+            $('input').change(function(){//手动填写. change事件
+                var v=$(this).val();
+                //console.log(Number(v));
+                    v=parseInt(v);
+                    console.log('parseInt==>',v);
+                    if(!v){ //是否是字符串 非整数 设置为 1  NaN ==>false  !false ==>true
+                        v=1;
+                    }
+                    $(this).val(v);
+            });
+            $('div button:last').click(function(){
+                var v=$('input').val();
+                    v++;//强制做数学运算  Number Boolean  String   
+                    $('input').val(v);
+            });
+        });
+    </script>
+</body>
+</html>

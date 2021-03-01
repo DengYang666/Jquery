@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var obj1 = {
+            username : "张三",
+            age: 23,
+            sex: "男",
+            color:["red","green","blue"]
+        };
+        
+        var obj2 = {};
+        // 浅拷贝
+        for( p in obj1 ){
+            obj2[p] = obj1[p];
+        }
+        obj2.age = 44;
+        obj1.username = "深井冰";
+        obj2.color[0] = "pink";
+        console.log( obj1, obj2 ); */
+
+
+        var obj1 = {
+            username : "张三",
+            age: 23,
+            sex: "男",
+            color:["red","green","blue"]
+        };
+        // 使用JSON.parse()和JSON.stringify()配合使用就可以实现深拷贝
+        var obj2 = JSON.parse( JSON.stringify(obj1) );
+        obj2.color[0] = "pink";
+        obj1.color[2] = "skyblue";
+        console.log( obj1, obj2 );
+
+        // 以下为使用ajax演示JSON.parse()实际用处,ajax后续课程会讲
+        var xhr = new XMLHttpRequest();
+        xhr.open("get","https://tianqiapi.com/api?version=v6&appid=64267516&appsecret=j7b98Yb9");
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log( xhr.responseText );
+                var res = JSON.parse( xhr.responseText );
+                console.log( res.air_tips );
+            }
+        }
+    </script>
+</body>
+</html>

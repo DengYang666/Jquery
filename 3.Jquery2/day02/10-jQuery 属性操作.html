@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1" id="abc" data-index="10">div的内容</div>
+    <input type="checkbox" checked="checked"/>写代码<br/>
+
+    <button>获取自带属性</button>
+    <button>设置自带属性</button>
+    <button>获取自定义属性</button>
+    <button>设置自定义属性</button>
+    <button>删除属性</button>
+    
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            // jQuery 属性操作主要用到两个方法 prop()和attr()方法
+            // prop()主要用于设置或者获取标签的自带属性,比如img标签自带src属性,a标签自带href属性
+            // attr()主要用于设置或者获取标签的自定义属性
+            $("button").eq(0).click(function(){
+                console.log( $("div").prop("class") );// "div1"
+                console.log( $("div").prop("data-index") );// undefined,无法获取自定义属性的值
+                console.log( $("input").prop("checked") );// true, 是否选中,返回的结果值是布尔值
+            });
+
+            $("button").eq(1).click(function(){
+                $("div").prop("id","abcabcabc");
+                $("div").prop("data-index", 200 );// 无法设置自定义属性的值
+                $("input").prop("checked", false );
+            });
+
+            $("button").eq(2).click(function(){
+                // 获取自定义属性
+                console.log( $("div").attr("data-index") );
+                // 也可以用于获取自带属性
+                console.log( $("div").attr("class") );
+                console.log( $("div").attr("id") );
+            });
+
+            $("button").eq(3).click(function(){
+                // 可以设置自定义属性也可以设置自带属性
+                $("div").attr("data-index", 200 );
+                $("div").attr("data-title", "自定义属性设置标题内容" );
+                $("div").attr("class","div111111");
+                $("div").attr("id","abcabcabc");
+            });
+
+            $("button").eq(4).click(function(){
+                // jQuery对象.removeAttr("属性名");  删除自定义属性也可以用于删除自带属性
+                $("div").removeAttr("class");
+                $("div").removeAttr("id");
+                $("div").removeAttr("data-index");
+            })
+
+        })
+    </script>
+</body>
+</html>

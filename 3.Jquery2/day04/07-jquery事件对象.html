@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div>div的内容</div>
+
+    <a href="https://www.baidu.com">百度</a>
+
+    <script src="js/jquery.min.js"></script>
+
+    <script>
+        // jQuery中的事件对象用法跟原生js的事件对象几乎一致
+        // 事件对象用到什么地方? 阻止冒泡,阻止默认事件,获取键盘ascii码, pageX,pageY等
+
+        $("div").click(function( e ){
+            console.log("div的click事件");
+            // 阻止冒泡
+            e.stopPropagation();
+        });
+
+        $("body").click(function(){
+            console.log("body的click事件");
+        });
+
+        $("html").click(function(){
+            console.log("html的click事件");
+        });
+
+        $(document).click(function(){
+            console.log("document的click事件");
+        })
+
+        $("a").click(function( e ){
+            alert("11111");
+            // 阻止默认行为
+            e.preventDefault();
+        });
+
+        // 给document绑定键盘事件
+        $(document).on("keydown",function( e ){
+            console.log( e );
+            console.log( e.key );
+            console.log( e.keyCode );
+            // e.which也可以用于获取键码
+            console.log( e.which );
+            console.log("");
+        })
+    </script>
+</body>
+</html>

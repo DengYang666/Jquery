@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        div{
+            width: 150px;
+            height: 100px;
+            background: orange;
+        }
+    </style>
+    <script>
+        // $是 jQuery 的别称，在代码中可以使用 jQuery 代替，但一般为了方便，通常都直接使用 $ 。
+        // $是jQuery的顶级对象，相当于原生JavaScript中的 window。把元素利用$包装成jQuery对象，就可以调用jQuery 的方法。
+        console.log( $ );
+        console.log( jQuery );
+        console.log( window.jQuery );
+        console.log( window.$ );
+        console.log( $ === jQuery );// true
+        console.log( $ === window.jQuery );// true
+
+        /* $(function(){
+            $("div").click(function(){
+                $(this).css("backgroundColor","skyblue");
+            })
+        }) */
+
+        // $也可以使用jQuery代替,但是我们经常使用的还是$符号
+        jQuery(function(){
+            jQuery("div").click(function(){
+                jQuery(this).css("backgroundColor","skyblue");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>div的内容</div>
+</body>
+</html>

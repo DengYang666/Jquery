@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:800px;
+            height:100px;
+            margin-left:100px;
+            padding-top:200px;
+            background-color: darkkhaki;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+            /*
+                show(动画执行时间单位是毫秒,function(){执行完成以后执行的函数});  
+                hide(动画执行时间单位是毫秒,function(){执行完成以后执行的函数});
+                toggle(动画执行时间 单位是毫秒,function(){执行完成以后执行的函数})
+                变化的属性: width height opacity margin padding
+                    显示的时候 是越来越大.
+                    隐藏的时候 是越来越小.
+            */
+            $('button:first').click(function(){
+                $('div').show(1000,function(){
+                    alert('显示完成');
+                    $(this).css({
+                        marginLeft:0,
+                        paddingTop:0
+                    });
+                });
+            });
+            $('button:eq(1)').click(function(){
+                $('div').hide(100,function(){
+                    alert("隐藏完成");
+                });
+            });
+            $('button:last').click(function(){
+                $('div').toggle(1000,function(){
+                    alert("执行完成...");
+                });   
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>显示</button>- <button>隐藏</button>- <button>切换</button>
+    <div></div>
+</body>
+</body>
+</html>

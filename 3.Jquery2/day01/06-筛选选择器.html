@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            // $("li").css("color","red");
+            // 用css3结构伪类选择器也可以实现选中指定某个元素
+            // $("li:first-child").css("color","red");
+            // $("li:nth-child(1)").css("color","red");
+            // $("li:last-child").css("color","red");
+            // $("li:nth-last-child(2)").css("color","red");
+
+            // 奇数元素
+            /* $("li:nth-child(odd)").css("color","red");
+            // 偶数元素
+            $("li:nth-child(even)").css("color","blue"); */
+
+            // jQuery提供的选择器
+            // $("li:first").css("color","red");
+            // $("li:last").css("color","red");
+
+            // 找到索引号为奇数的元素,索引号是从0开始的
+            // $("li:odd").css("background","pink");
+            // 找到索引号为偶数的元素,索引号是从0开始的
+            // $("li:even").css("background","skyblue");
+
+            // $("li:eq(0)").css("background","skyblue");
+            $("li:eq(7)").css("background","skyblue");
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ul>
+    <ol>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ol>
+</body>
+</html>

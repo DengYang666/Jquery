@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+    </ul>
+    <ul id="sec">
+        <li>neir</li>
+    </ul>
+    <script>
+        /*
+            创建
+                $('<标签名>');
+            添加
+                e.append(el); 往e元素内部后面添加一个el元素
+                e.prepend(el); 往e元素内部前面添加一个el元素
+                e.before(el); 往e元素外面的前面添加一个el元素
+                e.after(el); 往e元素外面的后面添加一个el元素
+            克隆元素:
+                clone();
+            删除
+                remove(); 刪除指定的元素
+                empty(); 设置元素之间的内容为空
+                html(''); 设置元素之间的内容为空 
+        */
+        $(function(){
+            //$('li').appendTo('#sec');
+            
+            var li=$('<li>');//创建元素
+                //console.log('创建的li元素',li);
+                li.html('这是创建的标签li');//设置元素之间内容
+                $('ul').append(li);//往元素内部后面添加一个新的元素 元素对象.
+            var li='<li>这是内容lililili</li>';//创建元素
+                $('ul').append(li);//往元素内部后面添加一个新的标签  字符串
+            
+            var lia=$('<li>');
+                lia.text('这是一段文本吧内容');
+                $('ul').prepend(lia);//往元素内部的前面添加一个新的元素
+
+            var lib='<li>这是内容lililili最前...</li>';//创建元素
+                $('ul').prepend(lib);
+            
+            var broLi=$('<li>').text('兄弟元素').css('color','red');
+                $('ul li:eq(3)').before(broLi);
+
+            var sisterLi=$('<li>').text('姐妹元素').css('color','red');
+                $('ul li:eq(4)').after(sisterLi);
+
+            var c=$('li:first').clone().css('color','blue');
+                $('#sec').append(c);
+                $('ul>li:eq(2)').remove();//刪除指定的元素
+                $('ul>li:eq(2)').remove();//刪除指定的元素
+                $('ul>li:eq(2)').remove();//刪除指定的元素
+                $('ul>li:eq(2)').remove();//刪除指定的元素
+                //$('ul').empty(); //设置元素之间的内容为空.
+                //$('ul').html('');
+
+        });
+    </script>
+</body>
+</html>

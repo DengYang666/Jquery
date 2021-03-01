@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        .box{
+            border:1px solid black;
+            padding:20px;
+            width: 650px;
+            margin:100px auto;
+        }
+        .box textarea{
+            width: 500px;
+            height: 220px;
+            outline:none;
+            /* vertical-align一般用于设置行内块元素垂直对齐方式  行内块元素常见有input img textarea等 */
+            vertical-align: bottom;
+        }
+        .box ul{
+            width: 500px;
+            margin:0 auto;
+        }
+        .box ul li {
+            line-height: 30px;
+            height: 30px;
+            border-bottom: 1px dashed #cccccc;
+            /* 隐藏元素 */
+            display: none;
+        }
+        .box ul li a{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>微博发布</span>
+        <textarea></textarea>
+        <button>发布</button>
+
+        <ul>
+            
+        </ul>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 给按钮绑定点击事件
+        $("button").on("click",function(){
+            // 获取文本域的值
+            var content = $("textarea").val();
+            if( content == "" ){
+                alert("请输入内容以后再发布!");
+                return ;
+            }
+            // 创建元素 创建一个新的li标签
+            var newLi = $("<li></li>");
+            // 设置li标签的内容
+            newLi.html(content + "<a href='javascript:void(0)'>删除</a>");
+            
+            // 内部添加 而且内部前面添加元素
+            $("ul").prepend( newLi );
+
+            // 找到ul中第一个li元素,设置下滑
+            $("ul").children("li").eq(0).slideDown();
+            
+            // 清空文本框的值
+            $("textarea").val("");
+        });
+
+        $("ul").on("click","a",function(){
+            // confirm询问确认框  点击确定返回true 点击取消返回false
+            
+            if( window.confirm("确认要删除本项吗?") ){
+                $(this).parents("li").slideUp(400,function(){
+                    // 删除元素
+                    $(this).parents("li").remove();
+                })
+            }
+            
+        })
+    </script>
+</body>
+</html>

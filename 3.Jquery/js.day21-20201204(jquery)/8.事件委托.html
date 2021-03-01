@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>添加一个li</button>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+    </ul>
+    <script>
+        /*
+            事件函数:
+                on();  
+                    1.事件委托 
+                        父元素.on('事件名称',"被委托的元素",function(){});
+                    2.on绑定的事件 可以用off解绑.
+                        
+                off();
+                one();
+                trigger();
+
+            原生绑定 解绑事件:    
+                onclick=function(){}  onclick=null
+                addEventListener('click',fun);  removeEventListener('click',fun);
+        */
+        $(function(){
+            $('li').click(function(){
+                alert("li所在额位置"+$(this).index());
+            });
+
+            $('ul').on('click','li',function(){// 把li的点击事件委托给ul 的点击事件处理.
+                alert("这是委托的事件...");
+                console.log(this);// this 指向了事件源.
+            });
+
+            $('button').click(function(){
+                $('ul').append('<li>new li</li>');// 点击按钮的时候 往ul内部后面添加一条li
+            });
+
+
+
+        });
+    </script>
+    
+</body>
+</html>

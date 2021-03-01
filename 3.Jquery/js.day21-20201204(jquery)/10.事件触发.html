@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <a href="https://www.baidu.com/">超链接1</a>
+    <a href="https://www.baidu.com/">超链接2</a>
+    <button>事件测试</button>
+    <button>触发测试</button>
+    <script>
+        /*
+            事件函数:
+                on();  
+                    1.事件委托 
+                        父元素.on('事件名称',"被委托的元素",function(){});
+                    2.on绑定的事件 可以用off解绑.
+                off();
+                    off('事件名称'); 解绑所有跟事件名称相同的事件
+                    off('事件名称',"委托元素名称"); 解绑委托元素的对应事件
+                    off('事件名称',"委托元素名称",绑定的函数) 解绑委托元素事件绑定的对应函数.
+                one('事件名称',事件函数); 只执行一次.
+                
+                trigger('触发事件名称',[参数1,参数2...]);
+                    触发事件. 同时可以往事件的回调函数里面传递参数.
+                triggerHandler
+                    * 第一，他不会触发浏览器默认事件。
+                    * 第二，只触发jQuery对象集合中第一个元素的事件处理函数。
+                    * 第三，这个方法的返回的是事件处理函数的返回值，而不是据有可链性的jQuery对象。
+                     此外，如果最开始的jQuery对象集合为空，则这个方法返回 undefined 。
+
+            原生绑定 解绑事件:    
+                onclick=function(){}  onclick=null
+                addEventListener('click',fun);  removeEventListener('click',fun);
+        */
+       $('button:eq(0)').click(function(event,a,b){
+           console.log(a,b);
+           alert('按钮点击了...');
+       });
+       $('a').click(function(e){
+           alert('a标签绑定的事件...'+$(this).text());
+           return $(this).text();//返回标签之间的内容
+           //e.preventDefault();
+       });
+       $('button:eq(1)').click(function(){
+            //$('button:eq(0)').click(); //直接触发 click函数.
+            //$('button:eq(0)').trigger('click',['button2','123']);//触发click事件. apply
+            var result=$('a').triggerHandler('click');//返回的是事件函数执行的返回值.
+                console.log(result);
+        });
+              
+
+    </script>
+</body>
+</html>

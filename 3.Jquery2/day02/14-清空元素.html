@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>使用empty()清空元素内容</button>
+    <button>使用html("")清空元素内容</button>
+    <button>使用text("")清空元素内容</button>
+
+    <!-- 乱文假字 lorem数字再tab键 lorem5生成5个英文单词 -->
+
+    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, officia exercitationem, qui quisquam alias dignissimos inventore, porro soluta dolore quas iusto voluptates doloremque aperiam iure dolores dolorem mollitia voluptate tempora modi quae commodi excepturi incidunt! Enim adipisci error nobis at ratione laborum magnam illo non commodi sed nihil, doloremque similique voluptate repellendus veritatis minima inventore, fugiat sequi suscipit tempora mollitia in. Facilis facere magnam, soluta ut non maxime rerum error. Maiores, ullam beatae! Suscipit laudantium, reprehenderit quis consequatur quae recusandae ea sed alias itaque eveniet impedit. Fugiat porro assumenda temporibus atque ab modi error hic, eligendi, voluptatem suscipit et aspernatur.</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("button").eq(0).click(function(){
+            // empty()只会清空标签内容
+            $("div").empty();
+
+            // remove()删除标签
+            // $("div").remove();
+        });
+
+        $("button").eq(1).click(function(){
+            $("div").html("");
+        });
+        
+        $("button").eq(2).click(function(){
+            $("div").text("");
+        });
+
+    </script>
+</body>
+</html>

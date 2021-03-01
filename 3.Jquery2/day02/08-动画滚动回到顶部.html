@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 4000px;
+            background: skyblue;
+        }
+        button{
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button>回到顶部</button>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("button").click(function(){
+                $("body,html").animate({
+                    // scrollTop表示垂直滚动条的位置
+                    scrollTop : 0
+                })
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            width: 100px;
+            height: 300px;
+            list-style: none;
+            /* border: 1px solid; */
+            font-size: 30px;
+            float: left;
+        }
+        ul div,ul li{
+            width: 100px;
+            height: 74px;
+            cursor: pointer;
+            line-height: 74px;
+            text-align: center;
+        }
+        ol {
+            display: none;
+        }
+        li{
+            list-style: none;
+            border: 1px solid #fde199;
+        }
+        .active{
+            background-color: #fde199;
+        }
+        .Gl{
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <div>微博</div>
+            <ol>
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我</li>
+            </ol>
+        </ul>
+        <ul>
+            <div>微博</div>
+            <ol>
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我</li>
+            </ol>
+        </ul>
+        <ul>
+            <div>微博</div>
+            <ol>
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我</li>
+            </ol>
+        </ul>
+        <ul>
+            <div>微博</div>
+            <ol>
+                <li>私信</li>
+                <li>评论</li>
+                <li>@我</li>
+            </ol>
+        </ul>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $(".box div").mouseover(function(){
+            $("div").removeClass("Gl")
+            $("ol").css('display',"none")
+            $(this).addClass("Gl")
+            console.log($(this).siblings())
+            $(this).siblings().css('display','block')
+        })
+        $("li").mouseover(function(){
+            $("div").removeClass("Gl")
+            $("li").removeClass("active")
+            $(this).addClass("active")
+        })
+        $(".box").mouseleave(function(){
+            $("div").removeClass("Gl")
+            $("ol").css('display',"none")
+        })
+        $("ol").mouseleave(function(){
+            $("div").removeClass("Gl")
+            $("ol").css('display',"none")
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        // 节流:  规定多久时间之内,只能执行一次函数,一定要等这个函数执行完毕以后,才可以执行下一次函数
+        var btn = document.querySelector("button");
+        // 开关,默认是开的状态
+        var isOpen = true;
+
+        btn.onclick = function(){
+            if( isOpen ){// 判断开关状态,如果是开的状态,才允许进来if判断
+                isOpen = false;// 关掉开关
+
+                console.log( 1111 );
+
+                setTimeout(function(){
+                    // 当延时器执行完毕以后,我们再把开关改为true
+                    isOpen = true;
+                },2000);
+            }
+        }
+    </script>
+</body>
+</html>

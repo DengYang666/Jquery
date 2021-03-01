@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 实现可以拖拽的div盒子
+        var oDiv = document.querySelector("div");
+
+        // 开始的坐标
+        var startX = 0;
+        var startY = 0;
+        oDiv.onmousedown = function( e ){
+            // 拿到鼠标在div盒子里面的坐标
+            startX = e.pageX - oDiv.offsetLeft;
+            startY = e.pageY - oDiv.offsetTop;
+
+            // 给document绑定onmousemove事件
+            document.onmousemove = function( event ){
+                var divX = event.pageX - startX;
+                var divY = event.pageY - startY;
+                // 设置div盒子的偏移量
+                oDiv.style.left = divX + "px";
+                oDiv.style.top = divY + "px";
+            }
+        }
+
+        // 鼠标在文档里面弹起的时候,解绑document.onmousemove事件
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        }
+    </script>
+</body>
+</html>

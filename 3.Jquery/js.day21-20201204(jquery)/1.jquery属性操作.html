@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>按钮</button>
+    <label for="">
+        爱好:
+        <input data-name='hello123' type="checkbox" checked/><span>篮球</span>
+        <input type="checkbox"/><span>足球</span>
+        <input type="checkbox"/><span>网球</span>
+        <input type="checkbox" checked/><span>羽毛球</span>
+        <input type="checkbox"/><span>碰碰车</span>
+    </label>
+    <a href="http://www.baidu.com/">百度网址</a>
+    <script>
+        /*
+            操作元素的属性.
+            prop('属性名称',['属性的值']); 操作html元素自带属性. href  src  checked  selected
+                如果表单的单个属性(checked selected) 获取/设置 都是布尔值
+               如果是操作表单 用 prop 方法
+            attr('属性名称',['属性的值']); 操作自定义属性.
+                只有属性的名称的是 获取属性
+                有第二个参数,修改或设置属性.
+                如果表单的单个属性(checked selected) 如果有选中 获取属性名称 否则就是 undefined
+            data(); 自定义数据属性.  data-id...
+                    给元素对象添加属性数据.
+        */
+       $('button').click(function(){
+            // var type= $('input').prop('type');// true
+            var type= $('input:eq(4)').prop('checked');//prop获取checked属性  false
+            console.log('prop==>',type);
+            //var type= $('input').attr('type'); // checked
+            var type= $('input:eq(4)').attr('checked');//attr获取checked属性  undefined
+            console.log('attr==>',type);
+
+            //自定义属性  data-自定义名称.
+            var dname=$('input:first').prop('data-name');
+            console.log('data-name= prop=>',dname);//undefined
+            var dname=$('input:first').attr('data-name');
+            console.log('data-name= attr=>',dname);// hello123
+            var dname=$('input:first').data('name');//hello123
+            console.log('data-name=data=>',dname);
+
+       });
+       console.log('a= prop=>',$('a').prop('href'));//获取href属性
+       console.log('a= attr=>',$('a').attr('href'));//获取href属性
+       //设置属性
+       //$('input:eq(1)').prop('checked',true);
+       //$('input:eq(2)').attr('checked','checked');
+
+       //$('a').prop('href','http://163.com');
+       //$('a').attr('href','http://sina.com');
+
+       //$('input:first').prop('username','123'); 没有这个 不是元素自带属性
+       //$('input:first').attr('uname','123');//自定义属性 添加到dom里面
+       //$('input:first').data('data-udata','123');
+
+    </script>
+</body>
+</html>
