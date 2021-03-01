@@ -1,1 +1,0 @@
-﻿console.log("hello wrold !  第三种");
