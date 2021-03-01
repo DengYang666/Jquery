@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业-1</title>
+    <style>
+        button {
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+        }
+        input {
+            width: 180px;
+            height: 50px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 20px;
+        }
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #ccc;
+        }
+        .nav {
+            height: 100px;
+            line-height: 100px;
+        }
+        .nav input ,
+        .nav button ,
+        .nav span {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <input type="text" placeholder="请输入一个数" value="4">
+        <button>点击显示累加结果</button>
+        <span>6</span>
+        <!-- 1 + 2 + 3 + 4 = 10 -->
+    </div>
+    <script>
+         // 要求：
+            // 编写函数 reduceFunc ， 传递一个非0数字N，处理1累计到 N 的结果. 并且并返回结果
+            // 点击按钮，获取输入框的值，调用 reduceFunc  函数，把返回的结果渲染在页面
+   
+            var button=document.querySelector("button");
+            var input=document.querySelector("input");
+            var span=document.querySelector("span");
+            function reduceFunc(){
+                var num=Number(input.value);
+                span.innerText=Number(span.innerText)+num;
+            }
+            button.onclick=function(){
+                reduceFunc();
+            }
+    </script>
+    
+</body>
+</html>

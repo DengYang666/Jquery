@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .big{
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+        }
+        .small{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="small"></div>
+    </div>
+    <script>
+        var big=document.querySelector(".big")
+        var small=document.querySelector(".small")
+        big.onmousemove=function(event){
+            x=event.clientX-50
+            y=event.clientY-50
+            small.style.left=x+"px"
+            small.style.top=y+"px"
+          
+            if(x>400){
+                small.style.left=400+"px"
+            }
+            if(y>400){
+                small.style.top=400+"px"
+            }
+            if(x<0){
+                small.style.left=0+"px"
+            }
+            if(y<0){
+                small.style.top=0+"px"
+            }
+        }
+    </script>
+</body>
+</html>

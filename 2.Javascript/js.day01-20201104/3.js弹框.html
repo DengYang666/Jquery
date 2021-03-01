@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js弹框</title>
+    <style>
+        div{
+            color:red;
+        }
+    </style>
+    <script>
+        /*
+            js注释:
+            单行注释:  //
+            多行注释:  /*   */
+        /* */
+        //alert("警告内容:啦啦,叫你停手啦!");//警告框
+        //confirm("提示:你确认取出100万吗?");//确认框
+
+        //var a=prompt("请输入你的取款金额:",1000000);//输入提示框 prompt("提示信息",默认值);
+        //alert("你的账户少了"+a);
+
+          var a=prompt("请输入你的取款金额",1000000);//输入提示框[ 两个按钮: 确认返回输入的值,取消返回 null]
+          var b=confirm("你确认取出"+a); //确认提示框[确认 返回的true 真,取消 返回false 假]
+             if(b){
+                 //如果返回b是真就执行这里的代码
+                alert("你的账户少了"+a+"元");//警告框 只有一个确认按钮
+             }else{
+                 //如果返回b是假就执行这里的代码
+                 alert("你已经取消取款");
+             }
+    </script>
+</head>
+<body>
+    <!--  注释 -->
+</body>
+</html>

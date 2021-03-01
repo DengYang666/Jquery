@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <style>
+        div{
+            width:500px;
+            height:300px;
+            background:red;
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div=document.querySelector('div');
+            div.onclick=function(){//绑定点击事件
+                //this 代表当前对象.
+                this.style.marginLeft='200px';
+                this.style.backgroundColor="blue";
+            }
+            var i=1;
+            div.onmouseover=function(){//绑定鼠标经过事件. 鼠标接触到div的瞬间就触发经过事件
+                console.log(i);
+                i++;
+                this.style.backgroundColor="yellow";
+            }
+            div.onmouseout=function(){//绑定数据移出事件
+                this.style.backgroundColor="red";
+            }
+            div.onmousemove=function(event){//鼠标在事件源里面移动时触发的事件
+                //事件对象 event 事件发生的时候由浏览器传递给事件函数
+                this.innerHTML= "X"+event.pageX+"Y:"+event.pageY; //pageX pageY 距离网页左边 上面的距离
+            }
+    </script>
+</body>
+</html>

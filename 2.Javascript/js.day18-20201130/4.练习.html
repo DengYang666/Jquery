@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <style>
+        form{
+            width:700px;
+            margin: 0 auto;
+        }
+        form span{
+            font-size:14px;
+        }
+        span.name{
+            display:inline-block;
+            width:100px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <label for="phoneNum"><span class="name">手机号码:</span><input type="text" id="phoneNum"/><span>请输入11位手机号码</span></label><br/>
+        <label for="username"><span class="name">用户名:</span><input type="text" id="username"/><span>请输入6-18位用户名</span></label><br/>
+        <label for="email"><span class="name">邮箱地址:</span><input type="text" id="email"/><span>请输入正确邮箱地址:例:65444@qq.com</span></label><br/>
+        <label for="userID"><span class="name">身份证号码:</span><input type="text" id="userID"/><span>请输入正确身份证号码</span></label><br/>
+        <label for="passwd"><span class="name">密码:</span><input type="text" id="passwd"/><span>6-18位不能是纯数字,字母</span></label><br/>
+        <label for="intro"><span class="name">自我介绍:</span><textarea id="intro"></textarea></label><br/>
+    </form>
+    
+    <script>
+        function check(id,reg,msg){//id 输入框id  reg 正则规则  msg验证不通过提示信息
+            var phoneNum=document.querySelector(id);
+                phoneNum.onkeyup=function(){
+                    var val=this.value;//获取输入框的值
+                        if(reg.test(val)){
+                            this.nextElementSibling.innerText='√正确';// nextElementSibling 后一个兄弟标签元素
+                            this.nextElementSibling.style.color='green';
+                        }else{
+                            this.nextElementSibling.innerText="×"+msg;
+                            this.nextElementSibling.style.color='red';
+                        }
+                }
+                phoneNum.onkeydown=function(){
+                   //alert('keydown');
+                }
+        }
+        window.onload=function(){
+            check('#phoneNum',/^1[3456789]\d{9}$/,"请输入11位手机号码");//
+            check('#username',/^\w{6,18}$/,"请输入6-18位用户名 大小写英文字符数字及下划线");
+            // 邮箱: xxx@qq.com         域名    后缀:  com cn  xyz org gov  edu
+            // xxx 邮箱的用户名 可以是 英文大小写字母数字下划线
+            // qq.com  qq是域名 只能是字母数字 或 - 中横线   
+            // 域名的后缀 com  cn  org gov edu  xyz  pr  us  hk me
+            // [] 匹配到中括号里面任意一个字符   "|" "或" 多个字符中一个
+            //var emailReg=/\w{1,18}@[a-z0-9\-]{1,20}\.(com|cn|xyz|org|gov|edu)/i;  //转义符 \- 把中横线转化为无意义-   "|"表示或
+            var emailReg=/\w{1,18}@[a-z0-9\-]{1,20}\.[a-z]{2,4}/i;
+            check('#email',emailReg,"请输入正确邮箱地址:例:65444@qq.com");
+            var userId=/^[123456789]\d{16}[\dxX]$/;
+            check('#userID',userId,'请输入正确身份证号码');
+
+            var pwd=/\w{6,18}/;
+            var passwd=document.querySelector('#passwd');
+            var onlyNum=/^[\d]{6,18}$/;//全数字
+            var onlya=/^[a-z]{6,18}$/;//全小写字母
+            var onlyA=/^[A-Z]{6,18}$/;//全大写字母
+            passwd.onkeyup=function(){
+                var passwdVal=this.value;
+                if(onlyNum.test(passwdVal)||onlya.test(passwdVal)||onlyA.test(passwdVal)){//判断如果全是数字或字母提示错误
+                    this.nextElementSibling.innerText="不能全是数字 或 字母";
+                    this.nextElementSibling.style.color='red';
+                }else if(pwd.test(passwdVal)){//判断位数6-18位 a-zA-Z0-9_
+                    this.nextElementSibling.innerText="√正确";
+                    this.nextElementSibling.style.color='green';
+                }else{
+                    this.nextElementSibling.innerText="×错误";
+                    this.nextElementSibling.style.color='red';
+                }
+            }
+            
+            var intro=document.querySelector('#intro');
+            var wordList=/王八蛋|妈的|傻瓜|王八/;
+                intro.onkeyup=function(){
+                    var v=this.value.replace(wordList,'**');//替换
+                        this.value=v;//把替换的值重新写入
+                }
+            // var username=document.querySelector('#username');
+            //     username.onkeyup=function(){
+            //         var val=this.value;//获取输入框的值
+            //         var reg=/^\w{6,18}$/;//手机号码 1[3456789]\d{9}
+            //             if(reg.test(val)){
+            //                 this.nextElementSibling.innerText='√正确';
+            //                 this.nextElementSibling.style.color='green';
+            //             }else{
+            //                 this.nextElementSibling.innerText="输入错误";
+            //                 this.nextElementSibling.style.color='red';
+            //             }
+            //     }    
+        }
+    </script>
+</body>
+</html>

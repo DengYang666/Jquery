@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多维数组</title>
+    <script>
+        /*
+            数组:
+                多维数组. 数组里面存储元素还是数组.
+            取值: 从外面的数组开始 往里面一层一层的数数组下标.
+            
+            二维数组: 只有2层 人为取名.
+        */
+        var arr=[
+                "陈格",
+                [
+                    "广州市",
+                    ["天河区","黄浦区","白云区","海珠区"]
+                ]
+            ];
+        //alert(arr[1][1][2]);
+        var users=[
+            ["Tom",20,"男","计算机应用专业"],
+            ["Jerry",21,"女","机械专业"],
+            ["Trump",18,"男","计算机网络"],
+            ["Biden",22,"男","公关关系"],
+        ];
+        for(var i=0;i<users.length;i++){
+
+            for(var j=0;j<users[i].length;j++){
+
+                document.write(users[i][j]+"&nbsp;&nbsp;&nbsp;");
+            }
+            document.write("<br/>");
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

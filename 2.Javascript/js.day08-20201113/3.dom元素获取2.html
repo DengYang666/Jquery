@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素获取</title>
+   
+</head>
+<body>
+    <div>
+        <p class="pram">段落1</p>
+        <p class="pram">段落2</p>
+        <p class="pram">段落3</p>
+    </div>
+    <p class="pram">段落3</p>
+    <script>
+        var p=document.getElementsByClassName("pram");//获取类名叫pram的所有标签
+        // console.log(p);
+        for(var i=0; i<p.length; i++){//循环所有标签
+            p[i].innerHTML="这是js控制的html"+i;//改变标签之间的内容
+        }
+    </script>
+</body>
+</html>

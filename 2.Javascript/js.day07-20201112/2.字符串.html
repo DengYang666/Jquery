@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串</title>
+    <script>
+        /*
+            简单类型:
+                Number
+                Boolean
+                String
+                null
+                undefined
+            复合/引用类型:
+                Object 对象 有方法 有属性 数组
+            基础数据类型的包装:
+                包装函数
+                Number();
+                Boolean();
+                String();
+                包装的基础数据类型:
+                    var str='字符串';
+                    var tmp=new String(str);
+                        tmp.substr();
+                        tmp=null;
+                字符串的方法: 字符串对象优点类似数组 有索引.
+                    length 属性 字符串长度 js里面的中文只算一个(utf-8 一个中文3字符长度 gbk两个字符串)
+                    indexOf();  查找字符串  根据参数查找字符串 返回字符串所在下标
+                    charAt(); 根据字符串所在索引号(下标返回字符串)
+                    substr(开始位置index,长度length可以省略表示截取末尾); 表示从index开始截取length个字符串
+
+                    splite(分割符); 把字符串分割为一个数组
+                    charCodeAt();
+                    fromCharCode();
+                    slice();
+            typeof
+        */
+        // var str=new String("字符串");//创建字符串对象
+        var str="字符串";
+        // console.log('调用方法之前',typeof str);
+        var re=str.substr(1,2);//截取字符串 字符串直接调用方法的时候 被js引擎包装成了字符串对象
+        // console.log("调用方法之后",typeof str);
+        // console.log(re);
+        var str2='hello  Trump!';//内存 不可变 js 垃圾自动回收.
+            str2='hello Biden';//重新赋值 重新开启一个内存空间用来存储新的值. 所以当有大量字符串拼接有性能问题
+        //字符串对象
+        var str3='你好China!!';
+        //alert(str3.length);//获取字符串的长度
+        var index=str3.indexOf("Trump");//根据字符串查找.
+         //alert(index);
+         var re=str3.charAt(2);//根据所在位置的索引号返回字符串
+         //alert(re);
+         var res=str3.substr(2,5);
+            //alert(res);
+            
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

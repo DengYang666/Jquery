@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算优先级</title>
+    <script>
+        /*
+            1.小括号的优先级最高.
+            2.一元运算  a++; a--;  !
+            3.算术运算符
+            4.比较运算符 > < >= <=
+            5.相等运算符 == === !=
+            6.逻辑运算. && ||
+            7.赋值运算 给变量赋值.
+        */
+        var num=5;
+            num = (num++) - (--num) + (num++) > 3 && !false && 6;
+            console.log('运算结果==>',num);
+
+            // console.log(undefined||123);//123
+            // console.log('undefined'||132);//undefined
+        var a=10;
+        var b=20;
+        var c=30;
+        //找到最大值. 不用if的情况下.
+
+    </script>
+</head>
+<body>
+</body>
+</html>

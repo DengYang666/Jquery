@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组循环</title>
+    <script>
+        /*
+            数组索引[下标] 0 1 2 3 4 5 6
+            for(){
+
+            }
+        */
+        var movie=["八佰","姜子牙","孙悟空","珍珠港事件","我和我的家乡"];
+        for(var i=0; i<movie.length; i++){//数组的下标是从0 开始. 下标比长度小1
+            document.write(movie[i]+"<br/>");
+        }
+        document.write("<br/>");
+        var str='';
+        //将数组转化为字符串
+        for(var i=0;i<movie.length;i++){
+            str += movie[i] + "<=>";
+        }
+        //document.write(str);
+        
+        //筛选数组里面值小于10的数据 形成一个新的数组
+        var arr=[5,10,20,30,15,8,6];
+        var newArr=[];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]<10){
+                newArr[newArr.length]=arr[i];
+            }
+        }
+        //console.log(newArr);
+        //查找数组里面的最大值   最小值.
+        function findMax(arr){
+            var max=arr[0];//假设数组的第一个值是最大的.
+            for(var i=0;i<arr.length;i++){
+                if(arr[i]>max){//如果数组里面第i元素比max大,那么这个元素就作为最大值.
+                    max=arr[i];
+                }
+            }
+            return max;
+        }
+        //alert(findMax(arr));
+       
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

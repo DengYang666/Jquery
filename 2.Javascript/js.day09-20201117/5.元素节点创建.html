@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+        <li>无序列表5</li>
+    </ul>
+    <script>
+        /*
+            元素节点创建:
+                document.createElement();
+            文本节点创建:
+                document.createTextNode();
+            节点插入:
+                B.appendChild(A); 把节点A插入当前节点B的末尾
+        */
+        var lastLi=document.createElement('li');//创建一个元素节点
+        var ul=document.querySelector('ul');//查询ul元素标签
+        var textNode=document.createTextNode("这是无序列表第6项");//创建一个文本节点
+        var lastA=document.createElement('a');//创建一个a标签元素节点
+        var textA=document.createTextNode('删除');//创建文本节点.
+            lastA.appendChild(textA);//把文本节点textA插入lastA元素节点里面
+            lastA.setAttribute('href','http://baidu.com');//给a元素节点设置属性 href
+            lastLi.appendChild(textNode);//把文本节点插入li节点后面
+            lastLi.appendChild(lastA);//把A元素节点插入 lastLi 元素的末尾
+            ul.appendChild(lastLi);//把创建 li 元素节点 插入到ul的末尾
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function abc(){//普通函数
+
+        }
+        var bcd=function(){//匿名函数 回调.
+            
+        }
+        /*
+            Function 构造函数
+            Function('定义函数的参数','定义函数参数',"函数体")
+            注意
+            Function 里面参数都必须是字符串格式
+            第三种方式执行效率低，也不方便书写，因此较少使用
+            所有函数都是 Function 的实例(对象)  ******** 
+            函数也属于对象 ***
+        */
+        //第三种形式
+        var fun=new Function('a','b','var c=a+b;console.log(c);');//创建函数
+            fun(10,20);//调用函数
+        console.log(fun);//
+        console.log(bcd);//
+        var obj={
+            name:"Trump",//对象的属性
+            say:function(){//对象的方法
+            }
+        }
+        function People(){
+            this.name="Trump";
+            this.say=function(){//也是给属性赋值 只是赋值的数据类型 是function
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标右键</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background-color: blue;
+        }
+        ul{
+            width:200px;
+            list-style: none;
+            display: none;
+            position: absolute;
+        }
+        ul li{
+            border:1px solid #0FF;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+        <li>菜单4</li>
+    </ul>
+    <script>
+        document.querySelector('div').ondblclick=function(){
+           this.style.backgroundColor="red";
+        }
+        var ul=document.querySelector('ul');
+        document.oncontextmenu=function(e){//鼠标右键事件
+            var x=e.clientX;
+            var y=e.clientY;
+            ul.style.left=x+"px";
+            ul.style.top=y+"px";
+            ul.style.display='block';
+            return false; //阻止浏览器的默认行为
+            //e.preventDefault();//阻止浏览器的默认行为
+        }
+        ul.onclick=function(e){
+            alert(e.target.innerText);
+            e.stopPropagation();//阻止冒泡
+        }
+        document.onclick=function(){
+            ul.style.display='none';
+        }
+    </script>
+</body>
+</html>

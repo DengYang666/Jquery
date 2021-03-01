@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:500px;
+            height:500px;
+            background-color: coral;
+        }
+        .main{
+            width:100%;
+            height:100px;
+            color:#FFF;
+        }
+    </style>
+    <script>
+        window.onload=function(){//等网页加载完成之后执行
+            var div=document.querySelector('div');
+                //console.log(div);
+                //div.style.width=100+"px";
+                div.style.backgroundColor='blue'
+                alert("onload 方式绑定的事件..");
+        }
+        window.addEventListener('load',function(){
+            alert("load 事件 监听的方式绑定...");
+        });
+        //等网页加载完成之后触发,不包括图片 flash 等资源 比 onload 先触发
+        window.addEventListener('DOMContentLoaded',function(){
+            var img=document.querySelector('img');
+                img.style.width="50px";
+            var btn=document.querySelector('button');
+                btn.style.width="200px";
+                alert("DOMContentLoaded");
+        });
+        window.onresize=function(){//浏览器窗口发生变化的时候触发的事件
+            var width=window.innerWidth;
+            var height=window.innerHeight;
+            document.querySelector('.main').innerHTML="Width: "+ width+"  Height  "+height;
+        }
+    </script>
+</head>
+<body>
+    <div class="main"></div>
+    <img src="放大镜.png"/>
+    <button>这是按钮</button>
+    <div></div>
+</body>
+</html>

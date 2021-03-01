@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        p{
+            color:#F00;
+            background-color:#F00;
+            margin-left:50px;
+            border-radius: 20px;
+            border-left:5px dashed blue;
+            border-left-color:red;
+            border-left-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        var div=document.querySelector('div');//获取div元素对象
+            // div.style="width:100px;height:100px;background:#f00";
+            //style 属性本身也是对象.
+            //css样式属性如果有 - 要去掉后面单词首字母大写
+            div.style.width="500px";
+            div.style.height="500px";
+            div.style.backgroundColor="#F00";
+            div.style.marginLeft="100px";
+            div.style.borderRadius="20px";
+            div.style.borderLeft="5px dashed blue";
+            div.style.borderLeftStyle="solid";
+            // alert(encodeURIComponent('9.dom属性style.html'));
+
+    </script>
+</body>
+</html>

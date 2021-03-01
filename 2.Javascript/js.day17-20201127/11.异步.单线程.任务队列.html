@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单线程 异步</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        //绑定的时候也是存在任务队列 当事件发生的时候,从事件队列里面出去该事件函数 并执行.
+        //事件执行完成之后,会继续加入事件队列,等待下触发事件,然后执行.
+        document.querySelector('button').onclick=function(){
+            alert("按钮被点击了");
+        }
+        document.addEventListener('click',function(){
+            alert('事件2');
+        });
+        document.addEventListener('click',function(){
+            alert("事件3");
+        });
+        document.addEventListener('click',function(){
+            alert("事件4");
+        });
+        /*
+            js是单线程.(js在cpu里面运行的时候,一次只能运行一个任务.)
+            异步队列:
+            异步任务:  定时器  事件  ajax(异步数据调用)
+                在程序执行的时候,如果是异步任务, 把任务加入一个任务队列. 如果任务需要被执行,
+                就会从任务队列里面弹出该任务,并执行. 而不是一直等待.
+
+            异步.
+            setTimeout();   延迟时间不能为0, 如果给了0 浏览器默认会延迟4毫秒. IE里面是10或20毫秒 
+            setInterval();
+        */
+
+        function foo(){
+            console.log('foo in first');
+        }
+        foo();
+        for(var i=0;i<1000;i++){
+            //把 1000个定时器给扔到任务队列.  后面的代码继续执行.
+            //等到10000毫秒 即10秒之后. 它定时器从任务队列 弹出,并立马执行
+            //执行一次
+            // setTimeout(function(){
+            //     console.log(i);
+            // },0);
+            setInterval(function(){
+                console.log('这是定时器interval==>',i);
+            },0);
+        }
+        console.log("second after");
+
+
+    </script>
+</body>
+</html>

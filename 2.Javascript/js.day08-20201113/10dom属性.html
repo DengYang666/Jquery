@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .testclass{
+            width:500px;
+            height:100px;
+            background-color: red;
+        }
+        .changecolor{
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="testid" class="testclass">这是DIV</div>
+    <label>
+        密码: <input type="password" /><b>显示密码</b>
+    </label>
+    <script>
+        var isShow=false;//设置显示 或 隐藏状态
+        document.querySelector('b').onclick=function(){//点击b标签的时候执行function
+            var textbox=document.querySelector('input');
+            if(!isShow){// 如果是隐藏状态 就改为显示状态
+                this.innerText="隐藏密码";
+                textbox.type="text";//把input的type属性改成 text
+                isShow=true;//显示状态
+            }else{//显示状态 改为 隐藏状态
+                textbox.type="password";
+                this.innerText="显示密码";
+                isShow=false;
+            }
+
+        }
+        var testid=document.querySelector('#testid');
+        //console.dir(testid.id);//获取div的id属性
+        testid.id="changeID";//改变对象的id属性值
+
+        //testid.style.width='100px';
+        //testid.style.height='200px';
+        //testid.style.backgroundColor='red';
+
+        //var testid5=document.querySelector('#testid');//重写获取testid 就没有了 null
+            //console.dir(testid5);
+
+        //控制class类名要用className
+        testid.className = "changecolor";
+
+    </script>
+</body>
+</html>

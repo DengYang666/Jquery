@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态成员</title>
+</head>
+<body>
+    <script>
+        /*
+            成员: 包含方法和属性
+            对象成员   ( 实例成员 )
+            静态成员  不通过对象调用,直接通过构造函数的名称调用成员,静态成员(方法 属性)
+                      静态成员里面是无法调用对象成员
+                      在实例成员里面 可以调用静态成员.  不能用this去调用.
+        */
+        function People(){
+            this.name="Trump";//实例成员 对象成员
+            this.sayHi=function(){//实例成员 对象成员
+                //方法
+                console.log(this.name+"在say Hi");
+                People.sing();//调用静态方法
+                console.log("在sayHi里面静态属性",People.head);//调用静态属性
+            }
+        }        
+        People.sing=function(){//静态成员
+            //静态成员里面是无法调用对象成员.
+            console.log("小鸟在唱歌!......");
+        }
+        People.head="圆圆的Head";//静态成员
+
+        var p1=new People();//创建对象  实例化对象
+            p1.name;//调用对象的成员
+            p1.sayHi();//调用对象的成员
+
+        People.sing();//调用静态成员.
+        /**
+        
+
+        //Math.random();
+        //Math.floor();
+        //var date=new Date();
+        **/
+        
+    </script>
+</body>
+</html>

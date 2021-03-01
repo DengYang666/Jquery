@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        //node.tagName;//element对象的属性 element对象继承自Node.
+        //node.NodeName;//Node对象的属性.
+        var div=document.querySelector('div');
+        console.dir(div);
+        /*
+            this代表离他最近的对象.
+            js里面内置Object构造函数的对象 是所有其他的对象的 祖宗.
+        */
+        function People(){
+            this.name="Trump";
+        }
+        People.prototype.age=70;//赋值
+        People.prototype.sayHi=function(){
+            //原型里面的this 代表还是当前对象p1
+            console.log(this.name+"在sayHi函数"); //构造函数的原型对象里面 prototype原型对象.
+        }
+        //var p1=new People();
+        //    p1.sayHi();
+        /*
+            作用:
+                1.扩展 内置构造函数
+                    Date 扩展Date对象计算时间差的函数.
+                         扩展Date的格式化为中文时间函数 formatDate 2020年11月25日 10时54分10秒
+                2.可以实现继承
+        */
+       Array.prototype.sum=function(){
+           //this 代表创建的数组对象.
+           var sumNum=0;
+           for(var i=0;i<this.length;i++){
+               sumNum+= this[i];
+           }
+           return sumNum;
+       }
+       Array.prototype.pop=function(){//覆写了Array的pop  重写了Array的pop
+           console.log("HAH 你的pop方法没用了!");
+       }
+       Date.prototype.format=function(formatStr){
+            //2020-11-25 10:52:10   ==>2020/11/25 10:52:10 
+       }
+       //new Date().format('Y/m/d H:i:s');
+       //var arr=[10,20,40,50,60];
+       //    console.log('數組求和==>',arr.sum());
+        //console.log(arr.pop()); 
+        //console.log(arr);
+       // console.log(arr);
+       /**
+       var arr1=new Array();//数组 对象.
+           arr1.userName="Trump";
+        Array.prototype.counter=function(){
+            console.log('这是counter函数');
+        } 
+       var  arr2=new Array();
+       console.log('arr1 userName=>',arr1.userName);//Trump
+       console.log('arr2 userName=>',arr2.userName);//没有 undefined
+       console.log('arr1 counter=>');
+       arr1.counter();//有
+       console.log('arr2 counter=>');
+       arr2.counter();//有
+       */
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+    <script>
+        /*
+            算术运算:
+            + 加法.(字符串连接也是 + )
+                1.如果运算数其中有一个值是字符串 ,  + 就做字符串连接.
+                2.如果运算数里面没有字符串,非数字的运算数会用Number()转化为数字之后在运算
+                3.NaN 和 Undefined 和任何数运算都是结果都是NaN
+            - 减法(英文中横线)
+            *
+            /
+            %
+              1.其中一个运算数不是数字 就会先用Number转化为数字,然后在进行运算.
+              2.NaN undefined 转化为NaN 它和其他数进行运算结果都是NaN
+              3.Infinity -Infinity 它们和任意数进行运算结果 Infinity ,如果做%结果是NaN  如果他们之间自己进行运算结果是NaN
+              4.null (0) false(0) true(1) 
+        */
+        var str='2020';
+        var year=2020.11;
+        var result= str + year;
+        console.log("字符串 和 数字=>",result);   
+        var year=2020;
+        var y=false;
+        console.log("数字 和 布尔=>",year+y);
+        var num1=100;
+        /**
+        console.log(num1%NaN);// NaN
+        console.log(num1%undefined); // NaN
+        console.log(num1%null,Number(null));// NaN
+        console.log(num1%false);// NaN
+        console.log(num1%0);// NaN
+        */
+        // console.log("无穷运算==>",num1+Infinity);
+        // console.log("无穷运算==>",Infinity-1000000000);
+        // console.log("无穷运算==>",Infinity*1000000000);
+        // console.log("无穷运算==>",Infinity/1000000000);
+        // console.log("无穷运算==>",Infinity%1000000000);
+        //console.log("无穷运算==>",Infinity-Infinity);
+
+        /*
+            薪水:
+                6000 每年涨薪幅度 5%  5年后,薪水是多少? 7657.689375
+            取位数:
+                65425 取出 万位数字 千位数字  分别是多少?   
+       
+        var paycheck=6000;
+            paycheck=paycheck+paycheck*0.05;// 1
+            paycheck=paycheck+paycheck*0.05;// 2
+            paycheck=paycheck+paycheck*0.05;// 3
+            paycheck=paycheck+paycheck*0.05;// 4
+            paycheck=paycheck+paycheck*0.05;// 5
+            console.log(paycheck);
+        
+        var num=91425;
+        var wan=parseInt(num/10000);
+        var qian=(parseInt(num/1000)%10); // 65%19  91%10=>1
+        console.log(wan,qian);
+        */
+        /*
+            赋值运算:
+                运算数自身 添加一个值.
+        */
+        var num1=200;
+        var num2=28;
+            num2%=5; //赋值运算 num2+=5 等价 num2=num2+5;
+        console.log(num2);
+        var paycheck=6000;
+            paycheck*=1.05;// 1  paycheck+paycheck*0.05;
+        /*
+            递增 + 1
+                a++; 在使用的时候 先使用后+1
+                ++a; 在使用的时候 先+1后使用
+            递减 -1
+                a--;
+                --a;
+        */
+        var year=2020;
+            // ++year; year++;    year=year+1 ==> year++;
+            console.log(++year);  // 2021 加号在前面 先+1 在输出
+            console.log(year++);  // 2021 加号在后面 先输出 在+1
+            console.log(year++);  // 2022 加号在后面 先输出 在+1
+            console.log(year);    // 2023
+        var age=5;
+                //5 + 7(age=7) + 7(age=8)  + 9(age=9) = 28
+            age=(age++) + (++age) + (age++) + (++age);//29 28 30
+            console.log(age);
+        var num5=10;
+            console.log("num5开始==>",num5--); //10
+            console.log(--num5);//8 
+            console.log(num5);//8 
+        var num6=20;
+            //20(num6=21)-20(num6=20) + 20(21) - 21(20)
+            num6=num6++ - --num6 + num6++ - num6--;//
+            console.log(num6);// -1
+        /*
+            
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

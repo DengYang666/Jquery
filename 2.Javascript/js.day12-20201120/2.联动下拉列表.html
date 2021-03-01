@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select{
+            width:200px;
+            height:50px;
+            font-size: 20px;
+        }
+        span{
+            color:red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <select id="province">
+
+    </select>
+    <select id="city">
+
+    </select><br/>
+    <label>你选择:<span></span></label>
+    <script>
+       /*
+        for in  循环对象 循环数组
+        不要去循环 
+            HTMLCollection  document.getElementsByClassName();
+            NodeList  document.querySelectorAll('')
+
+            all=[
+                {
+                    code:1,标记做代号
+                    province:"广东省",//存名称
+                    city:[//省里面的城市 因为每个省有很多城市所以存成一个数组
+                        "广州市",
+                        "深圳市"
+                    ]
+                },//每个省份的信息都是一个对象..
+                .....
+            ] 数组
+       */
+       var all=[
+            {
+                province:"广东省",
+                code:1,
+                city:[
+                    "广州",
+                    "深圳",
+                    "中山",
+                    "东莞"
+                ]
+            },
+            {
+                province:"江西省",
+                code:2,
+                city:[
+                    "赣州",
+                    "南昌",
+                    "新余",
+                    "玉山"
+                ]
+            },
+            {
+                province:"湖南省",
+                code:3,
+                city:[
+                    "长沙",
+                    "郴州",
+                    "娄底",
+                    "张家界"
+                ]
+            },
+            {
+                province:"广西自治区",
+                code:4,
+                city:[
+                    "南宁",
+                    "北海",
+                    "柳州",
+                    "桂林"
+                ]
+            }
+        ];
+        //all[0].province//取到广东省
+        var province=document.querySelector('#province');
+        var city=document.querySelector('#city');
+        var span=document.querySelector('span');
+        for(var i in all){
+            var provinceName=all[i].province; //取出省份的名称
+            var option=document.createElement('option');//创建option标签节点
+                option.innerText=provinceName;//设置option标签之间文本
+                option.value=all[i].code;//取到省份的代号code 并赋值非option的value属性
+            //var text=document.createTextNode(provinceName);    
+            //    option.appendChild(text)
+                province.appendChild(option);//把option节点加入 select标签里面
+        }
+        province.onchange=function(){//给省份列表添加一个change事件 当里面值改变的时候触发该事件.
+           var code=this.value;//取出声明的code值
+           var citys=[];
+           for(var i in all){
+               if(all[i].code ==  code){//判断选中code 和所有循环出来code对比,如果相等就取出对应的城市列表
+                    span.innerText=all[i].province;//把取到省份放到span的内容
+                    citys=all[i].city;
+                    break;
+               }
+           }
+           city.innerHTML="";//清空一次后面城市列表
+           for(var j in citys){
+               var cityName=citys[j];//取出城市名称
+               var option=document.createElement('option');//创建option标签节点
+                   option.innerText=cityName;//把城市名称放入 option
+                   city.appendChild(option);//appendChild 往元素内部的后面添加一个子元素
+           }
+        }
+        city.onchange=function(){
+            var cityName=this.value;//取出city的名称
+                span.innerText+=cityName;//把cityName追加到 省份后面
+        }
+    </script>
+</body>
+</html>

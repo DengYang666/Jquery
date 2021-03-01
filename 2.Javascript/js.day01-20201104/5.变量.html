@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量</title>
+    <script>
+        /*
+            变量:var 关键字  name 是变量的名称;
+            var names; 声明变量 ,有一个var关键字 [javascript程序里面已经被使用且有意义有作用的词]
+                names="小王"; 赋值
+                names="老王"; 赋值 重新赋值(更新原来的值)
+            var names="小王";//变量的初始化
+            javascript是弱类型语言:  变量里面可以存储不同类型的值;
+
+            变量命名尽量 不使用name这个全局属性作为变量名. window.name window全局对象.
+            变量的使用:
+                直接使用变量名 就可以取到变量的值.
+                如果变量有声明没有赋值的时候,取到的undefined;
+                如果变量没有被声明也没有赋值,无法取到变量的值,而且抛出一个error错误. 后面的代码不会继续执行. 
+
+            变量可以同时声明多个:
+                var names,age,gender,money;
+                var names="小王",age=20,gender="女",money=19.9;
+            变量的命名规则:
+                可以是: 字母a-z A-Z 0-9 _ $ 作为变量名称;
+                限制: 1.不能是数字数字开头
+                      2.不能是js的
+                                保留字[js编程语言里面现在没有,但是预计后面的js语言里面会用到.  abstract interface extends..],
+                                关键字[js编程语言里面已经被使用且有意义、有作用的词 var function if else break continue...]
+                特点: 区分大小写.
+                      age  
+                      Age
+                      aGe
+                      agE
+                规范: 驼峰式命名.
+        */
+            //console.log("我想要取到age==>",age);
+            var names;//声明变量
+                console.log("在给小王之前输出name =>",names); //只是声明了变量没有赋值 变量的值 undefined
+                names="小王";//变量赋值
+                console.log("在给小王之后输出name =>",names); // 小王.
+                names="老王"; //重新赋值
+                console.log("在最后输出name =>",names); //老王
+            
+            var names="小王",age=20,gender="女",money=19.9;//同时声明并赋值多个变量
+            console.log('姓名==>',names,"年龄=>",age,"性别=>",gender,"钱钱尔-=>",money);
+            //变量名称规范
+            var $name="乔峰";
+            var _zhao="降龙十八掌";
+            var girlFriend="阿朱";
+            var girlFirendSister="阿紫";
+            var brother1="虚竹";
+            var brother2="段誉";
+            //var 3brother="不存在";//不能数字开头 //Invalid or unexpected token
+            //var if=20;// var var=20;//变量名称不能是关键字 或 保留字 Unexpected token 'if'
+            var moneY=19.9; // js变量名称 区分大小写,
+            var money=5000000;
+            //alert(moneY);
+            //alert(money);
+                
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <style>
+        div{
+            width:500px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="请输入查询产品的名称" id="pname"/>
+        <button id="psearch">搜索</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>产品名称</th>
+                    <th>产品价格</th>
+                </tr>
+            </thead>
+            <tbody id="pbody">
+                
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <input type="text" placeholder="请输入姓名" id="username"/>
+        <button id="usersearch">搜索</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>年齡</th>
+                    <th>性別</th>
+                </tr>
+            </thead>
+            <tbody id="usertabody">
+                
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var data=[
+            {id:1,name:"华为",price:3500},
+            {id:2,name:"荣耀",price:6500},
+            {id:3,name:"小米",price:5500},
+            {id:4,name:"红米",price:4500},
+            {id:5,name:"oppo",price:3500},
+            {id:6,name:"Iphone",price:4000},
+            {id:7,name:"苹果",price:5000}
+        ];
+
+        var userData=[
+            {id:1,name:"Trump",age:70,gender:'男'},
+            {id:2,name:"Biden",age:65,gender:'男'},
+            {id:3,name:"xiaowu",age:50,gender:'男'},
+            {id:4,name:"小王",age:45,gender:'女'},
+            {id:5,name:"大王",age:60,gender:'女'},
+            {id:6,name:"悟空",age:30,gender:'女'},
+            {id:7,name:"八戒",age:35,gender:'男'}
+        ];
+        /*
+            函数: search函数   renderData函数   ===> 對象的方法
+            变化的变量: data  tbody button input  ===> 做成了的属性
+
+            把一个功能封装成 对象 或 函数:
+            封装函数:
+                把变化的数据 做成参数, 如果需要函数的最终运行 就 return 返回结果;
+            封装对象:
+                把变量做成对象的属性.
+                把函数变成对象的方法. (注意 this的引用的问题)
+        */
+        function SearchTable(){//属性.
+            this.data=[];
+            this.tbody=null;//填充数据的表格主体.
+            this.button=null;//搜索按钮元素对象.
+            this.input=null;//输入框元素对象.
+        }
+        SearchTable.prototype.init=function(){//初始化
+            var o=this;//給searchTable對象一個別名
+            this.renderData(this.data);//先填充数据表格
+            this.button.onclick=function(){//点击搜索按钮
+                o.search(); // this.search();
+            }
+            this.input.addEventListener('keyup',function(){//输入框的键盘弹起事件
+                o.search();  // this.search();
+            });
+        }
+        SearchTable.prototype.search=function(){
+            var pname=this.input.value;//鼠标点击的时候获取产品名称
+                    var result=this.data.filter(function(value){//过滤数组 
+                        if(value.name.indexOf(pname)>=0){//判断循环出来每一项里面的名称属性有没有 pname 如果有返回true. 存储 filter的返回数组里面
+                            return true; //filter函数里面 如果返回true 该条结果存入返回数组里面
+                        }
+                        return false;//filter函数里面 如果返回false, 该条结果不存入返回数组里面
+                    });
+                    this.tbody.innerHTML='';//把原来tbody里面的html先清空
+                    this.renderData(result);//把筛选的结果重新写入tbody
+        }
+        SearchTable.prototype.renderData=function(data){
+            var o=this;//给searchTable的this对象做一个别名
+            data.forEach(function(value){
+                // console.log(this);  this  代表是window
+                var tr=document.createElement('tr');
+                for(var i in value){//循环对象
+                    var td1=document.createElement('td');
+                        td1.innerText=value[i];
+                        tr.appendChild(td1);
+                }
+                o.tbody.appendChild(tr);
+                // var td1=document.createElement('td');
+                //     td1.innerText=value.id;
+                //     tr.appendChild(td1);
+
+                // var td2=document.createElement('td');
+                // td2.innerText=value.name;
+                //     tr.appendChild(td2);
+
+                // var td3=document.createElement('td');
+                // td3.innerText=value.price;
+                //     tr.appendChild(td3);
+               
+            });
+        }
+        var st=new SearchTable();
+            st.data=data;//对象的数据属性data 赋值.
+            st.tbody=document.querySelector('#pbody');//给对象tbody赋值 填充表格主体
+            st.button=document.querySelector('#psearch');
+            st.input=document.querySelector('#pname');
+            st.init();//调用对象init 初始化
+       var usert=new SearchTable();
+            usert.data=userData;//对象的数据属性data 赋值.
+            usert.tbody=document.querySelector('#usertabody');//给对象tbody赋值 填充表格主体
+            usert.button=document.querySelector('#usersearch');
+            usert.input=document.querySelector('#username');
+            usert.init();//调用对象init 初始化
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        //var tbody=document.querySelector('tbody');
+        //renderData(data);//填充所有数组里面的数据到表格
+        //var button=document.querySelector('button');
+        //var input=document.querySelector('input');
+        /** button.onclick=function(){//点击搜索按钮
+                search();
+            }
+            input.addEventListener('keyup',function(){//输入框的键盘弹起事件
+                search();
+            });
+        
+        function search(){
+            var pname=input.value;//鼠标点击的时候获取产品名称
+                    var result=data.filter(function(value){//过滤数组 
+                        if(value.name.indexOf(pname)>=0){//判断循环出来每一项里面的名称属性有没有 pname 如果有返回true. 存储 filter的返回数组里面
+                            return true; //filter函数里面 如果返回true 该条结果存入返回数组里面
+                        }
+                        return false;//filter函数里面 如果返回false, 该条结果不存入返回数组里面
+                    });
+                    tbody.innerHTML='';//把原来tbody里面的html先清空
+                    renderData(result);//把筛选的结果重新写入tbody
+        }
+      
+        //把数组里面数据 组装成html里的 tr td 添加到tbody
+        
+        function renderData(data){
+            data.forEach(function(value){
+                var tr=document.createElement('tr');
+                var td1=document.createElement('td');
+                    td1.innerText=value.id;
+                    tr.appendChild(td1);
+                var td2=document.createElement('td');
+                td2.innerText=value.name;
+                    tr.appendChild(td2);
+                var td3=document.createElement('td');
+                td3.innerText=value.price;
+                    tr.appendChild(td3);
+                tbody.appendChild(tr);
+            });
+        }*/
+
+    </script>
+</body>
+</html>

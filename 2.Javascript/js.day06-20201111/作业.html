@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <script>
+        /*
+            f(10)=1 //剩余1天
+            f(9)=(f(10)+1)*2 //剩余2天
+            
+            f(n)=(f(n-1)+1)*2 //剩余的天数
+        */
+        function sum(n){
+            if(n==1){//剩余一天 实际上第十天
+                return 1;
+            }
+            return (sum(n-1)+1)*2; //n是剩余10天 其实就是开始吃第一天的数量
+        }
+        //alert(sum(3)); //10  
+
+        //692223361219
+        function ean13(num){
+           //var re=String(num).split("");
+           var numArr=[];
+           while(num){
+               var weiNum=(num%10);// 個 十  百  千 万   .. 万千百十个
+               numArr.unshift(weiNum);//往数组头部添加数据
+               num=parseInt(num/10);// 213 213%10=3 parseInt(213/10)%10=1 parseInt(213/10/10)%10=2 parseInt(213/10/10/10)=0
+           }
+           var odd=0;//奇数和
+           var even=0;//偶数和
+           for(var i=0;i<numArr.length;i++){
+               if(i%2==0){//数组里面的偶数下标其实是奇数位
+                    odd+=numArr[i];
+               }else{
+                   even+=numArr[i];
+               }
+           }
+           var ge=(odd+(even*3))%10;
+           var sign= ge==0 ? 0: 10-ge;// 如果得到余数等于 结果0 否则 10-个位数
+           numArr.push(sign); //把得到标记位加入数组最后面
+           return  Number(numArr.join(''));//把数组转化为字符串 转化Number
+        }
+        //alert(ean13(692223361219));
+        var arr=[ 15, 12, 10, 5 ];
+        function reverse(arr){
+            //var newArr=[];
+            // for(var i=arr.length-1;i>=0;i--){
+            //     newArr[newArr.length]=arr[i];
+            // }
+            // for(var i=0;i<arr.length;i++){
+                //var sub=arr.length-1-i;//取到倒数位的下标
+                //newArr[newArr.length]=arr[sub];
+                //newArr.unshift(arr[i]);//unshift 添加数据到数组头部.
+            // }
+            // while(arr.length){
+            //      newArr.unshift(arr.shift())
+            // }
+
+            // var len=arr.length;
+            // for(var i=0;i<parseInt(len/2);i++){
+            //     var last=len-i-1;
+            //     var tmp=arr[i];//交换位置 倒数第一个和 正数第一个交换位置 倒数第二个和 正数第二个交换位置
+            //         arr[i]=arr[last];
+            //         arr[last]=tmp;
+            // }    
+            // return arr;
+        }
+        //alert(reverse(arr));
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

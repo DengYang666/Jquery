@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数介绍</title>
+    <script>
+        /**
+        var total=0;
+        for(var i=1;i<=100;i++){
+            total=total+i;
+        }
+        
+        var total=0;
+        for(var i=1;i<=5;i++){
+            total=total+i;
+        }
+
+        var total=0;
+        for(var i=10;i<=20;i++){
+            total=total+i;
+        }
+
+        **/
+        /**
+            函数封装:
+            1.变化的数据用参数传递.
+            2.如果有需要返回的数据. 用return 返回结果.
+        */
+        function counter(startNum,endNum){
+            //函数体
+            var total=0;
+            for(var i=startNum;i<=endNum;i++){
+                total=total+i;
+            }
+            return total;//返回结果.
+        }
+        var all=counter(1,100);//调用函数
+        console.log(all);
+        var all=counter(1,5);//调用函数
+        console.log(all);
+        var all=counter(10,20);//调用函数
+        console.log(all);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

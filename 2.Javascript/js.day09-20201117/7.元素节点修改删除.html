@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素节点的修改删除</title>
+</head>
+<body>
+    <ul>
+        <li>Trump1</li>
+        <li>Trump2</li>
+        <li>Trump3</li>
+        <li>Trump4</li>
+        <li>Trump5</li>
+    </ul>
+    <script>
+        /*
+            replaceChild(); 替换节点
+            cloneNode(布尔参数); 克隆节点 复制节点.  布尔参数: false 只复制当前节点 true 复制节点里面的所有
+            removeChild(); 删除节点
+        */
+        var ul=document.querySelector('ul');
+        var trump2=ul.children[1];//获取第二个元素节点
+        var li=document.createElement('li');
+        var liText=document.createTextNode('Biden');
+            li.appendChild(liText);
+            ul.replaceChild(li,trump2);//替换子节点. trump2节点替换成新节点li
+
+        var copyLi=trump2.cloneNode(true);//把trump2节点复制一份    
+            ul.appendChild(copyLi);//把复制的li 放到最后.
+        var li4=ul.children[3];//Trump4 第4个下标是3
+            ul.removeChild(li4);//删除节点
+
+        /*
+            节点:
+                html在浏览器是 节点树.
+            节点分类:node
+                元素节点:
+                    document.getXXXByXXX();
+                    attributes 获取属性节点
+                    childNodes 获取是元素里面所有节点(包括元素节点 文本节点)
+                    firstChild(包括元素节点 文本节点)
+                    lastChild(包括元素节点 文本节点)
+                    parentNode 父节点
+                    nextSibling(包括元素节点 文本节点)
+                    previousSibling(包括元素节点 文本节点)
+
+                    firstElementChild 只有元素节点
+                    lastElementChild 只有元素节点
+                    nextElementSibling 只有元素节点
+                    previousElementSibling 只有元素节点
+
+                    document.createElement('标签名');
+                    A.appendChild("B节点"); 把B节点插入A节点里面的后面
+                    A.insertBefore('B','C'); 把B插入A里面的C前面
+                    A.replaceChild(B,C); 把A里面的C替换成B
+                    A.cloneNode(true); 把A复制一份
+                    A.removeChild(B); 把A里面的B删除.
+                文本节点:
+                    document.createTextNode("文本内容");
+                属性节点:
+                    setAttribute("属性名称",'属性值');
+                    getAttribute("属性名称");
+                    removeAttribute(属性名称);
+                    html自带的属性: src href type id class
+                         document.getElementById('a').src="";
+                H5: 自定义属性:  
+                        document.getElementById('a').setAttribute('data-index',100);
+                
+        
+        
+        */
+    </script>
+</body>
+</html>

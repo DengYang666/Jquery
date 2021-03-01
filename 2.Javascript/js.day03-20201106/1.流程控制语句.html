@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程控制</title>
+    <script>
+        /*
+            1.顺序流程
+                交换两个变量的值
+        */
+         var num1=5;
+         var num2=3;
+         var tmp;//中间变量 临时存储num1
+             tmp=num1;
+             num1=num2;
+             num2=tmp;
+        //console.log("num1=>",num1,"num2",num2);     
+        /*var num=prompt("请输入一个数字:");
+            if(num%2==1){
+                document.write("你输入的是一个奇数");
+            }else{
+                document.write("你输入的是一个偶数");
+            }
+        */    
+        /*
+        *  小王考试:  
+                60分以下的时候 挨揍 60-70分 及格 70-90 良好. 90分以上就是优秀
+                90-95 奖励一本 编程宝典
+                95以上 奖励 Iphone12 一台.
+        */    
+        var score=prompt("小王请输入你的编程分数:");
+            if(score>=0&&score<60){
+                document.write("挨揍");
+
+            }else if(score>=60 && score<70){
+
+                document.write("小王你及格啦");
+
+            }else if(score>=70&&score<90){
+
+                document.write("小王表现良好!");
+
+            }else if(score>=90&&score<=100){
+                document.write("小王你很优秀!");
+                if(score<=95){
+                    document.write("<br/>奖励编程宝典");
+                }else{
+                    document.write("<br/>奖励Iphone12 一台");
+                }
+            }else{
+                document.write("小王你涂改分数了! 要打屁屁.......");
+            }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date对象</title>
+    <script>
+        /*  
+            js里面的日期, 本地日期.
+            Date()对象 使用 new Date(); 创建一个日期对象.
+                可以没有参数,获取当前本地时间.
+                可以有参数,必须可以被识别格式的时间字符串 '2021/10/1 10:10:10'
+                          多个参数: year month 必须 [ day hour minutes seconds  可选]
+                          一个数字参数是时间戳:
+            时间戳:1970-1-1 0:0:0 到现在的毫秒数([秒数])
+
+            getFullYear(); 获取年
+            getMonth();    获取月
+            getDate();     获取日
+            getDay();      获取星期几
+            getMinutes();  获取分钟
+            getSeconds();  获取秒
+            getTime();     获取时间戳 肯定是一个正整数.(可以用来计算时间.) 1秒=1000毫秒
+            2020-11-11 10:10:10  2021-1-1 0:0:0  作业.
+        */
+        var d=new Date(1633054210000);//Date构造函数
+        console.log(d);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

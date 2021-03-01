@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        /*
+            严格模式:
+            1.消除了 Javascript 语法的一些不合理、不严谨之处，减少了一些怪异行为。
+            2.消除代码运行的一些不安全之处，保证代码运行的安全。
+            3.提高编译器效率，增加运行速度。
+            4.禁用了在 ECMAScript 的未来版本中可能会定义的一些语法，为未来新版本的 Javascript 做好铺垫。
+                比如一些保留字如：class,enum,export, extends, import, super 不能做变量名
+
+            'use strict'  开启严格模式.
+            如果 use strict 放到脚本里面 ,那么对当前脚本有效
+            如果放在函数里面 对整个函数范围有效.
+            
+            严格模式下:
+                1.变量先声明后赋值.
+                2.普通函数内部this不会指向window对象,而是undefined
+                3.delete 不能删除对象的属性. 能删除数组元素( 不能改变数组长度 pop shift splice 改变原数组)
+                4.如果构造函数被作为普通函数来使用不能使用,因为构造函数内部的this变为dundefined
+                5.定时器内部this还是指向window对象
+        */
+        var names="Trump";//直接给变量names赋值. 没有声明
+        //console.log(names);
+        
+        var ages={
+            age:10
+        };
+        //delete ages.age;//删除属性 ages.age
+        //console.log(ages.age);
+
+
+        function A(){
+            //'use strict'
+            console.log(this);
+            var age=50;
+            console.log('A函数里面的age===>',age);
+        }
+        //A();
+        function Cons(){
+            this.name="abc";
+        }
+        //var c=new Cons();
+            //console.log(c.name);
+        //Cons();//如果构造函数被作为普通函数来使用不能使用,因为构造函数内部的this变为dundefined
+        //console.log(name);
+        window.setInterval(function(){
+           // console.log('定时器内部',this);
+        },100);
+    </script>
+    <script>
+         //'use strict'
+         age=20;
+         //console.log(age);
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string 字符串类型</title>
+    <script>
+        //字符串 就是文本 定义或赋值的时候用 单引号 或 双引号 引起来
+        var names="雪'山'飞狐";//字符串. 
+        document.write(names);
+        var tiltle='Trump "赢了"美国大选..';
+        document.write(tiltle);
+        //字符串连接. 两个字符串或过个字符串拼接在一起,用 + 拼接
+        var englishMen='BaiDeng';
+        var msg="失去了32个州";
+        var chinaMen="陈格正在看这个新闻!";
+        console.log(englishMen+msg+chinaMen);//字符串拼接
+
+        // 布尔类型 true false 数字类型:0123456789 字符串: 文字
+        var username="yanluo";//字符串
+        var age=20;//数字
+        var isChild=false;//布尔
+        console.log(username+age+isChild);// + 号连接字符串.
+
+        //字符串转义. 转义符:\  把有意义符号 转化为无意义字符串 或 把无意义的文字转化为有意义的符号.
+        // \n 换行new line  \t tab 缩进
+        var str='\t后面的同学在睡觉,起床\'啦\',下雨啦\n收衣服啦.....';
+        console.log(str);
+
+        //获取字符串的长度 .length
+        console.log("chinaMen这个变量有多少字符",chinaMen.length);
+        //null 值 空
+        var kong=null;
+        console.log(kong+10);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

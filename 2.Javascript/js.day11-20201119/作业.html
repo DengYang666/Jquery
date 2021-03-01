@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 500px;
+            border:1px solid #ddd;
+            border-collapse:collapse;
+        }
+        thead{
+            background-color: blueviolet;
+        }
+        table td{
+            padding:10px;
+            text-align: center;
+            border:1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <label>姓名:<input type="text" id="userName"/></label><br/><br/>
+    <label>邮箱:<input type="text" id="email"/></label><br/><br/>
+    <button id="add">添加数据</button><br/><br/><br/>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>邮箱</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>表格1</td>
+                <td>表格2</td>
+                <td><button>删除</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        /*
+            node 节点. 浏览器组织网页结构的方式; DOM树
+            element 它是Node 对象上面扩展出来... elment 继承了Node
+        
+        */
+        var add=document.querySelector('#add');
+        var tbody=document.querySelector('tbody');
+            add.onclick=function(){
+                //获取用户名和 邮箱的值
+                var username=document.querySelector('#userName').value;
+                var email=document.querySelector('#email').value;
+                //创建tr元素节点
+                var tr=document.createElement('tr');
+                //创建td元素节点
+                var td1=document.createElement('td');
+                //创建文本元素节点
+                var usernameText=document.createTextNode(username);   
+                    td1.appendChild(usernameText);//创建文本元素节点加入td1元素节点
+                var td2=document.createElement('td');//创建td元素节点
+                    td2.innerText=email;//设置td元素节点直接文本
+                var td3=document.createElement('td');
+                    td3.innerHTML='<button data-id="5">删除</button><button data-id="6">修改</button>';//设置td元素节点直接html代码
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+                tbody.appendChild(tr);//把整行tr加入tbody
+            }
+            tbody.onclick=function(e){//事件委托.
+                var e=e||window.event;//兼容处理
+                var el=e.target;
+                if(el.nodeName=='BUTTON' && el.dataset.id==5){
+                    tbody.removeChild(el.parentNode.parentNode);
+                }
+                if(el.nodeName=='BUTTON' && el.dataset.id==6){
+                    tbody.removeChild(el.parentNode.parentNode);
+                }
+                //停止冒泡    
+                if(e.stopPropagation){
+                    e.stopPropagation();
+                }else{
+                    e.cancelBublle=true;
+                }
+
+            }    
+
+            // var obj={
+            //     name:'',
+            //     say:function(){
+
+            //     }
+            // }
+            //console.log(obj.saya)
+    </script>
+</body>
+</html>

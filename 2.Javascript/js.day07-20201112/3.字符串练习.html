@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串练习</title>
+    <script>
+        var str='hello trump hello Biden';
+        var o={a:1,b:2};
+        //js里面 字面量对象,一般存储数据. 可以类似数组使用
+        //对象存储 key 对象的属性==>value 属性的值
+        for(var i=0;i<str.length;i++){
+            var code=str.charAt(i);//根据索引号 获取字符
+            if(o[code]){//获取对象的属性, 如果没有该属性返回 undefined [false] 有值的返回字符串 => true
+                o[code]++;//如果找到该属性 把它出现次数+1    
+            }else{//证明这个字符串第一次出现
+                o[code]=1;//第一次出现就标记为 1
+            }
+        }
+        var max=0;
+        var char='';
+        //统计出现次数最多的字符
+        for(var i in o){
+            if(o[i]>max){//
+                max=o[i];
+                char=i;
+            }
+        }
+        console.log('出现次数最多是'+char+" "+max+"次");
+        //console.log(o);    
+
+
+        var obj={
+            name:'Trump'
+        };    
+        obj.name;//获取对象属性
+        //var n='name';
+        //alert(obj[n]);//中括号 数组方式
+        //obj.age=20;//给对象赋值
+        //obj.vote=214;//给对象赋值
+        //obj['vote']=214;
+        //console.log(obj['vote']);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分支switch</title>
+    <script>
+        /*
+
+            switch(变量名){
+                case 常量值:
+                    break; //如果没有break 那么如果满足条件,后面的代码会继续执行
+                case 常量值:
+                    break;
+                case 常量值:
+                    break;
+                default: 上面条件都不成立时候 就执行.
+                    最后执行.            
+            }
+
+            var age=20; //变量
+                age=30;
+            常量值: 直接给定一个具体值. 后面程序无法改变
+        
+            A 90-100
+            B 80-89
+            C 70-79
+            D 60-69
+            E 60 以下
+        */
+        var level=0;//prompt("请输入你的成绩等级");
+        switch(level){
+            case "A":
+                document.write("你的成绩在90-100分");
+                break;// 中断 折断
+            case "B":
+                document.write("你的成绩在80-89分");
+                break;
+            case "C":
+                document.write("你的成绩在70-79分");
+                break;    
+            case "D":
+                document.write("你的成绩在60-69分");
+                break;
+            default:
+                document.write("成绩不合格");    
+        }
+        /*
+            卖菜: 收银台
+                白菜  2.5/斤
+                胡萝卜 3.0/斤
+                罗非鱼  5.0/斤
+                猪肉 28.0/斤
+                牛肉 50.0/斤
+             输入一个肉的名称 ,查询价格.   
+             case ==
+         
+        var names=prompt("请输入菜的名称:");
+            switch(names){ 
+                case "白菜": //names == 白菜
+                    alert(" 白菜  2.5/斤");
+                    break;
+                case "胡萝卜":
+                    alert(" 胡萝卜  3.0/斤");
+                    break;
+                case "罗非鱼":
+                    alert(" 罗非鱼  5.0/斤");
+                    break;
+                case "猪肉":
+                    alert(" 猪肉  28.0/斤");
+                    break;
+                case "牛肉":
+                    alert(" 牛肉  50.0/斤");
+                    break;
+                default:
+                      alert("卖完了,没有该菜品!");  
+            }        
+        
+        var val=false;
+        switch(val){
+            case 0:
+                console.log("进入50了");
+                break;
+            case 60:
+                console.log("进入60了");
+                break;
+            default:
+                console.log("既不是50也不是60!");
+        }
+        */  
+
+        var a=10;
+        if(a==1){
+
+        }else if(a==2){
+
+        }
+        else if(a==3){
+
+        }else if(a==4){
+
+        }else{
+
+        }
+        switch(a){
+            case 1:
+                break;
+            case 2:
+                break;    
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

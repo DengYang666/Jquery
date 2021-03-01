@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 70px;
+            height: 20px;
+        }
+        button{
+            border: none;
+            outline: 0;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            background-color: rgb(230, 230, 230);
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入数字"><span>+</span><input type="text" placeholder="请输入数字"><button>=</button><input type="text" placeholder="结果">
+
+    <script>
+    //  要求：
+    //  定义  add  函数，
+    //  改变实现，获取两个输入框的值，并且计算两个数值相加的结果
+    //  点击“=”标签 ，调用add函数，显示计算的结果
+    var num1=document.getElementsByTagName("input")[0];
+    var num2=document.getElementsByTagName("input")[1];
+    var num3=document.getElementsByTagName("input")[2];
+    var button=document.getElementsByTagName("button")[0];
+        function add(){
+            num3.value=Number(num1.value)+Number(num2.value);
+            if(num3.value=="NaN"){
+                alert("请输入正确的数字");
+                num3.value=""            
+            }
+        }
+        button.onclick=function(){
+                add();
+            }
+    </script>
+</body>
+</html>

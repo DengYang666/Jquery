@@ -1,0 +1,28 @@
+Boolean
+String
+Number NaN
+undefined
+null
+Object
+1.对象 Object
+也是对代码进行了封装.
+对象 属性(变量) 和 方法(函数);
+var a=10;
+function abc(){
+    var a=20;
+}
+Poeple对象  属性face  方法 run 跑步
+属性 就是对象特征    漂亮.
+方法 就是对象的行为 动作  学习.
+程序里面:
+属性  特征  存储数据.
+方法  行为  改变了数据.
+2.创建对象
+1).字面量对象;
+var obj={
+    name:"属性的值", // name属性名称:属性的值,
+    run:function(){
+        
+    }
+};
+

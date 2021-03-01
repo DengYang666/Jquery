@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+    <script>
+        /*
+            数组:
+                多个数据的集合.
+            创建数组:
+            1. new Array(); //创建一个数组 Array首字母大写. 数值是数组的长度.
+               new Array(5);//创建一个长度5的空数组
+               new Array(1,2,3,4,5);//创建的同时 赋值. 初始化.
+            2.字面量创建数组 [] 中括号就表示一个数组
+               var users=[];
+               var users=['jerry','trump','biden','tom'] 
+            数组里面存储的数据类型没有限制.
+            数组索引[下标]: 从0开始一个有序数字. 0123456789
+            取出数据: 数组名称[索引或下标值];
+                如果索引超出数组的索引号,取到数据是undefined
+            添加数据: 找到数组最后索引+1 并赋值 在数组末尾添加一条数据
+            修改数据: 找到数组对应的索引 并重新赋值.
+
+        */
+        // function a(){
+        //     return [1,2,3];
+        // }
+        // var r=a();
+        // console.log(r);
+        var arr=new Array(1,2,3,4,5);
+        console.log(arr);
+        //字面量方式创建数组
+        var users=[]; //创建空数组
+        var users=['jerry','trump','biden','tom',2020,2021];//创建数组并赋值
+            users[11]="黄佳乐";//添加一条数据. 数到最后的索引 +1 在赋值
+            users[1]="TRUMP";//修改 索引号为1的数组元素.
+        console.log(users);
+        console.log(users[2]);
+        console.log(users[8]);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

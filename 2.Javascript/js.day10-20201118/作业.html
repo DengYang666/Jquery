@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息发布</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:300px;
+            margin:0 auto;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+           overflow: hidden;
+        }
+        ul li a{
+            float:right;
+            cursor: pointer;
+        }
+        h5{
+            margin:30px 0px;
+        }
+        div textarea{
+            width:300px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <textarea></textarea>
+        <button>发布动态</button><button id="resend">重新发布</button>
+        <h5>最新动态</h5>
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        var sendBtn=document.querySelector('button');
+        var textA=document.querySelector('textarea');//获取textarea标签
+        var ul=document.querySelector('ul');
+            sendBtn.onclick=function(){
+               var val=textA.value;//获取文本域的值
+               if(val==''||val.length<1){//判断输入的内容是否为空 如果为空就返回不继续执行.
+                   alert("输入的内容不能为空....");
+                   return;
+               }
+               //创建元素节点
+               var li=document.createElement('li');//创建li元素节点
+               var liText=document.createTextNode(val);//创建文本节点
+                   li.appendChild(liText);//把创建的文本节点加入li元素节点 
+               var a=document.createElement('a');//创建a元素节点
+               var textAch=document.createTextNode('x');//创建文本节点
+                   a.appendChild(textAch);//把创建的文本节点加入a元素节点 
+                   //a.href="#";//a.setAttribute("href",'#');//设置a元素节点的href属性
+                   a.onclick=function(){//给a元素节点绑定事件
+                        ul.removeChild(this.parentNode);//删除当前 a元素节点父节点 li
+                   }
+                   li.appendChild(a); 
+                li.style.backgroundColor=randColor();
+                ul.insertBefore(li,ul.firstChild);//把生成的li插入ul最前面
+               textA.value='';//重新赋值为空
+            }
+        var resend=document.getElementById('resend');//获取重新发布元素对象
+            resend.onclick=function(){//重新发布对象绑定事件
+                var cloneFirst=ul.firstElementChild.cloneNode(true);//克隆第一个子元素节点(第一个li) 克隆元素的没有克隆事件 克隆的只有元素属性.
+                    cloneFirst.style.backgroundColor=randColor();//背景颜色重新生成一份
+                    cloneFirst.lastElementChild.onclick=function(){//给克隆的元素里面的a子节点重新绑定事件
+                        ul.removeChild(this.parentNode);
+                    }
+                ul.insertBefore(cloneFirst,ul.firstChild);//把克隆子元素节点插入 开始
+            }
+        function randColor(){
+            return 'rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')';
+        }    
+    </script>
+    <!-- <ul id="uList">
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+        <li>无序列表5</li>
+    </ul>
+    <script>
+        var ul=document.getElementById('uList');
+        console.log(ul.childNodes);
+        console.log('获取UL第一个子节点',ul.firstChild);
+        console.log('获取UL第一个子元素节点',ul.firstElementChild);
+        console.log('获取UL的最后一个节点',ul.lastChild);
+        console.log('获取UL的最后一个元素节点',ul.lastElementChild);
+    </script> -->
+</body>
+</html>

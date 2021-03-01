@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 200px;
+            height: 30px;
+        }
+        button{
+            width: 100px;
+            height: 35px;
+            text-align: center;
+            line-height: 30px;
+        }
+        span{
+            font-size: 20px;
+            color: red;
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入商品名称">
+    <button>查询</button>
+    <div><span></span></div>
+    <script>
+        var inp=document.querySelector("input");
+        var btn=document.querySelector("button");
+        var text=document.querySelector("span");
+        var data=[
+            {name:"衣服",price:"86元"},
+            {name:"鞋子",price:"99元"},
+            {name:"裤子",price:"130元"},
+            {name:"被子",price:"168元"},
+        ]
+        btn.onclick=function(){
+            var value=inp.value;
+            for(var i=0;i<4;i++){
+                if(value==data[i].name){
+                    text.innerText="价格:"+data[i].price
+                }
+            }
+        }
+    </script>
+</body>
+</html>

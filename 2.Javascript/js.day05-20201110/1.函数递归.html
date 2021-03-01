@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数递归</title>
+    <script>
+        /*
+            函数递归:
+                函数可以调用自己,形成了递归.
+            1.优点. 逻辑清晰. 能实现一些循环没法实现的事情.
+            2.缺点. 消耗资源较大. 容易出现死循环.
+
+            递归的过程:
+            1.递进去 (一定要有明确的结束条件,否则就是死循环)
+            2.归处来
+        */
+        var sumNum=0;
+        for(var i=1;i<=100;i++){
+            sumNum+=i;
+        }
+        
+        /*
+            sum(5)
+            阶乘.
+            斐波拉契数列:
+            0 1 1 2 3 5 8 13 21 34... 当前位数是前两项之和.
+            1.第一步找循环规律.
+            2.如果有规律的变化数据 就用 递进去的过程用参数传入.
+            3.必须要有明确的结束条件.结束之后就用 return 开始返回结果.(递进去循环结束.)
+
+            用处:
+                能用循环实现,就不要用递归.
+                循环如果无法实现的时候就用递归.    for(){} while(){} do{}while();
+                省  市区 县(区) 镇 街道 ... json
+        */
+        function sum( num ){
+            if(num == 1){
+                return  1;
+            }
+            return sum( num - 1 ) + num;
+        }
+
+        //alert(sum(5)); // 1 2 3 4 5
+        //num 第几项
+        function feb(num){
+            //num==1 num==2 结束条件.
+            if(num==1){
+                return 0;
+            }
+            if(num==2){
+                return 1;
+            }
+            return feb(num-1)+feb(num-2);
+        }
+        alert(feb(40));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

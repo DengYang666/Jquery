@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+    
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        /*
+            setInterval(执行代码,时间间隔 单位是毫秒); //定时器函数 
+        */
+        var div=document.querySelector("div");//获取div标签对象
+        function formatDate(){
+            var d=new Date();
+            var year=d.getFullYear();
+            var month=d.getMonth()+1;//+1; //月份 0-11 + 1 
+                month=month<10?'0'+month:month;
+            var days=d.getDate(); //获取日期
+                days=days<10?'0'+days:days;
+            var hour=d.getHours();
+                hour=hour<10?'0'+hour:hour;
+            var minu=d.getMinutes();
+                minu=minu<10?'0'+minu:minu;
+            var sec=d.getSeconds();
+                sec=sec<10?'0'+sec:sec;
+            return year+"年"+month+"月"+days+"日 "+hour+":"+minu+":"+sec;
+        }
+        setInterval(function(){
+            div.innerHTML=formatDate();//设置div标签之间内容
+        },100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab切换</title>
+    <style>
+        *{
+            margin: 0px;
+            padding:0px;
+
+        }
+        ul{
+            list-style: none;
+        }
+        .intro{
+            width:800px;
+            margin:50px auto;
+            border:1px solid #ccc;
+        }
+        .intro ul{
+            overflow: hidden;
+            border-bottom:1px solid #ccc;
+        }
+        .intro ul li{
+            float:left;
+            padding:10px 20px;
+            cursor: pointer;
+        }
+        .intro ul li.active{
+            background-color: #ccc;
+        }
+        .intro .list{
+            display: none;
+        }
+        .intro .list:first-of-type{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <ul>
+            <li class="active" >产品介绍0</li>
+            <li>产品评论1</li>
+            <li>服务2</li>
+            <!-- <li>服务3</li>
+            <li>服务4</li>
+            <li>服务5</li>
+            <li>服务6</li> -->
+        </ul>
+        <div class="list">0产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍<br/>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</div>
+        <div class="list">1评论<br/>评论<br/>评论<br/>haohpahyuahnfduafhdskahf</div>
+        <div class="list">2包邮!........<br/>保修退货..</div>
+        <!-- <div class="list">3包邮!...............<br/>保修退货..</div>
+        <div class="list">4包邮!................<br/>保修退货..</div>
+        <div class="list">5包邮!........<br/>保修退货..</div>
+        <div class="list">6包邮!........<br/>保修退货..</div> -->
+    </div>
+    <script>
+        //获取所有li元素对象
+        var lis=document.querySelectorAll('li');
+        var listDiv=document.querySelectorAll('.list');
+            for(var i=0;i<lis.length;i++){
+                lis[i].setAttribute('data-guabao',i);//把序号i存入li标签的属性里面
+                lis[i].onmouseover=function(){//鼠标移入事件
+                    document.querySelector('.active').removeAttribute('class');//移除前一个有class="active"的class属性
+                    this.setAttribute('class','active');//给当前元素添加class="active"
+                    var guabao=this.dataset.guabao;//this.getAttribute('data-index')获取自定义属性
+                    for(var j=0;j<listDiv.length;j++){
+                        listDiv[j].style.display='none';//循环所有listdiv隐藏掉.
+                    }
+                    listDiv[guabao].style.display='block';//当前的显示 当事件发生的时候i已经变成 3
+                }
+            }
+            
+            /*
+            
+           var liFirst=document.querySelector('li');//元素对象
+                liFirst.onclick=function(){//事件触发的时候会执行的函数
+                    //console.log(this);
+                }
+
+            var people={
+                name:"Trump",
+                sayHi:function(){
+                    var str=this.name+"say I love China";//this 代表是当前离this最近的对象
+                }
+            };
+             */
+             
+    </script>
+</body>
+</html>

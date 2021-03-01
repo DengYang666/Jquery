@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+    <script>
+        /*
+            作用域: 
+                变量的有效的范围;
+            块级作用域:  es6里面才有块级作用
+            函数作用域: 
+                变量的使用范围跟函数有关系;
+
+            全局变量: 在整个js里面都可以使用的变量就是全局变量
+                1.在函数外部声明的变量都是全局变量
+                2.在函数内部没有使用var 声明的变量 默认升级为全局变量.
+            局部变量: 只在函数内部被使用变量就是局部变量.
+                在函数内部用var声明的变量 都是局部变量,只能在函数内部使用.
+
+            作用域链:
+                1.函数里面可以继续定义函数.
+                2.变量的作用域是逐级向上查找,如果找到var 声明的局部变量,那么这个变量就在var 声明所在
+                    范围里面有效.
+            
+            为什么要有作用域: 避免变量数据的污染.
+
+
+        */
+        var year=2020; //全局变量
+            days=200; 
+        function sayHello(){
+            var uName="宋文金";//局部变量. 在函数内部用var
+                month="11月";//默认成了全局变量. 但是一定要在函数执行之后才能拿到 month
+           /// console.log("sayHello内部",uName,"year的值",year,"月份:",month);
+        }
+        // console.log(month);
+        sayHello();
+        ///console.log("外部输出 month==>",month);
+        //console.log("外部输出uName",uName);
+        var a=10; //全局变量
+        function say(){
+           a=20;//var a 就是局部变量,a 作用域 在say()函数内部
+            function sayHi(){
+                a=30; //全局变量 相对于sayHi是全局. 对于say来还是一个局部变量
+                console.log("在sayHi里面输出 a==>",a);//30
+            }
+            sayHi();
+            console.log("在say里面输出 a==>",a);//20
+        }
+        
+        function vote(){
+            a=1000;
+        }
+        vote();
+        say();
+        console.log("在外面输出a==>",a);//10
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

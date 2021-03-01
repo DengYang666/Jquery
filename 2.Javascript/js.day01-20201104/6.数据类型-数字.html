@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript数据类型</title>
+    <script>
+        /*
+            数据类型: 方便程序 存储和运行 不同类型的数据.
+            简单类型:
+                boolean 布尔类型 (真,假.)
+                    true 真 false 假
+                number  数字类型
+                        NaN 非法数字 not a number 
+                            isNaN(); 判断一个数字是否是非法数字 如果是非法数字返回true 如果不是返回false.
+                        Infinity 正无穷
+                        -Infinity 负无穷
+                string  字符串类型
+                undefined
+                null
+            引用/复合类型 (后面说)
+                object  对象(name) window
+        */
+        //布尔类型
+        var isEatTime=false;
+        var isSpeaking=true;
+        var voteTrump=false;
+        //alert(isSpeaking);
+        //数字类型 包括 整数 小数 负数..
+        var littleNumber=0.1; //小数
+        var bigNumber=10000000;//整数
+        var lNum=-100;//负数
+        //无穷大 
+        var num2=-1/0;// -Infinity 负无穷
+        var num3=0/1;// 0
+        //console.log("1/0的结果是=>",num2,"0/1的结果是=>",num3);
+        //计算机里面表示数 . 整数就是无符号数据 负数有符号.
+        //获取js程序能表示的最大值=> 1.7976931348623157e+308 js程序能表示的最小值=> 5e-324
+        //console.log("获取js程序能表示的最大值=>",Number.MAX_VALUE,"js程序能表示的最小值=>",Number.MIN_VALUE)
+        //非法数字
+        var names="乔峰";
+        var age=20;
+        var result=age-names;
+            console.log("一个数字减去一个文字的结果是多少",result);// result (NaN) 字符串和数字进行运算结果是NaN
+            //练习
+            var isPeole=true;
+            var isCar=false;
+            var result1=isPeole-10;// -9 在运算的时候,布尔类型会转化为数字 true 转化为1 false转化为0
+            var result2=isCar-10;// -10
+            //console.log(result1,result2);
+        //扩展:
+        //数字进制 十进制(0123456789) 二进制(0,1)计算机只能识别二进制. 八进制(0,1,2,3,4,5,6,7) 十六进制(0123456789ABCDEF)
+        //进制转化
+        //
+        //把十进制数转化其它进制
+        var number1=52;//转化为成2进制 110 100
+        var bi=number1.toString(2);//toString(2) 把十进制转化为2进制 (已2为基数的一个字符串)
+        var ci=number1.toString(8);//转化为8进制为 64 
+        var di=number1.toString(16);//转化为16进制的结果 34
+        console.log("52转化为二进制结果=>",bi,"类型",typeof bi); 
+        console.log("52转化为8进制的结果=>",ci);
+        console.log("52转化为16进制的结果=>",di);
+
+        var biData=110100;//二进制数
+        var biResult=parseInt(biData,2);//把二进制数转回为10进制
+        console.log("还原数据=>",biResult);
+
+        //练习 输入一个自己年龄 把它转化为二进制 8进制 16进制.  
+        // 21  10101   25  15
+        // 20  10100   24  14
+        // 23  10111  27  17
+        //变量命名: $ _ 驼峰式命名(规范: 如果变量名是多个词组成,那么从第二个词开始,词的首字母大写.)
+        var lian="lian的值"; // lian 连  LiAn 李安.  chenGe 陈格  chengE成额
+        //js里面内置的函数 或对象方法 一般都是 驼峰式命名
+        //document.getElementsById();  document.getElementsByTagName();
+
+        var numa=20-10;
+        console.log("a-10的结果=>",numa,"用isNaN来判断一个数字:",isNaN(numa));
+        
+        //作业: 弹框输入你的生日年,计算你的年龄. 如果输入不是数字,提示非法数字. 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

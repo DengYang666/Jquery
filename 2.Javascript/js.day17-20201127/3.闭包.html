@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            函数内部的局部变量 或 数据 在函数执行完成以后会释放.
+       
+        var d=10;
+        function E(d){//d 是形参,局部变量
+            d++;
+            console.log("E函数里面的d",d);//11
+        }
+        E(d);
+        console.log("E函数执行之后d的值",d);//10
+
+         */
+
+
+
+        /*
+            闭包: 一个函数B可以调用另外一个函数A内部数据. 这是就形成了闭包
+            1.作用域
+            2.后面是否还有引用.
+        */
+        function A(){//闭包
+            var a=100;
+            function B(){
+                a++;
+                console.log("B函数里面输出==>",a);//101
+            }
+            console.log('A函数里面输出==>',a);//100
+            return B;//返回B函数
+        }
+        /**
+        var c=A();
+            c();
+            c();
+            c();
+            c();
+            c();
+        */
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <script>
+        /*
+            获取元素对象:
+                document.getElementById();
+                document.getElementsByTagName();
+                document.getElementsByClassName();
+                document.querySelector();
+                docuemtn.querySelectorAll();
+            元素对象的属性:
+                src
+                href
+                id
+                className [class]
+                type
+                style
+                alt
+                title
+            事件:
+                onclick
+                ondblclick
+                onmouseover
+                onmouseout
+                onmousemove
+        */
+
+
+    </script>
+    <style>
+        ul{
+            list-style: none;
+        }
+        .ad{
+            width:500px;
+            margin:0 auto;
+            position: relative;
+        }
+        .ad img{
+            width:500px;
+        }
+        .ad ul{
+            position:absolute;
+            top:20px;
+            right:100px;
+        }
+        .ad li{
+            float: left;
+            width:20px;
+            height:20px;
+            background-color:#fff;
+            margin-left:10px;
+            text-indent: -9999px;
+            border-radius: 10px;
+        }
+        .ad li.active{
+            background-color:#aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad">
+        <img src="image/bg1.jpg"/>
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <script>
+        var lis=document.querySelectorAll('li');//获取所有的li元素对象
+        var img=document.querySelector('img');//获取图片元素对象
+        var adArr=['image/bg1.jpg','image/bg2.jpg','image/bg3.jpg'];
+            for(var i=0;i<lis.length;i++){//循环元素对象列表 0 1 2  ===> 3
+                //console.log(lis[i]);
+                ///////////立即执行函数局部变量赋值//////////////////////////////
+                (function(ii){
+                    lis[ii].onclick=function(){//给每一个元素都绑定一个鼠标点击事件
+                            document.querySelector('.active').className='';//找到原来有class="active"的元素对象设置class 为空
+                            this.className='active';//给当前被点击的元素对象添加一个class="active"
+                            var imgpath=adArr[ii];//根据下标取出数组里面对应的图片
+                                // alert(i); i是全局变量.
+                                // alert(ii); //作为匿名立即执行函数的参数. 所以是局部变量
+                                img.src=imgpath;//把图片路径赋值给 图片元素对象的src属性
+                    }   
+                })(i);
+                ///////////////////属性赋值///////////////////////////////////////
+                /*lis[i].index=i;//把i存给元素对象(标签)的属性
+                lis[i].onclick=function(){//给每一个元素都绑定一个鼠标点击事件
+                            document.querySelector('.active').className='';//找到原来有class="active"的元素对象设置class 为空
+                            this.className='active';//给当前被点击的元素对象添加一个class="active"
+                            var index=this.index;//当元素被点击的时候取出该元素对象的index属性
+                            var imgpath=adArr[index];//根据下标取出数组里面对应的图片
+                                // alert(i); i是全局变量.
+                                img.src=imgpath;//把图片路径赋值给 图片元素对象的src属性
+                }*/
+
+
+            }
+            
+            /*
+                局部变量 var  函数的形参 
+                全局变量
+                作用域
+            */
+            
+            function hell(a){
+                var b=0;
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+html hyper text markup language 组织网页的结构
+
+css cascading style sheet 美化html
+
+javascript 简称js 实现业务逻辑 和 动画效果. 前端网页的架构组织.
+node.js javascript可以写后台.
+用户名:<input type="text" />  
+邮箱地址:<input type="text" />  
+诞生的要求: 验证表单.
+
+浏览器里面:  渲染引擎(HTML CSS) webkit.  js脚本执行引擎(v8).
+html css [trident,webkit,geok]
+<style>
+    div{}
+</style>
+<div>
+
+</div>
+html标记语言[html,xml] css[层叠样式表 ==>less sass...]
+
+编程语言:
+javascript
+c
+java java_web java 在web里面应用
+c++
+python
+php
+asp(VB)
+C#
+scale
+swift
+object-c
+go lang
+汇编
+
+编程语言里面: 编译型(java c c++ object-c swift go c#) 和 脚本型[javascript python php asp].
+执行方式分类:
+1.编译型:[1.写代码2.编译3.执行]
+2.脚本型: 边编译 边执行.[写完之后就可以立马执行]
+数据类型分类:
+强类型: java c c++ object-c swift go c#     int a=10; String str='字符串'
+弱类型: javascript python php asp       var a=10; a="小王";
+
+javascript 组成部分:
+emcascript  emca 欧洲计算机制造协会.[破译密码 加密]  EMCA5(es5)  EMCA6(es6)  网景和微软 战争
+dom  document object model 文档对象模型
+bom  brower object model  浏览器对象模型
+
+变量:
+是程序程序存储在内存中的数据.
+数据类型: 方便程序 存储和运行 不同类型的数据.
+简单类型:
+    boolean 布尔类型 (真,假.)
+        true 真 false 假
+    number  数字类型
+            NaN 非法数字 not a number 
+                isNaN(); 判断一个数字是否是非法数字 如果是非法数字返回true 如果不是返回false.
+            Infinity 正无穷
+            -Infinity 负无穷
+    string  字符串类型
+        1.定义的时候或赋值的时候 必须用引号引起来 单引号和双引号没区别;
+        但是 单引号和双引号必须同时开头 或 结尾. 中间可以穿插单引号或双引号
+        2.字符串连接 + 
+        3.转义符 \
+    undefined  声明变量 但是没有赋值.
+    null  空.(表示变量里面没有数据 object)
+引用/复合类型 (后面说)
+    object  对象(name) window
+
+typeof 表达式 查看变量类型  返回结果字符串
+类型转换: 布尔类型(boolean)  数字类型(number NaN Infinity -Inifinity) 字符串类型(string) undefined 对象类型
+类型之间可以互相转化:
+    布尔类型: true false;
+        Boolean(); 强制把其他数据类型转化为布尔类型
+        字符串和数字 如果是有意义或存在的值就是true,否则false.
+            NaN '' 0 null==>false
+            Inifinity, -Inifinity 空对象{}==>true
+        自动转化
+    数字类型:
+        parseInt();//把数值转化整数
+        parseFloat();//把值转化小数
+        Number(); //构造函数包装函数
+        自动转化    
+    字符串类型: 其他类型转化为字符串 就是其本身的字符串表示
+        toString();
+        String();  
+        自动转化  

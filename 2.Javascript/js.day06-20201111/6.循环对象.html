@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环对象</title>
+    <script>
+        /*
+            for in 循环
+            对象:
+                1.取出对象的属性;  对象名称.属性名称;
+                2.可以通过[]可以取出对象的属性.   对象名称["属性名称"]
+        
+        */
+        var user={
+            userName:'Trump',
+            password:'20201111',
+            vote:function(){
+                console.log(this.userName,"投了自己一票");
+            }
+        };
+        // console.log("通过.符号取值=>",user.userName);
+        // console.log("直接[]取值==>",user["userName"]);
+        // var u="userName";
+        // console.log("直接[]取值方式2==>",user[u]);//如果[u] 没有引号 那么u就是变量
+        
+        // for(var key in user){//循环出来key是对象的屬性名字(字符串)
+        //     console.log(key);
+        //     console.log(user[key]);//取出属性的值
+        // }
+
+        var users=[
+            {username:"Trump",ad:"全世界的广告",vote:214},
+            {username:"Biden",ad:"华尔街广告",vote:300},
+            {username:"黄嘉乐",ad:"广州东塔",vote:500}
+        ];
+        
+        var userp=[
+            ["Trump","全世界的广告",214],
+            ["Biden","华尔街广告",300],
+            ["黄嘉乐","广州东塔",500]
+        ];
+
+        for(var i in users){//循环是数组
+            var ur=users[i];
+            document.write(ur.username+" "+ ur.ad+" "+ ur.vote+"<br/>");
+        }
+
+        /*
+            json
+        */
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

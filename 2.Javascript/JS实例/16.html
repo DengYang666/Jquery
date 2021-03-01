@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+        }
+        .green{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            float: left;
+        }
+        .blue{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            float: left;
+        }
+        button{
+         display: block;
+         width: 100px;
+         height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button class="add">增加</button>
+    <button class="remove">删除</button>
+    <div class="red"></div>
+    <div class="box"></div>
+    <div class="green"></div>
+    <script>
+        var add=document.querySelector(".add");
+        var remove=document.querySelector(".remove");
+        var box=document.querySelector(".box");
+        add.onclick=function(){
+            var blue=document.createElement("div");
+            blue.className="blue";
+            box.appendChild(blue);
+       
+        }
+        remove.onclick=function(){
+            var blue=document.querySelector(".blue");
+            box.removeChild(blue);
+        }
+    
+    </script>
+</body>
+</html>

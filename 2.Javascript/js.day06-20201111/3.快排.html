@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快排</title>
+    <script>
+        /*
+           选一个基数. 把一个数组分成两份 比基数小的数据存储一份,比基数大的数据存一份.
+           用递归不断分下去,最后合并起来就是一个有序数组
+
+           升序:
+
+           递归实现. 有性能问题.
+        */
+        var arr=[  7  , 3  ,   5  ,  8  , 2  ]
+        function quickSort(arr){
+            if(arr.length<=1){
+                return arr;
+            }
+            var num=arr[0];//选中第一数为参考数
+            var left=[];  
+            var right=[];
+            for(var i=1;i<arr.length;i++){
+                if(arr[i]<num){
+                    left.push(arr[i]);//把较小数存入左边数组
+                }else{
+                    right.push(arr[i]);//把较大存入右边的数组
+                }
+            }
+            return quickSort(left).concat([num],quickSort(right));//把左边 基数 右边的数据 合并
+        }
+        alert(quickSort(arr));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

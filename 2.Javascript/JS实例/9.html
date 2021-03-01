@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+        input{
+            width: 150px;
+            height: 30px;
+        }
+        button{
+            height: 34px;
+            width: 43px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <input type="text" placeholder="请输入颜色">
+    <button>按钮</button>
+    <script>
+        var div=document.querySelector("div");
+        var input=document.querySelector("input");
+        var button=document.querySelector("button");
+        
+        function setBgColor(color){
+            div.style.backgroundColor=color
+
+        }
+        button.onclick=function(){
+            var color=input.value;
+            setBgColor(color);
+        }
+    </script>
+</body>
+</html>

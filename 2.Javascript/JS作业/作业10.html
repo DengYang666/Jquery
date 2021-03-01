@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名</title>
+    <style>
+        .map {
+    width: 360px;
+    height: 460px;
+    background-color: #f0f0f0;
+    position: relative;
+    margin: 100px auto;
+}
+.map .letter ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 360px;
+    height: 360px;
+}
+.map .letter ul li {
+    width: 60px;
+    height: 60px;
+    border: 1px solid skyblue;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 60px;
+    background-color: #fff;
+    position: absolute;
+}
+
+.map .letter ul li.active {
+    background-color: #ff5500;
+}
+
+.map .letter ul li:nth-child(1) {
+   top: 0;
+   left: 0;
+}
+.map .letter ul li:nth-child(2) {
+    top: 0;
+    left: 60px;
+}
+.map .letter ul li:nth-child(3) {
+   top: 0;
+   left: 120px;
+}
+.map .letter ul li:nth-child(4) {
+    top: 0;
+    left: 180px;
+}
+.map .letter ul li:nth-child(5) {
+   top: 0;
+   left: 240px;
+}
+.map .letter ul li:nth-child(6) {
+    top: 0;
+    left: 300px;
+}
+.map .letter ul li:nth-child(7) {
+   top: 60px;
+   left: 300px;
+}
+.map .letter ul li:nth-child(8) {
+    top: 120px;
+    left: 300px;
+}
+.map .letter ul li:nth-child(9) {
+   top: 180px;
+   left: 300px;
+}
+.map .letter ul li:nth-child(10) {
+    top: 240px;
+    left: 300px;
+}
+.map .letter ul li:nth-child(11) {
+   top: 300px;
+   left: 300px;
+}
+.map .letter ul li:nth-child(12) {
+    top: 300px;
+    left: 240px;
+}
+.map .letter ul li:nth-child(13) {
+   top: 300px;
+   left: 180px;
+}
+.map .letter ul li:nth-child(14) {
+    top: 300px;
+    left: 120px;
+}
+.map .letter ul li:nth-child(15) {
+   top: 300px;
+   left: 60px;
+}
+.map .letter ul li:nth-child(16) {
+    top: 300px;
+    left: 0px;
+}
+.map .letter ul li:nth-child(17) {
+   top:240px;
+   left: 0;
+}
+.map .letter ul li:nth-child(18) {
+    top: 180px;
+    left: 0;
+}
+.map .letter ul li:nth-child(19) {
+   top: 120px;
+   left: 0;
+}
+.map .letter ul li:nth-child(20) {
+    top: 60px;
+    left: 0;
+}
+.map .footer {
+    width: 360px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+.map .footer .btn {
+    width: 300px;
+    height: 50px;
+    vertical-align: middle;
+    background-color: #f55000;
+    color: white;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 360px;
+    height: 360px;
+    text-align: center;
+    line-height: 360px;
+}
+.letter{
+    text-align: center;
+    line-height: 360px;
+    font-size: 20px;
+}
+    </style>
+    
+</head>
+<body>
+    
+    <div class="map">
+        <div class="letter">
+            <ul id="list">
+                <li class="">紫安</li>
+                <li>曼冬</li>
+                <li>谷蕊</li>
+                <li>飞兰</li>
+                <li>瀚钰</li>
+                <li>瀚文</li>
+                <li>涵亮</li>
+                <li>涵煦</li>
+                <li>明宇</li>
+                <li>涵衍</li>
+                <li>浩皛</li>
+                <li>寻巧</li>
+                <li>浩波</li>
+                <li>雅昕</li>
+                <li>梦君</li>
+                <li>凡雁</li>
+                <li>以旋</li>
+                <li>初夏</li>
+                <li>浩初</li>
+                <li>依丝</li>
+            </ul>
+            <div class="mask">
+                <div class="text" style="color:#000;font-size:30px; text-align: center;"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="btn" id="btn">随机点名</button>
+        </div>
+    </div>
+
+   
+    
+
+    <script>
+        // 图示：随机随机点名
+        // 1、点击“随机点名”按钮，随机抽选名字，被随机选中的名字标签背景高亮
+        // 2、并且显示选中的学员名字
+        var li=document.querySelectorAll("li");
+        var button=document.querySelector("button");
+        var text=document.querySelector(".text");
+        button.onclick=function(){
+            var i=Math.floor(Math.random()*20)
+            for(j=0;j<20;j++){
+                li[j].classList.remove("active");
+            }
+            li[i].classList.add("active");
+        
+            text.innerText="学员:"+li[i].innerText
+        }
+
+    </script>   
+</body>
+</html>

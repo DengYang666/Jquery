@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素</title>
+</head>
+<body>
+    <script>
+        /*
+            js日期计算库.
+        */
+        Date.prototype.counter=function(t){
+            if(t== undefined){
+                alert("请输入一个合法时间");
+                return ;
+            }
+            var c=new Date(t).getTime() - this.getTime(); //时间差
+            var timec=0;
+            var str='';
+            if(c>0){//输入的时间比当前时间 大
+                str="还剩 ";
+            }else{
+                str="已过 ";
+                c=Math.abs(c);//求绝对值.
+            }
+            var hour=parseInt(c/1000/3600);
+            var minute=parseInt(c/1000/60)%60;
+            var sec=parseInt(c/1000)%60;
+            return str+hour+"小时"+minute+"分"+sec+"秒";
+        }
+        var t=new Date();
+            console.log(t.counter('2020-11-27 09:40:10'));
+
+        Date.prototype.format=function(t){//参数t是一个给定的时间 格式化时间为中文
+            if(t == undefined){//没有传递参数
+                t=this;
+            }else{
+                t=new Date(t);
+            }
+            var year=t.getFullYear();
+            var month=t.getMonth()+1;
+            var day=t.getDate();
+            var hour=t.getHours();
+            var min=t.getMinutes();
+            var sec=t.getSeconds();
+            return year+"年"+month+"月"+day+"日"+hour+"时"+min+"分"+sec+"秒";
+        }
+        var str=new Date().format('2021/10-1 10:10:10');
+            document.write(str);
+        /*
+            Date扩展.
+            Math.sum();
+                如果传入是一个参数 ,并且这个参数数组. 求数组的和
+            静态扩展
+            Date 原型扩展.
+                认识 __proto__ constructor
+                会用 prototype
+            小数运算都有精度问题.  转化整数运算.  js 小数运算库.
+       */
+        Math.sum=function(num){
+            if(num instanceof Array){
+                var total=0;
+                    num.forEach(function(v){
+                        total+=v;
+                    });
+                return total;
+            }
+            var total=0;
+            for(var i=0;i<arguments.length;i++){
+                total+=arguments[i];
+            }
+            return total;
+        }
+        //console.log(Math.sum([10,20,5,5,10,30]));
+        //console.log(Math.sum(1,2,4,5,10,20));
+        //Date.prototype.
+        //Math.PI = 180度
+        Math.arcNum=function(d){
+            var h=d*Math.PI/180
+            return h;
+        }
+        //console.log(Math.arcNum(60));
+
+
+
+
+
+
+
+
+
+
+
+
+
+       function People(){
+           this.name="Trump";
+       }
+       People.prototype={
+           constructor:People
+       };
+       //静态方法  Math
+       People.say=function(){
+
+       }
+       //Math.random();
+       //var d=new Date();
+    //    var p=new People();
+    //        p.name;
+    //     People.say();
+    </script>
+</body>
+</html>

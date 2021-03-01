@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var abc={
+            name:'Trump',
+            age:20,
+            say:function(){
+
+            }
+        };
+        var a=Object.assign(abc);//浅拷贝
+            console.log(a.age);
+
+            console.log(Object.keys(abc));
+            var b=Object.create(abc);  //创建b空对象 b原型对象指向 abc  
+            console.log(b);
+    </script>
+</body>
+</html>

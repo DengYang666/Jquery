@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+<body>
+    <script>
+        /*
+            作用域: (针对是函数作用域)
+                全局作用域
+                局部作用域
+            闭包:
+                一个函数有权访问另一个函数里面的变量.
+            如果两个作用域里面,一个变量还没有使用完,变量不会消失.
+        */
+
+        var a=0;
+        function abc(){
+            var a=100;//局部变量
+            var b=50;//局部变量
+
+            function bcd(){
+                a=a+1;
+                console.log('bcd函数里面的=a=>',a); // 101
+            }
+            console.log('ABC里面的A',a);//100
+            console.log('ABC里面的B',b);//50
+
+            return bcd;
+        }
+        var e=abc();//e === bcd
+            e();//执行了bcd  101
+            e();//执行了bcd  102
+            e();//执行了bcd  103
+            e();//执行了bcd  104
+
+    </script>
+</body>
+</html>

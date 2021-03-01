@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*
+            函数:
+            1.普通函数 this 代表 window对象
+                如果这个函数被用做普通函数 函数名() 它里面的this代表是window
+                如果这个函数被用做构造函数  new 函数名()  它 里面的this代表的是 new 出来的对象
+            2.匿名函数 (
+                回调函数 事件函数.  this 代表离他最近对象.指代的是事件源对象. 
+                数组遍历forEach的回调函数里面this代表是window对象
+                    arr.forEach(function(){
+                        console.log(this);// window对象
+                    });  
+                定时器回调函数里面 this 代表window 因为它们是window对象的全局方法.
+                        window.setInterval();
+                        window.setTimeout();
+            )
+            3.对象的方法. 里面的this 代表是它对象本身.
+            4.立即执行函数.  this==> Window 对象
+            
+            
+            this 指向:  this 代表离他最近的对象.  this 代表对象.
+            instanceof 判断一个变量 是否 是 另外一个构造函数(类)的实例 
+            typeof 判断变量的类型(number  object string)
+            
+
+
+                       var arr=[];  arr instanceof Array
+            对象  实例  构造函数 类  
+            通过 类 或 构造函数 创建出来的实例 我们称为对象
+
+            类 或 构造函数 看成是 一些相似(一类)对象的统一描述 统称
+            对象 就是 类 或 构造函数 创建出来实际案例
+        */
+       function sum(a,b){//普通函数
+            console.log('普通函数=>',this);
+            return a+b;
+       }
+       var say=function(){//匿名函数  因为函数也是一种类型Function , 所以给赋值给变量 ,可以赋值给参数.回调函数
+            console.log('匿名函数=>',this);
+       }
+      // window.say=function(){}
+       //sum(10,20);
+      // say();
+
+       var a=10;
+       (function(i){
+           //console.log(this);//Window
+            //立即执行函数
+       })(a);// 后面这个小括号 是立即执行
+       +function(){}();//立即执行函数
+       -function(){}();//立即执行函数
+       ~function(){}();//立即执行函数
+
+       document.querySelector('div').onclick=function(){//事件里面函数
+            console.log('onclick==>',this);
+       }
+       document.querySelector('div').addEventListener('click',function(){//回调函数
+           //回调函数
+           console.log('eventListener==>',this);
+       });
+       window.setTimeout(function(){//延时器 只会执行一次 回调函数
+           // console.log(this);
+       },1000);
+       window.setInterval(function(){//定时器 会多次 回调函数
+            //console.log(this);
+       },1000);
+
+
+       //普通函数
+       function People(){
+            this.say=function(){//对象的方法   this  === window
+                console.log("People函数的方法里面=this=>",this);
+            }
+            console.log('在people函数内部使用=this=>',this);
+       }
+
+       //People();//直接执行 Poeple函数 里面 的this代表window对象 因为没有产生新的对象.
+       //say();//say方法里面this也代表window对象
+
+       //构造函数
+       function People(){
+            this.say=function(){//对象的方法   this  === window
+                console.log("People函数的方法里面=this=>",this);
+            }
+            console.log('在people函数内部使用=this=>',this);
+       }
+       //var t=new People();//如果People被作为构造函数来用, 它里面的this代表创建出来的对象. new的时候出现新对象 t
+       //t.name="Trump";
+        //t.say();//调用t对象的方法 say方法里面的this也是代表创建出来的对象.
+       //var a=10;
+       //console.log(typeof t);
+       // 就是 如果 a是People的实例 那么就是true  否则就是false  Object是所有对象的祖宗, instanceof都成立.
+       //console.log(a instanceof People);// t 是否是 People 实例 我们的认识对象 都是 Object的实例
+
+       //对象的方法
+       var o={
+           name:"wuji",
+           say:function(){//对象的方法
+                //console.log(this,'代表o对象');
+           }
+       };
+       //o.say();
+       //循环的回调函数  遍历
+       var arr=[1,2,3];
+       console.log(typeof arr);
+       arr.some(function(v,i){//回调函数
+            console.log(this);
+       });
+       //alert(2);//alert只有给参数
+       console.log(this.toString());//console.log() 可以输出多个值. 多个值用逗号隔开..
+    </script>
+</body>
+</html>

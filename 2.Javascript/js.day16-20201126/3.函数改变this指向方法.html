@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数改变this指向</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background-color:blueviolet;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div>ABC</div><button>按钮</button>
+    <script>
+        /*
+            call 
+            函数名称.call(对象名称o,参数1,参数2....); 通过call改变函数内部this指向o 后面的参数1,参数2....是被调用函数的参数 并执行函数
+            apply
+            函数名称.apply(对象名称o,[参数1,参数2....]) 通过apply改变函数内部this指向o 后面的参数合并数组[参数1,参数2...] 参数1,参数2.. 并执行函数..是被调用函数的参数
+            bind
+            函数名称.bind(对象名称o,参数1,参数2....) 通过bind改变函数内部this指向o 后面的参数1,参数2....是被调用函数的参数 没有执行函数 返回改变的函数
+
+            都是用来改变 函数内部的this指向.
+            call  apply 都会执行函数.并改变它内部this指向
+            call apply 传递参数方式不一样.
+            bind 不会执行函数.返回改变之后的函数. 需要手动执行函数. 
+
+            应用:  call经常用来实现继承.
+                   如果改变回调函数的内部的this指向用 bind
+        */
+
+        function Person(){
+            this.name="小张"
+        }
+        function PPP(){
+            this.name="老王";
+        }
+        function C(d){
+            d();
+        }
+        var p=new Person();
+        var p1=new PPP();
+        var e=function(){
+            console.log(this.name);
+        }
+        C(e.bind(p1));
+        
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
+        
+        
+        */
+        var btn=document.querySelector('button');
+        function click(){
+            console.log(this.innerText);//按钮
+        }
+        var c=click.bind(btn);//改变click函数内部this的指向btn
+        document.querySelector('div').onclick=c;
+
+
+
+        //bind 可以改变定时器内部 this指向.
+        function P(){
+            this.name="TRUMP";
+        }
+        var p=new P();
+
+        function callback(){
+            console.log("这是定时任务",this,this.name);
+        }
+        //setInterval(callback.bind(p),100);
+        var c=callback.bind(p);//改变回调函数 callback的this指向为 p对象. 同时返回改变之后的callback函数 给定时器作为回调函数.
+        setTimeout(c,100);
+
+
+
+       /**
+        window.setInterval(function(){
+            console.log("这是定时器",this);
+        },100);
+       **/
+        //用apply 实现 数组里面的最大值
+        var x=Math.max(1,2,3,4,5);
+        //Math.max是静态函数. apply是作用在静态函数 Math.max上面的.
+        var y=Math.max.apply(Math,[1,2,3,4,60,50]);//apply可以用来做继承, 改变max函数内部this指向. 但是内部功能不受影响 内部默认this指向window
+            console.log('最大值==>',y);
+            //console.log("最大值==>",x);
+
+
+        /*   执行静态函数并改变内部作用域.  
+        function A(){
+            this.name="aaa";
+        }
+        A.max=function(a,b,c,d){//静态函数
+            console.log('静态函数max==>',this);
+            console.log(a,b,c,d);
+        }
+        var o={name:'acb'};
+        function B(){
+            A.max.apply(o,[10,20,30,40]);//执行函数A.max并改变它内部的this指向.
+        }
+        var b=new B();
+        */
+
+
+
+
+
+        /*
+        
+            bind方法
+        */
+        function Fruit(size,color){//水果构造函数
+            this.size=size;
+            this.color=color;
+        }
+        function Apple(){
+            this.test="甜的";
+            var f=Fruit.bind(this,"5寸","青苹果");//改变 Fruit内部的this指向,但是没有执行该函数. 返回了(return) 改变之后的函数.
+                f();//手动执行返回函数.
+        }
+        var a=new Apple();
+            console.log(a.test,a.size,a.color);
+            console.log(a);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function Animal(head,hair){//动物构造函数
+            this.head=head;
+            this.hair=hair;
+            console.log('Animal正在執行');
+            this.fit=function(){
+                console.log(this.hair+"在嚎");
+                return false;
+            }
+        }
+        Animal.prototype.run=function(){
+            console.log(this.hair+"在跑");
+        }
+        function Dog(){
+            this.feet="4四只脚"
+            Animal.apply(this,["圆圆头","金毛"]);//改变 Animal 内部的this指向. 参数用 数组传递.
+        }
+        var d=new Dog();
+            console.log(d.head,d.hair,d.feet);
+            console.log(d.fit());
+
+        var a=new Animal("圆圆的猫咪","长毛");
+            a.run();
+            console.log(a);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function People(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        var p=new People("Biden",70);//初始化构造函数 传参.
+            // console.log(p.name);
+        function Driver(){
+            this.car="";
+            //相当于实现了继承 .  Driver继承自 People  "李司机" 赋值给了 People函数的name形参 19赋值给People函数的age形参.
+            People.call(this,"李司机",19);//调用构造函数 People并改变它内部this的指向driver
+            this.drive=function(){
+                console.log(this.name+"在开车,今年"+this.age);
+            }
+        }
+        var d=new Driver();
+            //console.log(d.name,d.age);
+            //d.drive();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function say(){
+        //     this.name="Trump";
+        //     console.log(this);
+        // }
+        // var driver={
+        //     age:50
+        // };
+        // say.call(driver); //执行say 并改变函数内部的this指向
+        // console.log(window.name);
+    </script>
+</body>
+</html>

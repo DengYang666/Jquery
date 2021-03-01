@@ -1,0 +1,57 @@
+ DOM  document object model  文档对象模型(html文档 element 映射模型)
+BOM  brower object model  浏览器对象模型. 操作一些浏览器的功能.
+window 对象  是浏览器里面顶级对象.
+    document  文档对象(整个html文档)
+    location  地址栏对象
+    history   历史记录 
+    navigator 浏览器的一些信息对象  userAgent 客户端信息
+    screen 屏幕对象.
+
+window 对象:
+    1.全局变量都是window对象的作用范围
+    2.window对象的属性和方法 可以不适用window对象 ,直接访问
+        alert();  ==>window.alert();
+        prompt();  ==>window.prompt();
+        confirm(); ==>window.confirm();
+        open("url",'打开方式_self _blank','参数');
+        open('http://baidu.com',"_blank","width=200,height=200,top=200,left=200,scrollbars=no");
+    定时器:
+        setTimeout(执行的函数,延时时间,单位是毫秒);  ==>window.setTimeout();
+        clearTimeout(); ==>window.clearTimeout();
+        setInterval(); ==>window.setInterval();
+        clearInterval(); ==>window.clearInterval();
+    事件:
+        load   等网页加载完成以后触发的事件 (等 图片 视频 flash 加载完成.)
+        resize  浏览器窗口大小发生变化的时候 触发的事件
+        DOMContentLoaded 等网页加载完成后触发的事件( 不包含加载完成图片 flash 视频 等.)
+                         没有on属性的形式绑定事件,要使用监听的方式 监听事件.
+history对象: 历史记录
+属性: length 获取记录长度
+方法: 
+baidu  qq  163  自己的网页 bilibili  acfun.com
+forward(); 
+back(); 
+go(数字); 正数 前进多少个记录  负数 后退多少记录
+Location对象: 地址栏对象.
+
+http://127.0.0.1:5500/day12.js-20201120/8.location%E5%AF%B9%E8%B1%A1.html?username=trump&age=20#sectionone
+protocol: http  网络协议(超文本传输协议) https 加密连接
+hostname: 127.0.0.1 服务器地址(本地服务器127.0.0.1)
+port: 5500 服务器端口号. 网站(http协议默认端口80 在浏览器里面一般给省略 https 默认端口是443 一般也会省略)
+pathname: /day12.js-20201120/8.location%E5%AF%B9%E8%B1%A1.html  路径.
+search: ?username=trump&age=20   get传值的参数数据 ?后面跟着两条数据 
+                username 参数名称=trump 参数的值 
+                & 连接多个参数  
+                age 参数名称 = 20 参数的值
+hash: #sectionone   锚连接  (vue)  #/user/login
+href: 完整的浏览器连接地址 URL
+location.assign(url)【注】在当前窗口跳转带这个url 相当于 location.href
+location.replace(url)【注】在当前窗口替换成新的url。不会产生历史记录。
+location.reload()【注】刷新窗前窗口
+location.reload(true)   不经过浏览器缓存强制从服务器重载F5
+
+地址栏 urlcode 编码:
+decodeURI(); 解码中文 或其他特殊字符 解码范围小一点
+encodeURI(); 编码中文 或其他特殊字符 编码范围小一点
+encodeURIComponent(); 会编码掉 //  #  : 这些符号 编码范围广一点
+decodeURIComponent(); 会解码掉 //  #  : 这些符号 解码范围广一点

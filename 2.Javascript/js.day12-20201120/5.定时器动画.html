@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器动画</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background-color: cadetblue;
+            position: absolute;
+            float: left;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*
+            动画有帧率: 18帧/s      50毫秒 运行一次
+                  电影: 24帧/s   
+            
+            时间:
+
+            参数变化程度:
+
+            H5: 缓动 加速 匀速  减速
+        */
+        var div=document.querySelector('div');
+        var target=50;
+        var timerID=setInterval(function(){
+            var left=div.offsetLeft;//获取div距离左边的距离
+                left=1;
+            var top=div.offsetTop;
+                top+=1;
+            if(left>=target){
+                clearInterval(timerID);
+            }
+            div.style.left=left+"px";
+            div.style.top=top+"px";
+        },15);
+            
+    </script>
+</body>
+</html>

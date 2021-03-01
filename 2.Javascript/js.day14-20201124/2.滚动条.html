@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动条</title>
+    <style>
+        .top{
+            width:50px;
+            height:50px;
+            cursor: pointer;
+            line-height: 50px;
+            background-color: rgba(0,0,0,0.5);
+            color:#FFF;
+            text-align: center;
+            position: fixed;
+            right: 50px;
+            top:50%;
+        }
+    </style>
+</head>
+<body>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div class="top">TOP</div>
+    <script>
+        /*
+            scroll事件 滚动条的滚动事件.
+                window.pageYOffset window对象网页滚动后,当前网页的位置距离最上面的距离
+            scroll函数 window.scroll(x,y); 可以调整到滚动条的位置.
+        */
+        window.addEventListener('scroll',function(){
+            var top=window.pageYOffset;
+            //console.log(top);
+        });
+        var topBar=document.querySelector('.top');
+            topBar.onclick=function(){
+                // window.scroll(0,0);
+                //每次跳动 1000px
+                var topY=window.pageYOffset;//距离最上面的距离
+                    topY-=1000;
+                    if(topY<0) topY=0;
+                scrollBar(topY);
+            }
+            function scrollBar(scrollPosition){
+                clearInterval(window.timerid);
+                window.timerid=setInterval(function(){
+                    var top=window.pageYOffset;//获取滚动条距最上面距离
+                    var speed=(scrollPosition-top)/10;//计算缓动移动的位移
+                        speed=speed>0?Math.ceil(speed):Math.floor(speed);//取整,位移不出现小数.
+                    window.scroll(0,top+speed); //滚动到指定位置.
+                    if(top==scrollPosition){//如果到达指定位置 停止定时器
+                        clearInterval(window.timerid);
+                    }  
+                },50);
+            }
+
+    </script>
+</body>
+</html>

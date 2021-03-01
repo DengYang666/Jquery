@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <script>
+        function max(a,b,c){
+            var max=a>c?(a>b?a:b):(b>c?b:c);
+            return max;
+        }
+        function sevenNum(){
+            var sum=0;
+            //循环1-100
+            for(var i=1;i<=100;i++){
+                if(i%7===0){//7的倍数
+                    sum+=i;
+                }
+                var ge=i%10;//53
+                var shi=parseInt(i/10);//5.3
+                if(ge==7||shi==7){
+                    if(i%7==0){//如果包含有7的數字 但是它也是7的倍数. 跳过
+                        continue;
+                    }
+                    sum+=i;
+                }
+            }
+            return sum;
+        }
+        function plus(num){
+            return (num+5)%10;
+        }
+        //alert(sevenNum());
+        function encrpt(num){
+            var ge= plus(num%10);//((num%10)+5)%10;
+            var shi=plus(parseInt(num/10)%10);//
+            var bai=plus(parseInt(num/100)%10);
+            var qian=plus(parseInt(num/1000));
+            var result=String(ge)+String(shi)+String(bai)+String(qian);// 1234
+            return result;
+        }
+       //alert(encrpt(4567));
+
+       function sumNum(num){
+            var isOdd= (num%2==0)?false:true;//是否是奇数 true;  false
+            var sum=0;
+            // if(isOdd){
+            //     for(var i=1;i<=num;i+=2){
+            //         sum +=(1/i);
+            //     }
+            // }else{
+            //     for(var i=2;i<=num;i+=2){
+            //         sum+=(1/i);
+            //     }
+            // }
+            var startNum=isOdd?1:2;
+            for(var i=startNum;i<=num;i+=2){
+                sum+=(1/i);
+            }
+            return sum;
+       }
+       //alert(sumNum(3));//
+       // + - x  ÷ 
+       function counter(num1,sep,num2){
+            switch(sep){
+                case '+':
+                    return num1+num2;
+                case '-':
+                    return num1-num2;
+                case 'x':
+                    return num1*num2;
+                case '÷':
+                    return num1/num2;
+            }
+       }
+       var re=counter(10,"+",5)
+       alert(re);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

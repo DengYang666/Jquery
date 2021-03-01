@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+<body>
+    <button>清除定时器</button>
+    <script>
+        /*
+            1秒 =  1000 毫秒
+            var id=setInterval(执行函数,定时时间间隔 单位是毫秒); //每个时间间隔执行一次 执行函数 返回该定时器的ID
+            clearInterval(interval的ID); //清除定时器
+        */
+        var i=5;
+        var fun=function(w){
+            console.log(i);
+            i--;
+        };
+        var intervalID=setInterval(function(){
+            fun(10);
+        },1000);
+        console.log("定时ID==>",intervalID);
+        document.querySelector('button').onclick=function(){
+            clearInterval(intervalID);
+        }
+    </script>
+</body>
+</html>

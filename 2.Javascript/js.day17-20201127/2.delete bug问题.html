@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delete 删除bug问题</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        function people(){
+            //console.log(this);//window 没有 new
+        }
+        //people();
+        /*
+            delete 删除对象的属性.
+            如果是全局变量: 不加var 才能删除. 为什么不加var 才能删除.
+                var 声明变量, 在内存开辟可用空间. 空间里面存值.
+            严格模式不能用delete 删除变量.
+        */
+        //var age=10;
+        var age = 10;
+        delete age;
+        console.log('删除之后的age==>',age);
+    </script>
+</body>
+</html>

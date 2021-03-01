@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:500px;
+            height:500px;
+            background-color: blueviolet;
+            color:#FFF;
+            margin:100px;
+            padding:10px;
+            border:1px solid #ddd;
+            float:left;
+            /* position: absolute;
+            left:100px;
+            top:150px; */
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div id="sec">
+
+    </div>
+    <script>
+        /*
+            事件对象:
+                clientX 鼠标距离可视区域左边距离
+                clientY 鼠标距离可视区域上面距离
+                screenX 鼠标距离屏幕左上角X轴的坐标(距离屏幕左边的距离)
+                screenY 鼠标距离屏幕左上角Y轴的坐标(距离屏幕上边的距离)
+                offsetX 鼠标距离容器盒子的左边的距离 (clientX-offsetLeft) 兼容问题
+                offsetY 鼠标距离容器盒子的上边的距离 (clientY-offsetTop)  兼容问题
+
+            获取元素的位置:
+                offsetWidth 元素的实际占用宽度(width+padding+border)
+                offsetHeight  元素的实际占用高度度 (height+padding+border)
+                offsetLeft 元素距离浏览器左边距离
+                offsetTop  元素距离浏览器上边的距离
+            浏览器的高宽:
+                document.documentElement; 获取html文档根标签html
+                document.documentElement.clientWidth 浏览器可视区域的宽度. 兼容 document.body
+                document.documnetElement.clientHeight 浏览器可视区域的高度.
+                window.innerWidth  整个浏览器可视区域宽度 包括滚动条
+                window.innerHeight  整个浏览器可视区域高度 包括滚动条
+
+            window对象事件:
+                resize 改变浏览器窗口大小的时候触发的事件
+
+        */
+        var div=document.querySelector('#sec');
+            div.onmousemove=function(e){
+                var e=e||window.event;
+                //div.innerText='clientX  '+e.clientX+'  clientY '+e.clientY+'  screenX '+e.screenX+'  screenY  '+e.screenY;
+                //div.innerText='clientX  '+e.clientX+'  clientY '+e.clientY+'  screenX '+e.screenX+'  screenY  '+e.screenY;
+                //div.innerText='offsetX  '+(e.offsetX)+'  offsetY '+(e.offsetY);
+            }
+            //div.innerText="offsetWidth "+div.offsetWidth+" offsetHeight "+div.offsetHeight+
+            //"  offsetLeft  "+div.offsetLeft+"  offsetTop  "+div.offsetTop;
+            window.onresize=function(){
+                div.innerText=" Width " + document.body.clientWidth +" Height "+document.body.clientHeight ;
+            }
+            div.innerText='可视区域的宽度'+document.documentElement.clientWidth+" 浏览器窗口宽度 "+ window.innerWidth;
+            //document.documentElement.style.backgroundColor='#F00';
+            document.body.style.backgroundColor='#00F';
+     </script>
+</body>
+</html>

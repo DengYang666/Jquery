@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则</title>
+</head>
+<body>
+    <script>
+/*
+    正则表达式 :  神经学家发明.
+                主要通过一些正则规则来检索(查找)字符串.看字符串是否满足正则规则. 或 可以替换满足规则的字符串
+    创建正则对象:
+    1. new RegExp(规则);
+    2. var reg=/规则/;//字面量表示方式
+
+    test(字符串) 方法 检查字符串是否满足正则规则,如果查找到,返回true, 否则返回false
+
+    常量字符:  abcdef....zABCDEF..Z 0123456789
+    匹配字符:
+        .  匹配任意[不换行]字符
+        [a-z] 匹配a到z之间任意字符
+        [A-Z] 匹配A到Z之间的任意字符
+        [0-9] 匹配0-9之间的任意数字
+        
+    特殊字符:
+        ^ 表示以什么开始 整个字符串
+        $ 表示以什么结束 整个字符串
+
+        [] 表示匹配中括号中任意 一个字符就可以
+    量词: 匹配次数
+        {5}  匹配5次
+        {m,n} 匹配m 到 n次 {1,5}
+        {m,} 匹配m到无限次 {1,}
+        +  匹配1到无限次
+        *  匹配0到无限次
+        ?  匹配0次或一次(非贪婪模式)
+        () 优先级   子匹配
+    修饰符(标识符):
+        
+    字符串支持正则的函数:
+        match(正则规则);  返回匹配到的结果数组
+        replace(正则表达式,替换内容); 正则替换 把匹配到的内容替换掉
+*/
+        var str6='hello123';
+        var result6=str6.match(/[0-9]{1,2}/);//匹配数字 1 到 2个
+        console.log("匹配数字==>",result6);
+
+        var str6='HeLLo123';
+        var result6=str6.match(/[a-zA-Z0-9]{6}/);//匹配字母数字 6个
+        console.log("匹配字母==>",result6);
+
+        var str7='HeLLo123';
+        var result7=str7.match(/^[a-zA-Z0-9]{2,7}3$/);//以数字大小写字母开始的字符串 匹配2到7次 以3结尾 
+        console.log("开始结束==>",result7);
+
+        var str7='HeLLLLLLLLLLLLLo123';
+        var result7=str7.match(/L*o/);// *匹配0到无限次  0次表示可以没有.
+        console.log("*匹配==>",result7);
+
+        var str8='bbbbtrumpaaaaaaa';
+        var result8=str8.match(/t.{1,3}p/); //匹配 t开始 p结束 中间可以是任意字符的1,3个字符
+            console.log('子匹配1==>',result8);
+        var result8=str8.match(/(t)(.{1,3})(p)/);//匹配 t开始 p结束 中间可以是任意字符的1,3个字符 中间的字符用小括号括起来.
+            console.log('子匹配2==>',result8);  //返回结果是数组 数组里面的第一个是全匹配 第二个开始 是子匹配  
+
+        var str9='trump hello';
+        var reg9=/(t.{1,3}p)(.)(h.{1,3}o)/; //小括号 子匹配
+        var result9=str9.match(reg9);
+            console.log('子匹配 result9==>',result9); // 匹配
+        var result10=str9.replace(reg9,'$3$2$1');//  $1 表示第一个子匹配 $2 第二个子匹配 $3第三个子匹配
+            console.log('替换的结果==>',result10);
+
+
+
+
+
+
+
+
+
+
+        var str='abctruxxxmpabc';
+        var result=str.match(/t[a-z]{1,5}p/);// 匹配 t开始 中间可以是任意a-z字母 出现1到5次 p结束
+            console.log(result);
+
+        var str2='abcxxxxxbcd'
+        var result2=str2.match(/x+/);// x的字符串 +(1到无限次. x就尽可能多的匹配(贪婪模式).)
+            console.log('贪婪模式 =>',result2);
+
+        var result3=str2.match(/x+?/);// x的字符串 +(1到无限次. x就尽可能少的匹配(+? 非贪婪模式).)
+            console.log('非贪婪模式 =>',result3);
+
+        var str4='abcxaaaaazxbzxczabcddd'
+        var result4=str4.match(/x.+z/);// x开始 z结尾的字符串 +(1到无限次 .+ 就尽可能多的匹配(贪婪模式).)
+            console.log('xyz贪婪模式 =>',result4);
+
+        var result5=str4.match(/x.+?z/);// x开始 z结尾的字符串 +(1到无限次 .+就尽可能少的匹配(+? 非贪婪模式).)
+            console.log('xyz非贪婪模式 =>',result5);
+    </script>
+</body>
+</html>

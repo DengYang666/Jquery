@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    
+    <style>
+        ul{
+            list-style: none;
+        }
+        .ad{
+            width:500px;
+            height: 313px;
+            margin:0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .ad>div.imglist{
+            position: absolute;
+            z-index:1;
+        }
+        .ad img{
+            width:500px;
+            float:left;
+
+        }
+        .ad ul{
+            position:absolute;
+            top:20px;
+            right:100px;
+            z-index:2;
+        }
+        .ad li{
+            float: left;
+            width:20px;
+            height:20px;
+            background-color:#fff;
+            margin-left:10px;
+            text-indent: -9999px;
+            border-radius: 10px;
+        }
+        .ad li.active{
+            background-color:#aaa;
+        }
+        .ad>span{
+            position: absolute;
+            top:50%;
+            background:rgba(255,0,0,0.5);
+            z-index:3;
+            width:50px;
+            height:45px;
+            color:white;
+            font-size:30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .ad>.right{
+            right:0px;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+    <div class="ad">
+        <div class="imglist">
+            <img src="image/bg1.jpg"/>
+            <img src="image/bg2.jpg"/>
+            <img src="image/bg3.jpg"/>
+        </div>
+        <ul></ul>
+        <span class="left">&lt;</span>
+        <span class="right">&gt;</span>
+    </div>
+    <script>
+        window.addEventListener('load',function(){
+            var ad=document.querySelector('.ad');//获取ad元素
+            var imglist=document.querySelector('.ad>div');//获取imglist元素
+            var boxWidth=ad.offsetWidth;//获取轮播图盒子宽度
+            var imgAll=imglist.children;//获取imglist的所有子元素.
+            var firstImg=imgAll[0].cloneNode(true);//克隆第一张图片
+                imglist.appendChild(firstImg);//把克隆的图片放到列表最后
+            var ul=document.querySelector('ul');//获取远点下标的盒子;
+            //var isAnimate=false;//做一个全局标记,用来记录我们这个轮播是否正在播放. 如果播放就true 没有播放false
+            var dataID=0;//设置一个当前所在位置记录为全局
+                imglist.style.width=boxWidth*imgAll.length+"px";// 图片外面的盒子大小= 每个图片大小(即容器盒子宽度)*图片数量
+                for(var i=0;i<imgAll.length-1;i++){//循环图片的数量 创建对应数量的 li
+                    var li=document.createElement('li');//创建li的元素.
+                        if(i==0) li.className='active'; //第一个应该一开始就选中.
+                        li.innerText=i;//设置li之间内容
+                        li.setAttribute('data-id',i);//设置li的属性
+                        ul.appendChild(li);//把生成的li写入ul
+                }
+                ul.addEventListener('click',function(e){//事件委托 li的点击委托给ul的点击事件
+                    var e=e||window.event;//事件兼容
+                    var target=e.target;//获取事件源对象
+                        if(target.tagName=='LI'){//判断是否是li被点击
+                            //if(isAnimate){//如果我们轮播还在播放 不进行这次点击的播放
+                            //return false;
+                            //}
+                            isAnimate=true;//如果没有播放 就设置为播放. 后面animate函数就开始播放了.
+                            dataID=target.getAttribute('data-id')//target.dataset.id;//取出它的data-id属性的值
+                            changePoint();//调用改变下标的函数
+                            var moveLength=dataID*boxWidth;//计算出当前元素需要移动的距离是 它当前下标乘以(盒子宽度即单张图片宽度)
+                                animate(imglist,-moveLength,20);//调用移动函数,把图片容器传进去移动(整体移动)
+                        }
+                });
+                
+                var right=document.querySelector('.right');
+                    right.onclick=function(){//点击下一张
+                        dataID++;//下一张图片 下标+1
+                        var moveLength=dataID*boxWidth;//计算出当前元素需要移动的距离是 它当前下标乘以(盒子宽度即单张图片宽度)
+                        if(dataID == imgAll.length-1) dataID=0;//判断是否到达最后一张 如果是 回到第一张dataID=0;
+                        changePoint();//调用改变下标的函数
+                        animate(imglist,-moveLength,10,function(){
+                           if(dataID==0){//如果是第一张 设置它距离左边的距离为0px
+                               imglist.style.left="0px";
+                           }
+                        });
+                    }
+                var left=document.querySelector('.left');
+                    left.onclick=function(){
+                        //dataID--;
+                        if(dataID<=0){//判断DataID如果是0当前就是第一张了
+                            dataID=imgAll.length-1;//DataID 改为最后复制那一张 3
+                            imglist.style.left=-dataID*boxWidth+"px";//把位移改为我们克隆那张.
+                        }
+                        dataID--;//上一张图片 下标-1
+                        var moveLength=dataID*boxWidth;//计算出当前元素需要移动的距离是 它当前下标乘以(盒子宽度即单张图片宽度)
+                        changePoint();//调用改变下标的函数
+                        animate(imglist,-moveLength,10);
+                    }
+                function changePoint(){//改变下标函数封装.
+                    var liAll=ul.children;//获取所有li子元素
+                        for(var i=0;i<liAll.length;i++){//循环所有li子元素
+                            liAll[i].className='';//先设置所有的li的class为空.
+                        }
+                        liAll[dataID].className='active';//当前被点击的li的class为active
+                }    
+            
+        });
+    </script>
+</body>
+</html>

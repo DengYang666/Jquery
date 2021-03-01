@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性节点</title>
+</head>
+<body>
+    
+    <label>用户名:<input type="text" value="trump" data-id="这是ID" 
+                                                  data-name="这是dataName" 
+                                                  data-value="这是一个自定义的data-属性"/>
+    </label>
+    <script>
+        /*
+            属性节点操作:
+                元素对象.attributes;  获取所有的属性节点
+                    getAttribute(); 
+                    setAttribute();
+                    removeAttribute();
+                H5: 
+                    自定义属性 data-  规范是data-打头 后面加上属性名称[自定]  data-index data-id
+                    获取data-打头的自定义属性可以用 dataset
+               自定义属性:     
+                    setAttribute();
+                    getAttribute();
+                    removeAttribute();
+                    dataset
+               如果是html自带的属性,可以直接使用元素对象属性来设置.
+                    document.querySelector('input').type="password"
+        */
+        var input=document.querySelector('input');
+            //console.log(input.attributes);
+        var val=input.getAttribute('value');//获取属性的值
+            //console.log(val);
+            input.setAttribute('value','bidden');//设置属性的值. 修改属性
+            input.removeAttribute('value');// 删除属性
+
+        var dataValue=input.getAttribute('data-value');
+            //console.log('dataValue==>',dataValue);
+            //input.setAttribute('data-value','修改之后data-value');
+            //input.removeAttribute('data-value');
+        var dataSet=input.dataset;// 获取 data- 开头的自定义属性集合.
+            console.log(dataSet.value);//获取自定义属性 data-value 的值
+            dataSet.id="修改ID";// 修改自定义属性 data-id的值
+            dataSet.name="修改Name";//修改自定义属性 data-name的值
+
+
+
+ /*
+            属性节点操作:
+                元素对象.attributes;  获取所有的属性节点
+                    getAttribute(); 
+                    setAttribute();
+                    removeAttribute();
+                H5: 
+                    自定义属性 data-  规范是data-打头 后面加上属性名称[自定]  data-index data-id
+                    获取data-打头的自定义属性可以用 dataset
+               自定义属性:     
+                    setAttribute();
+                    getAttribute();
+                    removeAttribute();
+                    dataset
+               如果是html自带的属性,可以直接使用元素对象属性来设置.
+                    document.querySelector('input').type="password"
+        */
+        var input=document.querySelector('input');
+            //console.log(input.attributes);
+        var val=input.getAttribute('value');//获取属性的值
+            //console.log(val);
+            input.setAttribute('value','bidden');//设置属性的值. 修改属性
+            input.removeAttribute('value');// 删除属性
+
+        var dataValue=input.getAttribute('data-value');
+            //console.log('dataValue==>',dataValue);
+            //input.setAttribute('data-value','修改之后data-value');
+            //input.removeAttribute('data-value');
+        var dataSet=input.dataset;// 获取 data- 开头的自定义属性集合.
+            console.log(dataSet.value);//获取自定义属性 data-value 的值
+            dataSet.id="修改ID";// 修改自定义属性 data-id的值
+            dataSet.name="修改Name";//修改自定义属性 data-name的值
+
+
+
+
+
+    </script>
+</body>
+</html>

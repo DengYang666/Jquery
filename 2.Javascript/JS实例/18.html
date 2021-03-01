@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str='professional coding program learning';
+        var o={};
+        for(var i=0;i<str.length;i++){
+            var code=str.charAt(i);
+            if(o[code]){
+                o[code]++;
+            }else{
+                o[code]=1;
+            }
+        }
+        var max=0;
+        for(var i in o){
+            if(o[i]>max){//
+                max=o[i];
+            }
+        }
+        var char='';
+        for(var i in o){
+            if(o[i]>=max){//
+                char+='"'+i+'"';
+            }
+        }
+        console.log('出现最多的字母是'+char+"出现的次数是"+max+"次");
+        console.log(o)
+    </script>
+</body>
+</html>

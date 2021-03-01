@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            正则表达式 :  神经学家发明.
+                     主要通过一些正则规则来检索(查找)字符串.看字符串是否满足正则规则. 或 可以替换满足规则的字符串
+            创建正则对象:
+            1. new RegExp(规则);
+            2. var reg=/规则/;//字面量表示方式
+
+            test(字符串) 方法 检查字符串是否满足正则规则,如果查找到,返回true, 否则返回false
+
+            常量字符:  abcdef....zABCDEF..Z 0123456789
+            匹配字符:
+                .  匹配任意[不换行]字符
+                [a-z] 匹配a到z之间任意字符
+                [A-Z] 匹配A到Z之间的任意字符
+                [0-9] 匹配0-9之间的任意数字
+                
+            特殊字符:
+                ^ 表示以什么开始
+                $ 表示以什么结束
+
+                [] 表示匹配中括号中任意 一个字符就可以
+            量词: 匹配次数
+                {5}  匹配5次
+                {m,n} 匹配m 到 n次 {1,5}
+                {m,} 匹配m到无限次 {1,}
+                +  匹配1到无限次
+                *  匹配0到无限次
+                ?  匹配0次或一次
+        */
+        var reg1=new RegExp('abc');
+        // console.dir(reg1);
+        var reg2=/abc/;
+        // console.dir(reg2);
+        var result=reg2.test('hello abd');
+            console.log(result);
+        //表示以 A开头 以a结束的字符串  .匹配任意字符串 + 匹配次数 1到无限次.
+        //var reg3=/^A.+a$/
+        //console.log(reg3.test('Abbcdjdhd123456a'));
+        var reg4=/.{5}/;//匹配任意字符串5次
+        var str4='abcdefedfed';
+        console.log(reg4.test(str4));
+
+        var reg5=/.{5,}/;//匹配任意字符串5次
+        var str5='abcdefedfffed';
+        console.log('{5,} 5到无限次',reg5.test(str5));
+
+        var reg6=/.{5,10}/;//匹配任意字符串5次
+        var str6='abcdffffff';
+        console.log('{5,10}',reg6.test(str6));
+
+        var reg7=/[a-z]/;//匹配小写的a-z
+        var str7='HELLO';
+        console.log('[a-z]==>',reg7.test(str7));
+
+        var reg8=/[a-zA-Z]/;//匹配大小写的a-z A-Z
+        var str8='biden HELLO';
+        console.log('[a-zA-Z]==>',reg8.test(str8));
+
+        var reg9=/[0-9]/;
+        var str9='a12bcd'
+            console.log('/0-9/==>',reg9.test(str9));
+
+
+    </script>
+</body>
+</html>

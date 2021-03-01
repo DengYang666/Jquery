@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数</title>
+</head>
+<body>
+    <script>
+        /*
+            函数可以作为变量的值,函数是一种Function类型. 可以通过变量传递
+            函数作为参数传递 ==> 回调函数 定时器 事件.
+
+
+            函数 如果 用 new 关键字创建对象. 就变成构造函数了.
+                     不用new 就是普通函数.
+
+            面向对象编程.
+
+            javascript 函数式一等公民.
+            函数式编程.(js 支持  lamba表达式.)
+        
+        function Hello(){
+            this.name="abc";
+            alert('hello');
+        }
+        var a=Hello;
+            a();
+        */
+        function Hello(b){
+            b();
+        }
+        function c(){
+            alert('this is c function');
+        }
+        //Hello(c);
+    </script>
+</body>
+</html>

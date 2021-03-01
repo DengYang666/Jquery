@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <button>打开新窗口</button>
+    <button id="testTime">开始计时Timeout</button>
+    <button id="clearTime">清除延时Timeout</button>
+    <script>
+        var timerid;
+        document.querySelector('#testTime').onclick=function(){
+            timerid=setTimeout(function(){
+                console.log('这是一个延时器..');
+            },2000);//延时器只会执行一次
+            console.log("timeID==>",timerid);
+        }
+        document.querySelector('#clearTime').onclick=function(){
+              clearTimeout(timerid); //清除延时器.. 关掉延时器.
+        }
+
+
+        /*
+            DOM  document object model  文档对象模型(html文档 element 映射模型)
+            BOM  brower object model  浏览器对象模型. 操作一些浏览器的功能.
+            window 对象  是浏览器里面顶级对象.
+                document  文档对象(整个html文档)
+                location  地址栏对象
+                history   历史记录 
+                navigator 浏览器的一些信息对象  userAgent 客户端信息
+                screen 屏幕对象.
+
+            window 对象:
+                1.全局变量都是window对象的作用范围
+                2.window对象的属性和方法 可以不适用window对象 ,直接访问
+                    alert();  ==>window.alert();
+                    prompt();  ==>window.prompt();
+                    confirm(); ==>window.confirm();
+                    open("url",'打开方式_self _blank','参数');
+                    open('http://baidu.com',"_blank","width=200,height=200,top=200,left=200,scrollbars=no");
+                定时器:
+                    setTimeout(执行的函数,延时时间,单位是毫秒);  ==>window.setTimeout();
+                    clearTimeout(); ==>window.clearTimeout();
+                    setInterval(); ==>window.setInterval();
+                    clearInterval(); ==>window.clearInterval();
+                    
+        */
+        var userName="Trump";//声明一个变量
+        //console.log(userName);
+        //console.log('window对象来取==>',window.userName); //window顶级对象的一个属性.
+        //window.alert("警告框");
+        //console.log(window);
+        document.querySelector('button').onclick=function(){
+            //open('http://baidu.com',"_blank","width=200,height=200,top=200,left=200,scrollbars=no");
+        }
+        
+    </script>
+</body>
+</html>

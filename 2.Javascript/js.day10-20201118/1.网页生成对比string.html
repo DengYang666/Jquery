@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页生成对比</title>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <div id="nodetest">
+
+    </div>
+    <div id="nodeArr">
+
+    </div>
+    <script>
+        /*
+            1.document.write();
+                输出流. 如果当前网页和 document.write的输出在同一个流.那么就会按顺序先后输出.
+                        如果不在同一个输出流,那么document.write 全部覆盖前面的输出内容
+                window.onload=function(){// onload 当网页加载完成以后触发的事件
+                    document.write("<ul><li>列表1</li><li>列表1</li><li>列表1</li><li>列表1</li></ul>");
+                }
+            2.拼接字符串
+                innerHTML 可以设置标签之间的内容
+                
+                a='';
+                a+='abcdbd'; 字符串拼接有性能,资源问题.
+                    字符串每次修改 或 连接的时候 会重新开辟一个空间. 原来的空间等待垃圾回收自动回收.
+            3.节点操作方式
+                createElement('p');
+                createTextNode('段落');    
+                appendChild();
+            console.time('标记');
+            console.timeEnd('标记');
+            
+            字符串性能要好一点.
+        */
+        // 字符串拼接html  字符串稍好. 字符串拼接 和 赋值有一个资源占用问题(每次字符串赋值一次,都会重写开辟一个空间)
+        console.time('forinsertHTML');        
+        var str='';
+            for(var i=1;i<=1000;i++){
+                str+='<p>段落'+i+'</p>';
+            }  
+        document.querySelector('div').innerHTML=str;
+        console.timeEnd('forinsertHTML'); 
+
+    </script>
+</body>
+</html>

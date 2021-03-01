@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联动选择</title>
+    <style>
+        select{
+            width:100px;
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+    <select id="province">
+        <option>请选择</option>
+    </select>
+    <select id="city">
+        <option>广州</option>
+        <option>深圳</option>
+        <option>中山</option>
+        <option>东莞</option>
+    </select>
+    <script>
+        //数组里面的每一个对象都是一个省份信息
+        //对象里面有 province是省份的名称
+        //code 省份代号
+        //city是省份的所有市级
+        var all=[
+            {
+                province:"广东省",
+                code:1,
+                city:[
+                    "广州",
+                    "深圳",
+                    "中山",
+                    "东莞"
+                ]
+            },
+            {
+                province:"江西省",
+                code:2,
+                city:[
+                    "赣州",
+                    "南昌",
+                    "新余",
+                    "玉山"
+                ]
+            },
+            {
+                province:"湖南省",
+                code:3,
+                city:[
+                    "长沙",
+                    "郴州",
+                    "娄底",
+                    "张家界"
+                ]
+            },
+            {
+                province:"广西自治区",
+                code:4,
+                city:[
+                    "南宁",
+                    "北海",
+                    "柳州",
+                    "桂林"
+                ]
+            }
+        ];
+        var province=document.querySelector('#province');
+        var city=document.querySelector('#city');
+            for(var i in all){//循环所有省份. 把省份添加option节点
+                var node=document.createElement('option');
+                    node.innerText=all[i].province;
+                    node.value=all[i].code;
+                    province.appendChild(node);//把option节点放入select节点
+            }
+            province.onchange=function(){//给省份一个change事件 值发生变化的时候触发
+                var v=this.value;//获取改变的值 就是省份的代号 code
+                var citys=[];
+                for(var i in all){//循环所有省份 找到对应城市 city
+                    if(all[i].code == v){//根据code值查找对应的city
+                        citys=all[i].city;//把份的city拿出来赋值给citys
+                        break;
+                    }
+                }
+                city.innerHTML="";
+                for(var i in citys){//循环所有找到的 city 放入select节点
+                    var node=document.createElement('option');
+                    node.innerText=citys[i];
+                    city.appendChild(node);//把循环出来城市 给 city
+                }
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width: 100px;
+            height:100px;
+            background-color: blueviolet;
+            position: absolute;
+            left:0px;
+            top:0px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div=document.querySelector('div');
+        document.onkeydown=function(e){
+            console.log(e.key,e.keyCode);
+            var keyCode=e.keyCode||e.which;//获取键盘码值,兼容写法
+                var left=div.offsetLeft;//div距离左边的距离
+                var top=div.offsetTop;//div距离上面的距离
+                if(keyCode==38){//up 键
+                    div.style.top=(top-5)+"px";//向上 距离上面的距离top 减少.
+                }else if(keyCode==39){//right 键
+                    div.style.left=(left+5)+"px";//向右,距离左边的距离left 增加.
+                }else if(keyCode==40){//down 键
+                    div.style.top=(top+5)+"px";//向下 ,距离上面的距离增加.
+                }else if(keyCode==37){//left 键
+                    div.style.left=(left-5)+"px";// 向左,距离左边的距离减少.
+                }
+        }
+    </script>
+</body>
+</html>

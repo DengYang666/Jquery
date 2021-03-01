@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的循环</title>
+</head>
+<body>
+    <script>
+        /*
+            循环数组:  for(var i=0;i<=10;i++){}
+                      for(var d in obj){}
+            forEach(function(value,index,arr){
+                //1.回调函数,把数组里面的每一项都交给回调函数处理. ==> 遍历.
+                //2.回调函数里面有三个参数可用. value循环项,index 下标 arr 原数组
+                //3.没有中断,直接遍历数组里面 每一项交给回调函数处理.
+            });
+            没有返回值.
+        */
+        var data=[
+            {id:1,name:"Trump",age:70},
+            {id:2,name:"Biden",age:60},
+            {id:3,name:"WUJI",age:30},
+            {id:4,name:"TAIJI",age:15},
+            {id:5,name:"台湾",age:20}
+        ];
+        var re=data.forEach(function(value,index){
+            ///console.log('value==>',value);
+            return value;
+            //console.log('index==>',index);
+            //console.log('arr==>',arr);
+        });
+        console.log('foreach 返回值==>',re);
+        /*
+            filter 过滤数组,返回一个满足条件的新数组
+            filter(function(value,index,arr){})
+                回调函数参数: 
+                        value 数组项  
+                        index 数组下标  
+                        arr 原数组
+                有返回值.  如果返回true 就把当前数组项存储到一个返回的新数组,如果返回false 不存入返回的新数组.(过滤)
+        */
+        var data=[
+            {id:1,name:"Trump",age:70},
+            {id:2,name:"Biden",age:60},
+            {id:3,name:"WUJI",age:30},
+            {id:4,name:"TAIJI",age:15},
+            {id:5,name:"台湾",age:20}
+        ];
+        var arr2=data.filter(function(value,index,arr){
+            //console.log(value,index,arr);
+            return value.age>30;
+            //return false;
+        });  ///自己实现一个 类似filter效果数组扩展方法.
+        //console.log(arr2);
+        /*
+            some 函数.
+            some(function(value,index,arr){})
+                回调函数参数: 
+                    value 数组项  
+                    index 数组下标  
+                    arr 原数组
+                返回结果true 或 false
+                循环次数. 如果找到满足返回条件,这个循环就会中止. 这时候就会返回true
+                         如果一直没有找到满足条件的数组项,会继续循环下一项
+                         如果到最后没有找到满足条件的项,整个函数返回false
+                如果回调函数里面 返回false,会继续循环,如果返回的true 停止 并给函数返回true.
+        */
+        var data=[
+            {id:1,name:"Trump",age:70},
+            {id:2,name:"Biden",age:60},
+            {id:3,name:"WUJI",age:30},
+            {id:4,name:"TAIJI",age:15},
+            {id:5,name:"台湾",age:20}
+        ];
+        var result=data.some(function(value,index,arr){
+            console.log('some()==>',value,index,arr);
+            //return value.age<10;
+            return false;
+        });
+        console.log(result);
+    </script>
+</body>
+</html>

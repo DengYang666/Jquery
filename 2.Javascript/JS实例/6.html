@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 200px;
+            height: 50px;
+            background-color: rgb(209, 209, 209);
+        }
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul li {
+            height: 80px;
+            border: 1px solid #000;
+            margin: 10px 0 0 0;
+            position: relative;
+        }
+
+        ul li .del {
+            float: right;
+            width: 40px;
+            height: 40px;
+            background-color: #f00;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .shangping {
+            margin-left: 20px;
+            font-size: 50px;
+        }
+
+        .jian {
+            font-size: 30px;
+            right: 200px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+        }
+
+        .num {
+            font-size: 30px;
+            position: absolute;
+            right: 150px;
+            top: 20px;
+        }
+
+        .jia {
+            font-size: 30px;
+            right: 100px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn_add">增加</button>
+    <div class="layout" id="layout">
+        <ul>
+            <li>
+                <span class="shangping">商品</span><span class="jian">-</span><span class="num">1</span><span class="jia">+</span><button class="del">x</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var btn_add = document.getElementById("btn_add");
+        var layoutElement = document.getElementById("layout");
+        btn_add.onclick = function () {
+            var ul = document.createElement("ul");
+            var str = '<li><span class="shangping">商品</span><span class="jian">-</span><span class="num">1</span><span class="jia">+</span><button class="del">x</button></li>';
+            ul.innerHTML = str;
+            layoutElement.appendChild(ul);
+        }
+        layoutElement.onclick = function (event) {
+            var btn = event.target;
+            if (btn.className == "del") {
+                var element = btn.parentElement.parentElement;
+                element.remove();
+            }
+            if (btn.className == "jian") {
+                var num = btn.nextSibling
+                var number = num.innerText;
+                number = --number;
+                num.innerText = number;
+                if (number <= 0) {
+                    var element = btn.parentElement.parentElement;
+                    element.remove();
+                }
+            }
+            if (btn.className == "jia") {
+                var num2 = btn.previousSibling;
+                var number = num2.innerText;
+                number = ++number
+                num2.innerText = number;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    
+</head>
+<body>
+    <input type="text"/>
+    <script>
+        /*
+            键盘事件: event
+                key 输入键盘的值(不包括中文. Proccss.)
+                ctrlKey 按住ctrl 输入的时候 ctrlKey为true 否则就是 false
+                shiftKey按住 shift 输入的时候 shiftKey为 true 否则就是 false
+            
+            onkeydown  onkeyup 常用,识别所有的键盘码
+            onkeypress 不常用. 特殊功能键不能捕获.(ctrl  shift alt .... F1-F12)
+        */
+        var input=document.querySelector('input');
+            input.onkeydown=function(e){
+                var key=e.key;
+                // if(e.keyCode==13&&e.ctrlKey){
+                //     alert("同时按下了 control 和 enter键");
+                // }
+                // if(e.shiftKey&&e.keyCode==13){
+                //     alert("同时按下了 shift 和 enter 键!");
+                // }
+                console.log('keydown',e.key,e.keyCode);
+            }
+            input.onkeyup=function(e){
+                console.log('onkeyup',e.key,e.keyCode);
+            }
+            input.onkeypress=function(e){
+                console.log('onkeypress',e.key,e.keyCode);
+            }
+
+    </script>
+</body>
+</html>

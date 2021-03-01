@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标拖动效果</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        div{
+            width:200px;
+            height:200px;
+            left:100px;
+            top:100px;
+            background-color:brown;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div=document.querySelector('div');
+            div.onmousedown=function(e){//鼠标按下事件
+                var offsetX=e.clientX-div.offsetLeft;//鼠标按下的时候计算 鼠标相对盒子的坐标
+                var offsetY=e.clientY-div.offsetTop;//鼠标按下的时候计算 鼠标相对盒子的坐标
+                document.onmousemove=function(ev){//鼠标移动事件
+                    var x=ev.clientX-offsetX; //拖动时的当前鼠标坐标减去 相对与盒子的坐标.
+                    var y=ev.clientY-offsetY; //拖动时的当前鼠标坐标减去 相对与盒子的坐标.
+                    if(x<0) x=0; //如果x坐标小于0 在左边超出可视区域 x=0
+                    var maxX=document.documentElement.clientWidth-div.offsetWidth; //浏览器宽度-盒子本身的宽度
+                    if(x>maxX) x=maxX;
+                    if(y<0) y=0; //如果y坐标小于0 在上边超出可视区域 y=0
+                    var maxY=document.documentElement.clientHeight-div.offsetHeight;//浏览器高度-盒子本身的高度
+                    if(y>maxY) y=maxY;
+                    div.style.left=x+'px';
+                    div.style.top=y+'px';
+                }
+            }
+            div.onmouseup=function(){
+                document.onmousemove=null;
+            }
+    </script>
+</body>
+</html>

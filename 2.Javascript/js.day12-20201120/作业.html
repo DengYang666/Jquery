@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .small{
+            width:200px;
+            height:200px;
+            position: relative;
+            float:left;
+        }
+        .small img{
+            width:200px;
+            height:200px;
+        }
+        .mask{
+            width: 100px;
+            height: 100px;
+            left:0px;
+            top:0px;
+            background-color: rgba(25, 100, 54, 0.5);
+            position: absolute;
+            display: none;
+        }
+        .big{
+            float:left;
+            width:400px;
+            height:400px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        .big img{
+            position: absolute;
+            left:0px;
+            top:0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="small">
+        <img src="pro.jpg"/>
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <img src="pro.jpg"/>
+    </div>
+    <script>
+        /*
+            鼠标坐标
+            clientX clientY 相对于浏览器
+            盒子(div):
+            浏览器最终计算的最后结果.
+                offsetWidth  (border+padding+width) 
+                offsetHeight
+                offsetLeft 相对于浏览器的位置
+                offsetTop 相对于浏览器的位置
+
+            只是行内样式css样式值.
+                div.style.width
+                div.style.height
+                div.style.left
+                div.style.top
+        */
+        var small=document.querySelector('.small');
+        var mask=document.querySelector('.mask');
+        var big=document.querySelector('.big');
+        var bigImg=document.querySelector('.big>img');
+            
+            small.onmouseover=function(){//鼠标移入的时候 显示
+                mask.style.display="block";
+                big.style.display="block";
+            }
+            small.onmouseout=function(){ //鼠标移出的时候隐藏
+                mask.style.display="none";
+                big.style.display="none";
+            }
+            small.onmousemove=function(e){
+                console.log('获取big的style.width宽度',big.offsetWidth);
+                var e=e||window.event;//兼容处理
+                var offsetX=e.clientX-small.offsetLeft-50;//计算 蒙版的距离small盒子左边距离
+                var offsetY=e.clientY-small.offsetTop-50;//计算 蒙版的距离small盒子上边距离
+                if(offsetX<0) offsetX=0;
+                if(offsetX>100) offsetX=100;
+                if(offsetY<0) offsetY=0;
+                if(offsetY>100) offsetY=100;
+                    mask.style.left=offsetX+"px";
+                    mask.style.top=offsetY+"px";
+                    //为什么乘以 4 是因为smll 只有原图1/4
+                     /*
+                        1.放大的倍数 . 大图 是小图的多少倍 就放大多少倍( small 200  bigimg 800  )   big框(400) 是蒙版(100)的4倍
+                        2.bigimg的位移数负数
+                    */
+                    bigImg.style.left=(offsetX * -4) +"px";//大图默认是左上角对齐 跟随蒙版移动应该向上或 向左移动.所以是负 -
+                    bigImg.style.top=(offsetY * -4) +"px";
+            }
+    </script>
+</body>
+</html>
